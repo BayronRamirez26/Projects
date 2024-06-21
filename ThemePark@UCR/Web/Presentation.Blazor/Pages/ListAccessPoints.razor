@@ -1,0 +1,71 @@
+﻿@page "/list-accesspoints"
+@inject HttpClient Http
+@using System.ComponentModel.DataAnnotations
+@using System.Text
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.LearningArea.Services
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.LearningSpace.Services
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.LearningSpace.Services.Interfaces
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningArea.Entities
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningSpace.Entities;
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningSpace.Entities.Wrappers
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.Shared.ValueObjects;
+@using MudBlazor
+@using System.Text.Json;
+@inject NavigationManager NavigationManager
+@inject ILearningSpaceService learningSpaceService
+@inject IAccessPointService accessPointService
+@inject ILevelService levelService
+@inject HttpClient httpClient
+@inject CurrentNavigationUser currentNavigationUser;
+
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+<link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />
+<link href="css/createlearningspace.css" rel="stylesheet" />
+
+<h1 style="color:#0C344E">Puntos de acceso actuales</h1>
+<div class="spacing"></div>
+
+@if (Elements == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <MudTable Items="@Elements" Dense="@dense" Hover="@hover" Bordered="@bordered" Striped="@striped" RowsPerPage="7" Filter="new Func<AccessPoint,bool>(FilterFunc1)" Style="top:20rem;">
+        <ToolBarContent>
+            <MudText Typo="Typo.h6">Puntos de acceso</MudText>
+            <MudSpacer />
+            <MudTextField @bind-Value="searchString1" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="MudBlazor.Size.Medium" Class="mt-0"></MudTextField>
+        </ToolBarContent>
+        <HeaderContent>
+            <MudTh>Espacio</MudTh>
+            <MudTh>Universidad</MudTh>
+            <MudTh>Campus</MudTh>
+            <MudTh>Finca</MudTh>
+            <MudTh>Edificio</MudTh>
+            <MudTh>Piso</MudTh>
+            <MudTh></MudTh>
+            <MudTh></MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="Nombre">@GetLearningSpaceName(@context.LearningSpaceId)</MudTd>
+            <MudTd DataLabel="Universidad"> @getUniversityName() </MudTd>
+            <MudTd DataLabel="Campus"> @getCampusName() </MudTd>
+            <MudTd DataLabel="Finca"> @getSiteName() </MudTd>
+            <MudTd DataLabel="Edificio"> @getBuildingName() </MudTd>
+            <MudTd DataLabel="Piso"> @getLevelNumber() </MudTd>
+            <MudTd DataLabel=""> 
+                @if(canModify)
+                {
+                    <MudIconButton Icon="@Icons.Material.Filled.Edit" Style="@($"color:{Colors.Grey.Darken2};")" @onclick="@(e => ModifyAccessPoint(context) )"></MudIconButton>   
+                }
+            </MudTd>
+            <MudTd DataLabel="">
+                @*  <MudIconButton Icon="@Icons.Material.Filled.Delete" Style="@($"color:{Colors.Red.Darken2};")" @onclick="@(async e => await deleteLearningSpace(context.LearningSpaceId.Value))"></MudIconButton> *@
+            </MudTd>
+        </RowTemplate>
+        <PagerContent>
+            <MudTablePager HideRowsPerPage />
+        </PagerContent>
+    </MudTable>
+}

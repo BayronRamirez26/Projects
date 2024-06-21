@@ -1,0 +1,120 @@
+﻿@page "/create-learningspaces"
+@inject HttpClient Http
+@using BlazorStrap
+@using System.ComponentModel.DataAnnotations
+@using System.Text
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.LearningArea.Services
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningArea.Entities
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningSpace.Entities;
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningSpace.Entities.Wrappers
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.Shared.ValueObjects;
+@using Newtonsoft.Json
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.LearningSpace
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.LearningSpace.Services;
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.LearningSpace.Services.Interfaces
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningSpace.Repositories;
+@using UCR.ECCI.PI.ThemePark_UCR.Presentation.Blazor.Services;
+
+
+@inject NavigationManager NavigationManager;
+@inject ILearningSpaceService _createLearningSpace;
+@inject ILsTypeServices lsTypeServices;
+@inject ILevelService levelService;
+@inject ILearningSpaceCascadeService _cascade;
+@inject ITemplateService templateService;
+@inject CurrentNavigationUser currentNavigationUser;
+
+@using System
+@using System.IO;
+@using UCR.ECCI.PI.ThemePark_UCR.Presentation.Blazor.Components
+@using UCR.ECCI.PI.ThemePark_UCR.Presentation.Blazor.Components.LearningSpace.CreateLS
+@using UCR.ECCI.PI.ThemePark_UCR.Presentation.Blazor.Services
+
+@*reference to the create learning space stylesheet used in the page*@
+<link href="css/createlearningspace.css" rel="stylesheet" />
+<div class="spacing">
+    <h3 class="Title_CLS">Crear Espacio de Aprendizaje</h3>
+</div>
+
+
+
+<BSForm Model="learningSpace" IsRow="true" Gutters="Gutters.Medium" OnSubmit="OnSubmit" OnReset="OnReset">
+    <DataAnnotationsValidator />
+    <div class="spacing">
+        <div class="page-container">
+            <BSCard CardType="CardType.Card">
+                <BSTabWrapper>
+                    <BSCard CardType="CardType.Header">
+                        <BSNav IsTabs="true">
+                            <BSNavItem @onclick="() => SelectTab(0)" IsActive="selectedTab == 0">
+                                <TabLabel>Crear</TabLabel>
+                            </BSNavItem>
+                            <BSNavItem @onclick="() => SelectTab(1)" IsActive="selectedTab == 1">
+                                <TabLabel>Crear desde plantilla</TabLabel>
+                            </BSNavItem>
+                        </BSNav>
+                    </BSCard>
+                   
+                        @if (selectedTab == 0)
+                        {
+                            <BSContainer Position="Position.Relative" Class="bordered-container">
+                                <BSLabel><h3>Información del espacio de aprendizaje</h3></BSLabel>
+                                <LearningSpaceInfoCLS LearningSpace="learningSpace" LSTypesList="lSTypesList" />
+                                <PhysicalSpaceCLS LearningSpace="learningSpace" />
+                                <BSCol ColumnSmall="3">
+                                    <div class="spacing">
+                                        <BSInputSwitch CheckedValue="@("on")" UnCheckedValue="@("off")" @bind-Value="Asign_later">
+                                            Asignar
+                                        </BSInputSwitch>
+                                    </div>
+                                </BSCol>
+                                <UniversityLocation LearningSpace="learningSpace" OnLevelChanged="validateStatus" dropdownDisabled="@dropdownDisabled" />
+                                <ColorPickerCLS LearningSpace="learningSpace" />
+                                <ActionButtonsCLS Asign_later="@Asign_later"
+                                                  LearningSpace="@learningSpace"
+                                                  IsDisabled="@IsDisabled"
+                                                  GoToLLS="GoToLLS" />
+                                <ModalCLS ModalTitle="@ModalTitle"
+                                          ModalContent="@ModalContent"
+                                          ColorStatus="@ColorStatus"
+                                          ValidateStatus="@_validateStatus"
+                                          GoToCLS="GoToCLS"
+                                          GoToLLS="GoToLLS" />
+                            </BSContainer>
+                        }
+                        else if (selectedTab == 1)
+                        {
+                        <BSContainer Position="Position.Relative" Class="bordered-container">
+                            <BSLabel><h3>Información del espacio de aprendizaje</h3></BSLabel>
+                            <LearningSpaceInfoFromTemplate LearningSpace="@learningSpace" templatesList="templatesList"/>
+                            
+                            <BSCol ColumnSmall="3">
+                                <div class="spacing">
+                                    <BSInputSwitch CheckedValue="@("on")" UnCheckedValue="@("off")" @bind-Value="Asign_later">
+                                        Asignar
+                                    </BSInputSwitch>
+                                </div>
+                            </BSCol>
+                            <BSLabel><h5>Ubicación física</h5></BSLabel>
+                            <UniversityLocation LearningSpace="@learningSpace" OnLevelChanged="validateStatus" dropdownDisabled="@dropdownDisabled" />
+                            
+                            <ActionButtonsCLS Asign_later="@Asign_later"
+                                              LearningSpace="@learningSpace"
+                                              IsDisabled="@IsDisabled"
+                                              GoToLLS="GoToLLS" />
+                            <ModalCLS ModalTitle="@ModalTitle"
+                                      ModalContent="@ModalContent"
+                                      ColorStatus="@ColorStatus"
+                                      ValidateStatus="@_validateStatus"
+                                      GoToCLS="GoToCLS"
+                                      GoToLLS="GoToLLS" />
+                        </BSContainer>
+                        }
+                </BSTabWrapper>
+            </BSCard>
+        </div>
+    </div>
+</BSForm>
+
+
+

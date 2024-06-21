@@ -1,0 +1,20 @@
+{
+    "name": "Presentation",
+    "rootNamespace": "UCR.ECCI.PI.ThemePark_UCR.Unity.Presentation",
+
+    "references": [
+        "Domain",
+        "Infrastructure",
+        "Application",
+        "Unity.TextMeshPro"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

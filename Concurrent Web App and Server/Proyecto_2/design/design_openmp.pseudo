@@ -1,0 +1,241 @@
+define SUCCESS as 0
+define ARGUMENT_ERROR as 1
+define ARGUMENT_HELP_ERROR as 2
+define plate_data_t as record of
+  plate as array of array of float,
+  rows as integer,
+  columns as integer,
+	file as string,
+	duration as integer,
+	diffusivity as float,
+  dimensions as integer,
+  balance_point as float,
+  states as integer,
+  time_passed as integer,
+end record
+
+procedure main(argc, argv[]):
+  shared job_file as string := ""
+  shared thread_count as integer := MAX_CPUS
+  shared relative_route as string := ""
+  shared plate_data as dynamic array of plate_data_t
+  error := analize_arguments(argc, argv)
+  if (!error) then
+    if (relative_route != "") then
+      declare vector as dynamic array of array of string
+      read_job_file(vector)
+      fill_plates_data(vector)
+      work_plates()
+      write_report_file()
+    else
+      print("Error: invalid file")
+    end if
+  else
+    print("Error: job file required")
+  end if
+end procedure
+
+procedure analize_arguments(argc, argv[]):
+  declare error := SUCCESS
+  if (argc == 3) then
+    if (find(argv[1], "job") == false) then
+      error := ARGUMENT_ERROR
+    else
+      job_file := argv[1]
+      relative_route := argv[2]
+    end if
+  else
+    if (argc >= 4) then
+      if (find(argv[1], "job") == false) then
+        error := ARGUMENT_ERROR
+      else
+        job_file := argv[1]
+        thread_count := atoi(argv[2])
+        relative_route := argv[3]
+      end if
+    else
+      error := ARGUMENT_HELP_ERROR
+  end if
+  return error
+end procedure
+
+procedure read_job_file(vector[]):
+  declare line := ""
+  while (!EOF(relative_route + "/" + job_file)) do
+    line := read_line(job_file)
+    declare array as array of 5 of string
+    append(vector, split_line(line, array, " "))
+  end while
+end procedure
+
+procedure split_line(line, array[], delimiter):
+  declare start as integer := 0, theEnd, delimL := length(delimiter)
+  declare token as string := ""
+  while ((theEnd = string.find(delimiter, start)) != std::string::npos) do
+    token := substring(string, start, theEnd - start)
+    start := theEnd + delimL
+    append(array, token)
+  end while
+  append(array, substring(string, start))
+end procedure
+
+procedure fill_plates_data(vector[]):
+  for index := 0 to vector size in steps of 1 do
+    plate_data[index].file := vector[index].array[0]
+    plate_data[index].duration := atoi(vector[index].array[1])
+    plate_data[index].diffusivity := stof(vector[index].array[2])
+    plate_data[index].dimensions := atoi(vector[index].array[3])
+    plate_data[index].balance_point := stof(vector[index].array[4])
+    read_plate(plate_data[index].file)
+  end for
+end procedure
+
+procedure read_plate(plate_file):
+  while (!EOF(relative_route + "/" + plate_file)) do
+    plate_data.rows as integer := readInteger(plate_file)
+    plate_data.columns as integer := readInteger(plate_file)
+    for row := 0 to rows in steps of 1 do
+      for column := 0 to columns in steps of 1 do
+        plate_data.plate[row][column] := readFloat(plate_file)
+      end for
+    end for
+  end while
+end procedure
+
+procedure work_plates():
+in parallel do for index := 0 to plate_data size in steps of 1 using dynamic mapping do
+    work_plate(plate_data[index])
+  end for
+end procedure
+
+function calculate_new_temperature(plate_data, actual_temp, up_temp, low_temp, left_temp, right_temp):
+  declare new_temperature as integer := 0
+  if (h != 0) then
+    declare constant rate as float := (plate_data.duration * plate_data.diffusivity)
+      / plate_data.dimensions^2
+    new_temperature := actual_temp + rate
+      * (up_temp + low_temp + left_temp + right_temp - 4 * actual_temp)
+  end if
+  return new_temperature
+end function
+
+procedure work_plate(plate_data):
+  declare finish as boolean := false
+  while(!finish) do
+    declare constant row_end := plate_data.rows - 2
+    declare constant col_end := plate_data.columns - 2
+    declare constant inside_matrix_size :=
+      (row_end + 1) * (col_end + 1)
+    declare next_state_plate as array of inside_matrix_size of float
+    finish = do_next_state_plate(next_state_plate, plate_data, row_end, col_end)
+    pass_next_state_plate(next_state_plate, plate_data)
+    plate_data.states := plate_data.states + 1
+    plate_data.time_passed = plate_data.time_passed + plate_data.duration
+  end while
+end procedure
+
+procedure pass_next_state_plate(next_state_plate, plate_data):
+  declare next_state_index := 0
+  for row := 1 to row_end in steps of 1 do
+    for column := 1 to col_end in steps of 1 do
+      plate_data.plate[row][column] := next_state_plate[next_state_index]
+      next_state_index := next_state_index + 1
+    end for
+  end for
+end procedure
+
+procedure do_next_state_plate(next_state_plate, plate_data, row_end, col_end):
+  declare finish as boolean := true
+  for row := 1 to row_end in steps of 1 do
+    for column := 1 to col_end in steps of 1 do
+      declare constant new_temperature :=
+        calculate_new_temperature(plate_data, plate_data.plate[row][column]
+          , plate_data.plate[row-1][column], plate_data.plate[row+1][column]
+          , plate_data.plate[row][column-1], plate_data.plate[row][column+1])
+      if (abs(plate_data.plate[row][column] - new_temperature > plate_data.balance_point) then
+        finish := false
+      end if
+      append(next_state_plate, new_temperature)
+    end for
+  end for
+  return finish
+end procedure
+
+procedure write_report_file():
+  for index := 0 to plate_data size in steps of 1 do
+    write_plate_report(plate_data[index])
+  end for
+end procedure
+
+procedure write_plate_report(plate_data):
+  declare constant file_number as string :=
+    substring(job_file, "job", ".txt")
+  declare constant output_file as string := "output/job" + file_number + ".txt"
+  write_plate_state(plate_data)
+  write_line(output_file, plate_data.file + "\t")
+  write_line(output_file, plate_data.duration + "\t")
+  write_line(output_file, plate_data.diffusivity + "\t")
+  write_line(output_file, plate_data.dimensions + "\t")
+  write_line(output_file, plate_data.balance_point + "\t")
+  write_line(output_file, plate_data.states + "\t")
+  write_line(output_file, form_date_string(plate_data.time_passed))
+end procedure
+
+procedure write_plate_state(plate_data):
+  declare constant file_number as string :=
+    substring(plate_data.file, "plate", ".bin")
+  if (plate_data.states != 0) {
+    file_number := file_number + "-" + plate_data.states
+  }
+  declare constant output_file as string := "output/plate" + file_number + ".bin"
+  writeInteger(output_file, plate_file.rows)
+  writeInteger(output_file, plate_file.columns)
+  for row := 0 to rows in steps of 1 do
+    for column := 0 to columns in steps of 1 do
+      writeInteger(output_file, plate_data.plate[row][column])
+    end for
+  end for
+end procedure
+
+procedure form_date_string(time):
+  declare constant number_of_seconds as integer := floor(time % 60)
+  declare constant number_of_minutes as integer := floor(time / 60) % 60
+  declare constant number_of_hours as integer := floor(time / 3600) % 24
+  declare constant number_of_days as integer := floor(time / 86400) % 30
+  declare constant number_of_months as integer := floor(time / 2.628e+6) % 12
+  declare constant number_of_years as integer := floor(time / 3.156e+7) % 9999
+  declare constant time as string :=
+    give_date_string(number_of_years, number_of_months, number_of_days) + "\t"
+    + give_time_string(number_of_hours, number_of_minutes, number_of_seconds)
+  return time
+end procedure
+
+procedure give_date_string(number_of_years, number_of_months, number_of_days):
+  declare constant digits_in_years := log10(number_of_years) + 1 
+  declare constant digits_in_months := log10(number_of_months) + 1 
+  declare constant digits_in_days := log10(number_of_days) + 1 
+
+  declare date as string := ""
+  date := date + give_zeros_number(4-digits_in_years) + number_of_years + "/"
+  date := date + give_zeros_number(2-digits_in_months) + number_of_months+ "/"
+  date := date + give_zeros_number(2-digits_in_days) + number_of_days
+end procedure
+
+procedure give_time_string(number_of_hours, number_of_minutes, number_of_seconds):
+  declare constant digits_in_hours := log10(number_of_hours) + 1 
+  declare constant digits_in_minutes := log10(number_of_minutes) + 1 
+  declare constant digits_in_seconds := log10(number_of_seconds) + 1 
+
+  declare date as string := ""  
+  date := date + give_zeros_number(2-digits_in_hours) + number_of_hours+ ":"
+  date := date + give_zeros_number(2-digits_in_minutes) + number_of_minutes + ":"
+  date := date + give_zeros_number(2-digits_in_seconds) + number_of_seconds
+end procedure
+
+procedure give_zeros_number(number_of_zeros):
+  declare zeros_number as string := ""
+  for index := 0 to number_of_zeros in steps of 1 do
+    zeros_number := zeros_number + "0"
+  end for
+  return zeros_number
+end procedure

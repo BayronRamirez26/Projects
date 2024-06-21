@@ -1,0 +1,72 @@
+﻿@page "/CreateRole"
+@using BlazorStrap
+@using System.Diagnostics
+@using System.ComponentModel.DataAnnotations
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.Person.Services
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.Person.Entities
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.Shared.ValueObjects
+@using Newtonsoft.Json
+@inject IUserService UserService
+@inject IPersonService PersonService
+@inject IPermissionService PermissionService
+@inject Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider AuthenticationStateProvider
+@inject NavigationManager NavigationManager
+@inject UserState UserState
+@inject IRoleService RoleService
+@inject CurrentNavigationUser CurrentNavigationUser
+@inject HttpClient Http
+@using System
+@using System.IO
+
+<PageTitle>Manage User Roles</PageTitle>
+
+<link href="css/CreateRole.css" rel="stylesheet" />
+<div class="spacing">
+    <h3 class="Title_CLS">Crear Role</h3>
+</div>
+
+<BSForm Model="roletype" IsRow="true" Gutters="Gutters.Medium" OnSubmit="OnSubmit" OnReset="OnReset">
+    <DataAnnotationsValidator />
+    <div class="spacing">
+        <div class="page-container" style="margin-top: 10rem;">
+            <BSContainer Position="Position.Relative" Class="bordered-container">
+                <div class="spacing">
+                    <BSLabel><h3>Nombre del role</h3></BSLabel>
+                    <BSRow Position="Position.Relative" ColumnSmall="6">
+                        <BSInput InputType="BlazorStrap.InputType.Text" @bind-Value="Name">
+                        </BSInput>
+                    </BSRow>
+                </div>
+
+                <div class="spacing">
+                    <BSLabel><h3>Escoge los permisos del role.</h3></BSLabel>
+                    <BSRow Position="Position.Relative" ColumnSmall="6">
+                        @if (allPermissions != null && allPermissions.Any())
+                        {
+                            @foreach (var permission in allPermissions)
+                            {
+                                <div>
+                                    <input type="checkbox" @bind="permission.IsSelected" />
+                                    <label>@permission.PermissionDescription.Value</label>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <p>No permissions available.</p>
+                        }
+                    </BSRow>
+                </div>
+
+                <div class="spacing">
+                    <BSRow Position="Position.Relative" Justify="Justify.Start">
+                        <BSCol>
+                            <BSButton Color="BSColor.Primary" OnClick="submit" IsDisabled="@IsDisabled">Crear Rol</BSButton>
+                            <BSButton style="margin-left: 2rem;" Color="BSColor.Secondary" OnClick="GoToSR" IsSubmit="false">Cancelar</BSButton>
+                        </BSCol>
+                    </BSRow>
+                </div>
+            </BSContainer>
+        </div>
+    </div>
+</BSForm>

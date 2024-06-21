@@ -1,0 +1,20 @@
+{
+    "name": "DependencyInjection",
+    "rootNamespace": "UCR.ECCI.PI.ThemePark_UCR.Unity.DependencyInjection",
+    "references": [
+        "GUID:3991e003d87e7624a93454e8fcef52bd",
+        "GUID:b82d7dfe2337b464e8be88756a24cf1b",
+        "GUID:71c7d8abf8e089f43a9411299b2bd2f8",
+        "GUID:18fd9401fbd8cb7418d2f011a4c1d2a2",
+        "GUID:3fd5fac74180a16468c6c99e88b4de93"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

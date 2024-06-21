@@ -1,0 +1,4 @@
+﻿CREATE TABLE ThemePark.[Role] (
+	RoleId VARCHAR(255) PRIMARY KEY,
+	RoleName VARCHAR(64) NOT NULL UNIQUE
+)

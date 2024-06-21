@@ -1,0 +1,172 @@
+﻿@page "/manage-person/{personId:guid}"
+@inject HttpClient Http
+@inject IPersonService PersonService
+@inject NavigationManager NavigationManager
+
+@using BlazorStrap
+@using System.ComponentModel.DataAnnotations
+@using System.Text.Json
+@using System
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.Person.Services
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.Person.Entities
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.Person.ValueObjects
+
+<link href="css/ManagePerson.css" rel="stylesheet" />
+
+<div class="spacing">
+    <h3 class="Title">Gestionar Personas</h3>
+</div>
+
+<EditForm Model="person" OnValidSubmit="OnSubmit">
+    <DataAnnotationsValidator />
+    <div class="spacing"></div>
+    <div class="page-container">
+        <BSContainer Position="Position.Relative" Class="bordered-container">
+            <BSLabel><h4>Información de la persona</h4></BSLabel>
+            <BSRow Position="Position.Relative" Justify="Justify.Start">
+                <BSCol Position="Position.Relative" ColumnSmall="6">
+                    <BSLabel>Nombre</BSLabel>
+                    @if (isEditing)
+                    {
+                        <BSInput InputType="BlazorStrap.InputType.Text" @bind-Value="firstName" ValidateOnInput="true"></BSInput>
+                    }
+                    else
+                    {
+                        <p>@firstName</p>
+                    }
+                </BSCol>
+                <BSCol Position="Position.Relative" ColumnSmall="6">
+                    <BSLabel>Segundo Nombre</BSLabel>
+                    @if (isEditing)
+                    {
+                        <BSInput InputType="BlazorStrap.InputType.Text" @bind-Value="middleName" ValidateOnInput="true"></BSInput>
+                    }
+                    else
+                    {
+                        <p>@middleName</p>
+                    }
+                </BSCol>
+            </BSRow>
+            <div class="spacing"></div>
+            <BSRow Position="Position.Relative" Justify="Justify.Start">
+                <BSCol Position="Position.Relative" ColumnSmall="6">
+                    <BSLabel>Primer Apellido</BSLabel>
+                    @if (isEditing)
+                    {
+                        <BSInput InputType="BlazorStrap.InputType.Text" @bind-Value="firstLastName" ValidateOnInput="true"></BSInput>
+                    }
+                    else
+                    {
+                        <p>@firstLastName</p>
+                    }
+                </BSCol>
+                <BSCol Position="Position.Relative" ColumnSmall="6">
+                    <BSLabel>Segundo Apellido</BSLabel>
+                    @if (isEditing)
+                    {
+                        <BSInput InputType="BlazorStrap.InputType.Text" @bind-Value="secondLastName" ValidateOnInput="true"></BSInput>
+                    }
+                    else
+                    {
+                        <p>@secondLastName</p>
+                    }
+                </BSCol>
+            </BSRow>
+            <div class="spacing"></div>
+            <BSRow Position="Position.Relative" Justify="Justify.Start">
+                <BSCol Position="Position.Relative" ColumnSmall="6">
+                    <BSLabel>Fecha de Nacimiento</BSLabel>
+                    @if (isEditing)
+                    {
+                        <BSInput InputType="BlazorStrap.InputType.Date" @bind-Value="birthDate" ValidateOnInput="true"></BSInput>
+                    }
+                    else
+                    {
+                        <p>@birthDate.ToString("dd-MM-yyyy")</p>
+                    }
+                </BSCol>
+                <BSCol Position="Position.Relative" ColumnSmall="6">
+                    <BSLabel>Teléfono</BSLabel>
+                    @if (isEditing)
+                    {
+                        <BSInput InputType="BlazorStrap.InputType.Text" @bind-Value="phoneNumber" ValidateOnInput="true"></BSInput>
+                    }
+                    else
+                    {
+                        <p>@phoneNumber</p>
+                    }
+                </BSCol>
+            </BSRow>
+            <div class="spacing"></div>
+            <BSRow Position="Position.Relative" Justify="Justify.Start">
+                <BSCol Position="Position.Relative" ColumnSmall="6">
+                    <BSLabel>Email</BSLabel>
+                    @if (isEditing)
+                    {
+                        <BSInput InputType="BlazorStrap.InputType.Email" @bind-Value="email" ValidateOnInput="true"></BSInput>
+                    }
+                    else
+                    {
+                        <p>@email</p>
+                    }
+                </BSCol>
+            </BSRow>
+            <div class="spacing"></div>
+            <BSRow Position="Position.Relative" Justify="Justify.Center">
+                <BSCol>
+                    @if (isEditing)
+                    {
+                        <BSButton Color="BSColor.Primary" IsSubmit="true">Guardar</BSButton>
+                        <BSButton style="margin-left: 2rem;" Color="BSColor.Secondary" IsSubmit="false" @onclick="Cancel">Cancelar</BSButton>
+                        <BSButton style="margin-left: 2rem;" Color="BSColor.Danger" IsSubmit="false" @onclick="ConfirmDelete">Eliminar</BSButton>
+                        <BSButton style="margin-left: 2rem;" Color="BSColor.Warning" IsSubmit="false" @onclick="ConfirmUpdate">Actualizar</BSButton>
+                    }
+                    else
+                    {
+                        <BSButton style="margin-left: 2rem;" Color="BSColor.Primary" IsSubmit="false" @onclick="StartEditing">Editar</BSButton>
+                    }
+                </BSCol>
+            </BSRow>
+        </BSContainer>
+    </div>
+
+    <BSModal IsStaticBackdrop="true" IsCentered="true" DataId="modal2" @ref="modal">
+        <Header>
+            <div style="color: @colorStatus"><b>@modalTitle</b></div>
+        </Header>
+        <Content Context="updateModalContext">
+            @((MarkupString)modalContent)
+            <BSValidationSummary />
+        </Content>
+        <Footer Context="updateModalFooter">
+            <BSButton Color="BSColor.Primary" @onclick="CloseModal">Cerrar</BSButton>
+        </Footer>
+    </BSModal>
+
+    <BSModal IsStaticBackdrop="true" IsCentered="true" DataId="confirmDeleteModal" @ref="confirmDeleteModal">
+        <Header>
+            <div style="color: @colorStatus"><b>Confirmar Eliminación</b></div>
+        </Header>
+        <Content Context="deleteModalContext">
+            <p>¿Está seguro que desea eliminar esta persona?</p>
+        </Content>
+        <Footer Context="deleteModalFooter">
+            <BSButton Color="BSColor.Danger" @onclick="Delete">Eliminar</BSButton>
+            <BSButton Color="BSColor.Secondary" @onclick="CloseConfirmDeleteModal">Cancelar</BSButton>
+        </Footer>
+    </BSModal>
+
+    <BSModal IsStaticBackdrop="true" IsCentered="true" DataId="confirmUpdateModal" @ref="confirmUpdateModal">
+        <Header>
+            <div style="color: @colorStatus"><b>Confirmar Actualización</b></div>
+        </Header>
+        <Content Context="updateConfirmModalContext">
+            <p>¿Está seguro que desea actualizar esta persona?</p>
+        </Content>
+        <Footer Context="updateConfirmModalFooter">
+            <BSButton Color="BSColor.Warning" @onclick="ExecuteUpdate">Actualizar</BSButton>
+            <BSButton Color="BSColor.Secondary" @onclick="CloseConfirmUpdateModal">Cancelar</BSButton>
+        </Footer>
+    </BSModal>
+</EditForm>
+

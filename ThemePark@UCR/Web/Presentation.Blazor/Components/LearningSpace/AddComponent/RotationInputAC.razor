@@ -1,0 +1,17 @@
+﻿@using static UCR.ECCI.PI.ThemePark_UCR.Presentation.Blazor.Pages.AddComponentsToLearningSpace
+@using BlazorStrap
+@code {
+    [Parameter] public Component component { get; set; }
+    [Parameter] public EventCallback<double> RotationChanged { get; set; }
+}
+
+<BSRow Position="Position.Relative">
+    <BSCol ColumnSmall="4">
+        <h3 style="font-size: 20px">Rotación</h3>
+    </BSCol>
+</BSRow>
+<BSRow Position="Position.Relative">
+    <BSCol ColumnSmall="2">
+        <BSInput InputType="BlazorStrap.InputType.Number" @bind-Value="component.Rotation" @onchange="@(async (e) => await RotationChanged.InvokeAsync(Convert.ToDouble(e.Value)))" />
+    </BSCol>
+</BSRow>

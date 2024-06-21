@@ -1,0 +1,20 @@
+﻿@using static UCR.ECCI.PI.ThemePark_UCR.Presentation.Blazor.Pages.AddComponentsToLearningSpace
+@using BlazorStrap
+@code {
+    [Parameter] public bool IsDisabled { get; set; }
+    [Parameter] public EventCallback OnSubmit { get; set; }
+    [Parameter] public EventCallback OnCancel { get; set; }
+}
+
+<div class="spacing">
+    <BSRow Position="Position.Relative" Justify="Justify.Start">
+        <BSCol>
+            <BSButton Color="BSColor.Primary" IsSubmit="true" IsDisabled="@IsDisabled">Agregar Componente</BSButton>
+        </BSCol>
+        <BSCol>
+            <BSButton Color="BSColor.Secondary" IsReset="true" @onclick="OnCancel">Cancelar</BSButton>
+        </BSCol>
+    </BSRow>
+</div>
+
+

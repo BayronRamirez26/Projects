@@ -1,0 +1,32 @@
+﻿@using BlazorStrap
+@using static UCR.ECCI.PI.ThemePark_UCR.Presentation.Blazor.Pages.ModifyAccessPoint
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningArea.Entities
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningSpace.Entities
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.Shared.ValueObjects;
+@code {
+    [Parameter]
+    public double SizeX { get; set; }
+    [Parameter]
+    public EventCallback<double> SizeXChanged { get; set; }
+    [Parameter]
+    public double SizeY { get; set; }
+    [Parameter]
+    public EventCallback<double> SizeYChanged { get; set; }
+    [Parameter]
+    public double SizeZ { get; set; }
+    [Parameter]
+    public EventCallback<double> SizeZChanged { get; set; }
+}
+
+<BSRow Position="Position.Relative">
+    <BSCol ColumnSmall="3">
+        <h3 style="font-size: 20px">Posición <br></h3>
+        <BSLabel><h3 style="font-size: 18px">X</h3></BSLabel>
+        <BSInput InputType="BlazorStrap.InputType.Number" @bind-Value="SizeX" @onchange="async e => await SizeXChanged.InvokeAsync(SizeX)" />
+        <BSLabel><h3 style="font-size: 18px">Y</h3></BSLabel>
+        <BSInput InputType="BlazorStrap.InputType.Number" @bind-Value="SizeY" @onchange="async e => await SizeYChanged.InvokeAsync(SizeY)" />
+        <BSLabel><h3 style="font-size: 18px">Z</h3></BSLabel>
+        <BSInput InputType="BlazorStrap.InputType.Number" @bind-Value="SizeZ" @onchange="async e => await SizeZChanged.InvokeAsync(SizeZ)" />
+    </BSCol>
+</BSRow>
+

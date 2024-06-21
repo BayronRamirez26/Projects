@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>UCR.ECCI.PI.ThemePark_UCR.BackendDependencyInjection</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Application\UCR.ECCI.PI.ThemePark@UCR.Application.csproj" />
+    <ProjectReference Include="..\Domain\UCR.ECCI.PI.ThemePark@UCR.Domain.csproj" />
+    <ProjectReference Include="..\Infrastructure\UCR.ECCI.PI.ThemePark@UCR.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

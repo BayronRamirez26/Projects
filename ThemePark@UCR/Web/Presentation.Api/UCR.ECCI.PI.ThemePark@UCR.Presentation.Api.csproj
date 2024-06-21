@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>UCR.ECCI.PI.ThemePark_UCR.Presentation.Api</RootNamespace>
+    <UserSecretsId>0c55114e-570d-467e-8851-073f5614dbc0</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Interaction\Permission\**" />
+    <Content Remove="Interaction\Permission\**" />
+    <EmbeddedResource Remove="Interaction\Permission\**" />
+    <None Remove="Interaction\Permission\**" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.3" />
+		<PackageReference Include="Riok.Mapperly" Version="3.5.1" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+	</ItemGroup>
+    <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="8.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.4" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Identity.Web" Version="2.18.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Application\UCR.ECCI.PI.ThemePark@UCR.Application.csproj" />
+    <ProjectReference Include="..\BackendDependencyInjection\UCR.ECCI.PI.ThemePark@UCR.BackendDependencyInjection.csproj" />
+    <ProjectReference Include="..\Domain\UCR.ECCI.PI.ThemePark@UCR.Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="LearningSpace\LearningSpaceAccessPoints\" />
+      <Folder Include="LearningSpace\LearningSpaceType\Dtos\" />
+      <Folder Include="LearningSpace\LearningSpaceType\Mappers\" />
+      <Folder Include="LearningSpace\LearningSpaceType\Responses\" />
+      <Folder Include="LearningSpace\LearningSpaceType\Requests\" />
+    </ItemGroup>
+
+</Project>

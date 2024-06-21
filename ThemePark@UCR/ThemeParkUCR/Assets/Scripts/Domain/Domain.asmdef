@@ -1,0 +1,15 @@
+{
+    "name": "Domain",
+    "rootNamespace": "UCR.ECCI.PI.ThemePark_UCR.Unity.Domain",
+
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,80 @@
+﻿@using BlazorStrap
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningSpace.Entities
+@using static UCR.ECCI.PI.ThemePark_UCR.Presentation.Blazor.Pages.AddComponentsToLearningSpace
+
+@code {
+    [Parameter] public Component component { get; set; }
+    [Parameter] public Templates template { get; set; }
+
+    private int GetMaximumSize(double sizeX, double sizeY)
+    {
+        var componentType = component.Type;
+        Console.WriteLine("Calculating maximum size");
+
+        if (sizeX <= 0 || sizeY <= 0)
+        {
+            Console.WriteLine("Size values must be greater than zero");
+            return -1;
+        }
+
+        if (componentType == "Proyector")
+        {
+            var templateSizeX = template.SizeX;
+            var templateSizeY = template.SizeY;
+
+            var sizeXFit = templateSizeX.Value / sizeX;
+            var sizeYFit = templateSizeY.Value / sizeY;
+
+            var sizeFit = Math.Max(sizeXFit, sizeYFit);
+
+            Console.WriteLine("Maximum size calculated: {0}", (int)sizeFit);
+            return (int)sizeFit;
+        }
+
+        if (componentType == "Pizarra")
+        {
+            var templateSizeX = template.SizeX;
+            var sizeXFit = templateSizeX.Value / sizeX;
+
+            Console.WriteLine("Maximum size calculated: {0}", (int)sizeXFit);
+            return (int)sizeXFit;
+        }
+
+        if (componentType == "Pantalla Interactiva")
+        {
+            var templateSizeX = template.SizeX;
+            var templateSizeZ = template.SizeZ;
+
+            int sizeZFit = (int)(templateSizeZ.Value / 0.4);
+            int sizeXFit = (int)(templateSizeX.Value / sizeX);
+
+            int totalInteractiveScreen = sizeZFit * sizeXFit;
+
+            Console.WriteLine("Total interactive screens: {0}", totalInteractiveScreen);
+            return totalInteractiveScreen;
+        }
+
+        return -1;
+    }
+}
+
+<div class="spacing">
+    <BSRow Position="Position.Relative">
+        <BSCol ColumnSmall="6">
+            <BSLabel><h3 style="font-size: 20px">Ancho</h3></BSLabel>
+            <BSInput InputType="BlazorStrap.InputType.Number" @bind-Value="component.SizeX" step="any"
+                     @onchange="@(async (e) => {
+                                        component.SizeX = Double.Parse(e.Value.ToString());
+                                        await InvokeAsync(StateHasChanged);
+                                    })" />
+        </BSCol>
+        <BSCol ColumnSmall="6">
+            <BSLabel><h3 style="font-size: 20px">Alto</h3></BSLabel>
+            <BSInput InputType="BlazorStrap.InputType.Number" @bind-Value="component.SizeY" step="any"
+                     @onchange="@(async (e) => {
+                                        component.SizeY = Double.Parse(e.Value.ToString());
+                                        await InvokeAsync(StateHasChanged);
+                                    })" />
+        </BSCol>
+    </BSRow>
+</div>

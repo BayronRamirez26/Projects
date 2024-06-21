@@ -1,0 +1,52 @@
+﻿@page "/testroles"
+@inject IRoleService RoleService
+@inject IPermissionService PermissionService
+@using MudBlazor
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.Person.Services
+@using System.ComponentModel.DataAnnotations
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.Person.Entities
+
+<h3>Test Roles</h3>
+
+<button @onclick="CreateRole">Create Role</button>
+<button @onclick="AssignRoleToUser">Assign Role to User</button>
+<button @onclick="RequestRoleToAdmin">Request Role to Admin</button>
+<button @onclick="AcceptRoleToUser">Accept Role to User</button>
+<button @onclick="DeleteRole">Delete Role</button>
+<p>@statusMessage</p>
+
+<h4>All Permissions</h4>
+@if (allPermissions != null)
+{
+    <ul>
+        @foreach (var permission in allPermissions)
+        {
+            <li>
+                <strong>Permission ID:</strong> @permission.PermissionId<br />
+                <strong>Permission Description:</strong> @permission.PermissionDescription.Value
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>No permissions found.</p>
+}
+
+<h4>All Roles</h4>
+@if (allRoles != null)
+{
+    <ul>
+        @foreach (var role in allRoles)
+        {
+            <li>
+                <strong>Role ID:</strong> @role.RoleId<br />
+                <strong>Role Name:</strong> @role.RoleName.Value
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>No roles found.</p>
+}

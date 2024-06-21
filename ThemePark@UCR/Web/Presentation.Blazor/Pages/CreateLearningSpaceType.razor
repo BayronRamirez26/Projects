@@ -1,0 +1,54 @@
+﻿@page "/create-learningspacetype"
+@inject HttpClient Http
+@using BlazorStrap
+@using System.ComponentModel.DataAnnotations
+@using System.Text
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningArea.Entities
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningSpace.Entities;
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningSpace.Entities.Wrappers
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.Shared.ValueObjects;
+@using Newtonsoft.Json
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.LearningSpace
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.LearningSpace.Services;
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.LearningSpace.Services.Interfaces
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningSpace.Repositories;
+@using System
+@using System.IO;
+@inject NavigationManager NavigationManager
+@inject ILsTypeServices lsTypeServices
+@inject CurrentNavigationUser currentNavigationUser;
+
+
+<link href="css/createlearningspace.css" rel="stylesheet" />
+<div class="spacing">
+    <h3 class="Title_CLS">Crear Tipo de Espacio de Aprendizaje</h3>
+</div>
+
+<BSForm Model="learningSpaceType" IsRow="true" Gutters="Gutters.Medium" OnSubmit="OnSubmit" OnReset="OnReset">
+    
+    <DataAnnotationsValidator />
+    <div class="spacing">
+        <div class="page-container" style="margin-top: 10rem;">
+            <BSContainer Position="Position.Relative" Class="bordered-container">
+                <div class="spacing">
+                <BSLabel><h3>Nombre del tipo de espacio</h3></BSLabel>
+                <BSRow Position="Position.Relative" ColumnSmall="6">
+                    <BSInput InputType="BlazorStrap.InputType.Text" @bind-Value="Name">
+                    </BSInput>
+                </BSRow>
+
+                </div>
+                <div class="spacing">
+                    <BSRow Position="Position.Relative" Justify="Justify.Start">
+                        <BSCol>
+                            <BSButton Color="BSColor.Primary" OnClick="submit" IsDisabled="@IsDisabled">Modificar</BSButton>
+                            <BSButton style="margin-left: 2rem;" Color="BSColor.Secondary" OnClick="GoToLLST" IsSubmit="false">Cancelar</BSButton>
+                        </BSCol>
+                    </BSRow>
+                </div>
+            </BSContainer>
+        </div>
+    </div>
+</BSForm>
+
+

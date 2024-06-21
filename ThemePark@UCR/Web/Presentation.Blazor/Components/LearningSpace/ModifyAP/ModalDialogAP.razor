@@ -1,0 +1,50 @@
+﻿@using static UCR.ECCI.PI.ThemePark_UCR.Presentation.Blazor.Pages.ModifyAccessPoint
+@using BlazorStrap
+@code {
+    [Parameter] public string ModalTitle { get; set; }
+    [Parameter] public string ModalContent { get; set; }
+    [Parameter] public string ColorStatus { get; set; }
+    [Parameter] public bool IsDisabled { get; set; }
+    [Parameter] public EventCallback OnConfirm { get; set; }
+    [Parameter] public EventCallback OnClose { get; set; }
+
+    private BSModal modal;
+
+    public async Task ShowModal()
+    {
+        await modal.ShowAsync();
+    }
+
+    public async Task HideModal()
+    {
+        await modal.HideAsync();
+    }
+
+    private async Task HandleConfirm()
+    {
+        await OnConfirm.InvokeAsync(null);
+        await HideModal();
+    }
+
+    private async Task HandleClose()
+    {
+        await OnClose.InvokeAsync(null);
+        await HideModal();
+    }
+}
+
+<BSModal IsStaticBackdrop="true" IsCentered="true" @ref="modal">
+    <Header>
+        <div style="color: @ColorStatus"><b>@ModalTitle</b></div>
+    </Header>
+    <Content>
+        @ModalContent
+        <BSValidationSummary />
+    </Content>
+    <Footer>
+        <div class="buttons_modal @(!IsDisabled ? "active" : "")">
+            <BSButton Color="BSColor.Primary" @onclick="HandleConfirm">Sí</BSButton>
+            <BSButton MarginLeftAndRight="Margins.Auto" Color="BSColor.Secondary" @onclick="HandleClose">No</BSButton>
+        </div>
+    </Footer>
+</BSModal>

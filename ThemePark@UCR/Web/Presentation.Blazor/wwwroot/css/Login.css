@@ -1,0 +1,30 @@
+body {
+    background-color: #ffffff;
+}
+
+.login-container {
+    max-width: 600px;
+    margin: auto;
+    padding-top: 50px;
+}
+
+.login-message {
+    color: #505050; /* Lighten the text color */
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+
+.login-button {
+    background-color: #2980B9;
+    color: white;
+    padding: 13px 20px;
+    border: 0; 
+    border-radius: 5px; 
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+    .login-button:hover {
+        background-color: #35A6F0; /* A bit darker on hover for better interaction */
+    }

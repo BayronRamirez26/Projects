@@ -1,0 +1,121 @@
+procedure run()
+  consumeForever()
+  produce(GoldBodyResponse()) // stop condition
+  return successOrFailure
+end procedure
+
+procedure consume(GoldData data)
+  create a goldbodyResponse as a struct of GoldBodyResponse
+  goldBodyResponse.httpResponse := data.httpResponse
+  goldBodyResponse.socketMutex := data.socketMutex
+  this->handleHttpRequest(data, goldBodyResponse)
+  this->produce(goldBodyResponse)
+  delete data.outputs
+end procedure
+
+procedure handleHttpRequest(GoldData& data, GoldBodyResponse& goldBodyResponse)
+  if data.serveNotFound then
+    goldBodyResponse.httpResponse->setStatusCode(404)
+    goldBodyResponse.httpResponse->setHeader("Server", "AttoServer v1.0")
+    goldBodyResponse.httpResponse->setHeader("Content-type"
+      , "text/html; charset=ascii")
+    this->serveNotFound(data, goldBodyResponse) 
+  else
+    goldBodyResponse.httpResponse->setHeader("Server", "AttoServer v1.1")
+    goldBodyResponse.httpResponse->setHeader("Content-type"
+      , "text/html; charset=ascii")
+    if data.isHomePage then
+      this->serveHomepage(goldBodyResponse)
+      data.isHomePage := false
+    else
+      this->serveGoldbach(data, goldBodyResponse);
+      if (data.validRequest) then
+        delete data.inputs
+        for index := 0 to size of data.outputs do 
+          delete data.outputs->at(index)
+        end for
+      end if
+    end if
+  end if
+end procedure
+
+procedure serveHomepage(HttpResponse httpResponse):
+
+  declare title := "Goldbach sums"  
+  goldBodyResponse.body := "<!DOCTYPE html>\n"
+    "<html lang=\"en\">\n"
+    "  <meta charset=\"ascii\"/>\n"
+    "  <title>" + title + "</title>\n"
+    "  <style>body {font-family: monospace}</style>\n"
+    "  <h1>" + title + "</h1>\n"
+    "  <form method=\"get\" action=\"/gold\">\n"
+    "    <label for=\"text\">Number</label>\n"
+    "    <input type=\"text\" name=\"number\" required/>\n"
+    "    <button type=\"submit\">Calculate</button>\n"
+    "  </form>\n"
+    "</html>\n"
+end procedure
+
+procedure serveGoldbach(GoldData& data , GoldBodyResponse& goldBodyResponse) 
+    if is a valid request then
+      this->generateHtmlBody(data, goldBodyResponse) 
+    else
+      this->generateInvalidHtmlBody(goldBodyResponse) 
+    end if   
+end procedure
+
+procedure generateInvalidHtmlBody():  // Modularized old
+  declare title := "Invalid request"
+  goldBodyResponse.body :=
+    "<!DOCTYPE html>\n"
+    "<html lang=\"en\">\n"
+    "  <meta charset=\"ascii\"/>\n"
+    "  <title>" + title + "</title>\n"
+    "  <style>body {font-family: monospace} .err {color: red}</style>\n"
+    "  <h1 class=\"err\">" + title + "</h1>\n"
+    "  <p>Invalid request for goldbach sums</p>\n"
+    "  <hr><p><a href=\"/\">Back</a></p>\n"
+    "</html>\n"
+end procedure
+
+procedure generateHtmlBody(GoldData& data, GoldBodyResponse& goldBodyResponse)
+  declare title := "Goldbach Sums"  // Modification
+  for index := 0 to size of data.outputs do 
+    data.global_total_sums += data.outputs->at(index)->totalSums
+  end for 
+  total:= get_global_total_sums(data.global_total_sums , size of data.outputs)
+  goldBodyResponse.body :=
+    "<!DOCTYPE html>\n"
+    "<html lang=\"en\">\n"
+    "  <meta charset=\"ascii\"/>\n"
+    "  <title>" + title + "</title>\n"
+    "  <style>body {font-family: monospace} .err {color: red}</style>\n"
+    "  <h1>" + title + "</h1>\n"
+    "  <h2>" + total + "</h2>\n"
+  for index := 0 to data.outputs size do  // New
+    if data.outputs->at(index) is a positive number then  // New
+    goldBodyResponse.body += "<p>"
+      + get_total_of_sums_string(data.inputs->at(index)
+        , data.outputs->at(index)) + "</p>\n"
+    else
+    goldBodyResponse.body += "<p>"
+      + get_sums_string(data.inputs->at(index)
+        , data.outputs->at(index)) + "</p>\n";
+    end if
+  end for
+  response = response + "  <hr><p><a href=\"/\">Back</a></p>\n" "</html>\n"
+  return response
+end procedure
+
+procedure serveNotFound(GoldData& data, GoldBodyResponse& goldBodyResponse)
+  declare title := "Not found"
+  goldBodyResponse.body := "<!DOCTYPE html>\n"
+    << "<html lang=\"en\">\n"
+    << "  <meta charset=\"ascii\"/>\n"
+    << "  <title>" << title << "</title>\n"
+    << "  <style>body {font-family: monospace} h1 {color: red}</style>\n"
+    << "  <h1>" << title << "</h1>\n"
+    << "  <p>The requested resouce was not found on this server.</p>\n"
+    << "  <hr><p><a href=\"/\">Homepage</a></p>\n"
+    << "</html>\n"
+end procedure

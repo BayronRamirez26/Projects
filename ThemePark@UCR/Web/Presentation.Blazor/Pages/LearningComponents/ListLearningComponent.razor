@@ -1,0 +1,36 @@
+﻿@page "/list-lcomponent"
+@using MudBlazor
+@using System.ComponentModel.DataAnnotations
+@using System.Text
+@using BlazorStrap
+@using System.Text.Json;
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.LearningComponents.Services
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningComponents.Entities
+@inject NavigationManager NavigationManager
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+<link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />
+<link href="css/createlearningspace.css" rel="stylesheet" />
+
+<h1 style="color:#0C344E">Componentes de aprendizaje actuales</h1>
+<div class="spacing"></div>
+
+
+<MudTable Items="@lcomponents" Dense="@dense" Hover="@hover" Bordered="@bordered" Striped="@striped" RowsPerPage="7" Filter="@SearchCall" Style="top:20rem; padding-right: 0;">
+        <ToolBarContent>
+            <MudText Typo="Typo.h6">Componentes de aprendizaje</MudText>
+            <MudSpacer />
+        <MudTextField @bind-Value="searchString" Placeholder="Buscar" Immediate="true" Adornment="Adornment.Start"
+                      AdornmentIcon="@Icons.Material.Filled.Search" IconSize="MudBlazor.Size.Small" Class="mt-0">
+        </MudTextField>
+        </ToolBarContent>
+        <HeaderContent>
+            <MudTh>Tipo de Componente</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+       <MudTd @onclick="() => OnItemClick(context)" style="width: 100%;"> @context </MudTd>
+    </RowTemplate>
+        <PagerContent>
+            <MudTablePager HideRowsPerPage />
+        </PagerContent>
+    </MudTable>
+

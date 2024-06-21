@@ -1,0 +1,125 @@
+﻿@page "/list-levels"
+@inject HttpClient Http
+@using BlazorStrap
+@using System.ComponentModel.DataAnnotations
+@using System.Text
+@using System.Text.Json
+@using System.Web
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.LearningArea.Services;
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningArea.Dtos
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningArea.Entities;
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.Shared.ValueObjects;
+@using MudBlazor
+@inject NavigationManager NavigationManager
+@inject ILevelService LevelService
+@inject CurrentNavigationUser currentNavigationUser
+@inject Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider authenticationStateProvider
+
+@if (readPermission)
+{
+<PageTitle>List of Levels in the Level</PageTitle>
+
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+<link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />
+<link href="css/CreateLearningSpace.css" rel="stylesheet" />
+
+<h1 style="color:#0C344E">Pisos actuales</h1>
+<div class="spacing"></div>
+
+
+@if (_levels == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    @if (showSuccessDeleteAlert)
+    {
+        <MudAlert Severity="Severity.Success" ContentAlignment="HorizontalAlignment.Center"
+                  ShowCloseIcon="true" CloseIconClicked="(() => CloseMe(true))">Nivel eliminado con éxito</MudAlert>
+    }
+
+    @if (showFailDeleteAlert)
+    {
+        <MudAlert Severity="Severity.Error" ContentAlignment="HorizontalAlignment.Center"
+                  ShowCloseIcon="true" CloseIconClicked="(() => CloseMe(false))">Error borrando el nivel</MudAlert>
+    }
+
+    @if (showSuccessModifyAlert)
+    {
+        <MudAlert Severity="Severity.Success" ContentAlignment="HorizontalAlignment.Center"
+                  ShowCloseIcon="true" CloseIconClicked="(() => CloseMe(true))">Nivel modificado con éxito</MudAlert>
+    }
+    @* Declaring the table of Levels and their properties *@
+    <MudTable Items="@_levels" Dense="@dense" Hover="@hover" Bordered="@bordered"
+              Striped="@striped" RowsPerPage="7" Filter="new Func<Level,bool>(SearchCall)"
+              Style="top:20rem;">
+        @* The title bar of the table *@
+        <ToolBarContent>
+            <MudText Typo="Typo.h6">Lista de niveles del edificio: @levelAcronym.Value</MudText>
+            <MudSpacer />
+            <MudTextField @bind-Value="searchString" Placeholder="Buscar" Immediate="true" Adornment="Adornment.Start"
+                          AdornmentIcon="@Icons.Material.Filled.Search" IconSize="MudBlazor.Size.Small" Class="mt-0">
+            </MudTextField>
+        </ToolBarContent>
+        <HeaderContent>
+            <MudTh>Número de piso</MudTh>
+            <MudTh>Cantidad Aulas</MudTh>
+            @if (updatePermission)
+            {
+                <MudTh></MudTh>
+            }
+            @if (deletePermission)
+            {
+                <MudTh></MudTh>
+            }
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="Número de piso">@context.LevelNumber.Value</MudTd>
+            <MudTd DataLabel="Cantidad Aulas">@context.LearningSpaceCount.Value</MudTd>
+            @if (updatePermission)
+            {
+                <MudTd DataLabel="">
+                    <MudIconButton Icon="@Icons.Material.Filled.Edit"
+                                   Style="@($"color:{Colors.Grey.Darken2};")" @onclick="@(e => ModifyLevel(context) )">
+                    </MudIconButton>
+                </MudTd>
+            }
+            @if (deletePermission)
+            {
+                <MudTd DataLabel="">
+                    <MudIconButton Icon="@Icons.Material.Filled.Delete"
+                                   Style="@($"color:{Colors.Red.Darken2};")" @onclick="@(e => ShowModalOnSubmit(context) )">
+                    </MudIconButton>
+                </MudTd>
+            }
+        </RowTemplate>
+        <PagerContent>
+            <MudTablePager HideRowsPerPage />
+        </PagerContent>
+    </MudTable>
+    <BSButton style="margin-left: 2rem; margin-top: 2rem;" Color="BSColor.Primary" IsSubmit="false" @onclick="GoToAddLevel">Agregar Nivel</BSButton>
+    <BSButton style="margin-left: 2rem; margin-top: 2rem;" Color="BSColor.Secondary" IsSubmit="false" @onclick="GoToListBuildings">Regresar</BSButton>
+
+    <BSModal IsStaticBackdrop="true" IsCentered="true" DataId="modal2" @ref="modalConfirmation">
+        <Header>
+            <div style="color: #B14212 ">Confimación de borrar el nivel</div>
+        </Header>
+        <Content>
+            <p>¿Está seguro que quiere borrar el nivel?</p>
+            <BSValidationSummary />
+        </Content>
+        <Footer Context="modal">
+            @if (success)
+            {
+                <BSButton Color="BSColor.Danger" @onclick="DeleteLevel">Aceptar</BSButton>
+                <BSButton Color="BSColor.Secondary" @onclick="modal.HideAsync">Cancelar</BSButton>
+            }
+        </Footer>
+    </BSModal>
+}
+}
+else if (initialized)
+{
+    <h3>No tiene permiso para acceder a esta página</h3>
+}

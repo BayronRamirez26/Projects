@@ -1,0 +1,113 @@
+﻿@page "/list-component/{ComponentType}"
+@inject HttpClient Http
+@using System.ComponentModel.DataAnnotations
+@using System.Text
+@using BlazorStrap
+@using System.Text.Json
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.LearningComponents
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.LearningComponents.Services
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.LearningSpace.Services.Interfaces
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningComponents.Entities
+@using MudBlazor
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningSpace.Entities
+@inject CurrentNavigationUser currentNavigationUser;
+@inject NavigationManager NavigationManager
+
+<PageTitle>Lista de @ComponentTypeString</PageTitle>
+
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+<link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />
+<link href="css/CreateLearningSpace.css" rel="stylesheet" />
+
+
+<div class="spacing"></div>
+
+@if (_items == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <h1 style="color:#0C344E">@(ComponentTypeString) actuales</h1>
+    <div class="spacing"></div>
+    @if (showSuccessDeleteAlert)
+    {
+        <MudAlert Severity="Severity.Success" ContentAlignment="HorizontalAlignment.Center"
+                  ShowCloseIcon="true" CloseIconClicked="(() => CloseMe(true))">Éxito borrando el componente</MudAlert>
+    }
+
+    @if (showFailDeleteAlert)
+    {
+        <MudAlert Severity="Severity.Error" ContentAlignment="HorizontalAlignment.Center"
+                  ShowCloseIcon="true" CloseIconClicked="(() => CloseMe(false))">Error borrando el componente</MudAlert>
+    }
+
+    <MudTable Items="@_items" Dense="@dense" Hover="@hover" Bordered="@bordered"
+              Striped="@striped" RowsPerPage="7" Filter="@SearchCall" Style="top:20rem;">
+
+        <ToolBarContent>
+            <MudText Typo="Typo.h6">Lista de @ComponentType</MudText>
+            <MudSpacer />
+            <MudTextField @bind-Value="searchString" Placeholder="Buscar" Immediate="true" Adornment="Adornment.Start"
+                          AdornmentIcon="@Icons.Material.Filled.Search" IconSize="MudBlazor.Size.Small" Class="mt-0">
+            </MudTextField>
+        </ToolBarContent>
+        <HeaderContent>
+            <MudTh>Nombre</MudTh>
+            <MudTh>Espacio de Aprendizaje</MudTh>
+            <MudTh></MudTh>
+            <MudTh></MudTh>
+            <MudTh></MudTh>
+            <MudTh></MudTh>
+            <MudTh></MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="Nombre">@context.LearningComponentName.Value</MudTd>
+            <MudTd DataLabel="Espacio de Aprendizaje">@GetLearningSpaceName(@context.LearningSpaceId.Value)</MudTd>
+            <MudTd DataLabel=""></MudTd>
+            <MudTd DataLabel=""></MudTd>
+            <MudTd DataLabel=""></MudTd>
+            <MudTd DataLabel="">
+                @if (canModify)
+                {
+                     <MudIconButton Icon="@Icons.Material.Filled.Edit"
+                               Style="@($"color:{Colors.Grey.Darken2};")"
+                               @onclick="(e) => { ModifyItem(context); return Task.CompletedTask; }">
+                    </MudIconButton>
+                }
+               
+            </MudTd>
+            <MudTd DataLabel="">
+                @if (canDelete)
+                {
+                    <MudIconButton Icon="@Icons.Material.Filled.Delete"
+                               Style="@($"color:{Colors.Red.Darken2};")"
+                               @onclick="(e) => { ShowModalOnSubmit(context); return Task.CompletedTask; }">
+                    </MudIconButton>
+                }
+                
+            </MudTd>
+        </RowTemplate>
+        <PagerContent>
+            <MudTablePager HideRowsPerPage />
+        </PagerContent>
+    </MudTable>
+
+    <BSModal IsStaticBackdrop="true" IsCentered="true" DataId="modal2" @ref="modal">
+        <Header>
+            <div style="color: @colorStatus "><b>@modalTitle</b></div>
+        </Header>
+        <Content>
+            @((MarkupString)modalContent)
+            <BSValidationSummary />
+        </Content>
+        <Footer Context="modal">
+            @if (success)
+            {
+                <BSButton Color="BSColor.Danger" @onclick="DeleteItem">@acceptMessage</BSButton>
+                <BSButton Color="BSColor.Secondary" @onclick="modal.HideAsync">@cancelMenssage</BSButton>
+            }
+        </Footer>
+    </BSModal>
+}
+

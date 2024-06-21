@@ -1,0 +1,19 @@
+﻿@using BlazorStrap
+@using static UCR.ECCI.PI.ThemePark_UCR.Presentation.Blazor.Pages.ModifyTemplate
+@code {
+    [Parameter] public LearningSpace LearningSpace { get; set; }
+}
+
+<div class="spacing">
+    <BSRow Position="Position.Relative">
+        <BSLabel><h3>Espacio Físico</h3></BSLabel>
+        <BSCol ColumnSmall="3">
+            <BSLabel><h3 style="font-size: 20px">Profundidad</h3> </BSLabel>
+            <BSInput InputType="BlazorStrap.InputType.Number" @bind-Value="LearningSpace.SizeX" />
+            <BSLabel><h3 style="font-size: 20px">Altura</h3> </BSLabel>
+            <BSInput InputType="BlazorStrap.InputType.Number" @bind-Value="LearningSpace.SizeY" />
+            <BSLabel><h3 style="font-size: 20px">Ancho</h3> </BSLabel>
+            <BSInput InputType="BlazorStrap.InputType.Number" ValidateOnInput="true" @bind-Value="LearningSpace.SizeZ" />
+        </BSCol>
+    </BSRow>
+</div>

@@ -1,0 +1,49 @@
+﻿@page "/Login"
+@using BlazorStrap
+@using Microsoft.AspNetCore.Components.Authorization
+@inject NavigationManager NavigationManager
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
+<link href="css/Login.css" rel="stylesheet" />
+
+<BSContainer class="mt-5 login-container">
+    <BSRow>
+        <BSCol Size="Md" md="12" class="text-center">
+            <h1>Iniciar Sesión</h1>
+        </BSCol>
+    </BSRow>
+    <BSRow>
+        <BSCol Size="Md" md="12" class="text-center">
+            @if (!IsAuthenticatedResult)
+            {
+                <p class="login-message">No has iniciado sesión. Por favor, inicia sesión para continuar.</p>
+                <button class="btn login-button" @onclick="NavigateToLogin">Iniciar Sesión</button>
+            }
+            else
+            {
+                <p class="login-message">Ya iniciaste sesión.</p>
+            }
+        </BSCol>
+    </BSRow>
+</BSContainer>
+
+@code {
+    private bool IsAuthenticatedResult;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        IsAuthenticatedResult = authState.User.Identity?.IsAuthenticated ?? false;
+    }
+
+    private void NavigateToLogin()
+    {
+        NavigationManager.NavigateTo("Authentication/Login");
+    }
+}
+
+
+
+
+
+

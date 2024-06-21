@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>UCR.ECCI.PI.ThemePark_UCR.DomainWeb</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="LearningSpace\Entities\NewFile1.txt" />
+    <None Remove="LearningSpace\Repositories\IGetLevel" />
+    <None Remove="LearningSpace\Repositories\IGetSiteFromCampus" />
+    <None Remove="LearningSpace\Repositories\NewFile1.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Blazored.LocalStorage" Version="4.5.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.4" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+	
+	<ItemGroup>
+		<InternalsVisibleTo Include="UCR.ECCI.PI.ThemePark@UCR.DomainWeb.Tests.Unit" />
+	</ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Shared\Responses\" />
+  </ItemGroup>
+
+</Project>

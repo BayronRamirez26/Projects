@@ -1,0 +1,49 @@
+﻿@using BlazorStrap
+@using BlazorStrap.V5
+
+@code {
+    [Parameter]
+    public BuildingInfo building { get; set; }
+}
+
+<BSLabel Class="spacing"><h4>Medidas del edificio</h4></BSLabel>
+<BSRow Position="Position.Relative">
+    <BSCol ColumnSmall="3">
+        <BSLabel>Posición X <span class="required">*</span></BSLabel>
+        <BSInput InputType="BlazorStrap.InputType.Number"
+                    @bind-Value="building.CenterX" ValidateOnInput="true" />
+        <BSFeedback For="@(() => building.CenterX)" />
+    </BSCol>
+    <BSCol ColumnSmall="3">
+        <BSLabel>Posición Y <span class="required">*</span></BSLabel>
+        <BSInput InputType="BlazorStrap.InputType.Number"
+                    @bind-Value="building.CenterY" ValidateOnInput="true" />
+        <BSFeedback For="@(() => building.CenterY)" />
+    </BSCol>
+</BSRow>
+@*Next line*@
+<div class="spacing"></div>
+<BSRow Position="Position.Relative">
+    <BSCol ColumnSmall="3">
+        <BSLabel>Largo <span class="required">*</span> </BSLabel>
+        <BSInput InputType="BlazorStrap.InputType.Number"
+                    @bind-Value="building.Length" ValidateOnInput="true" />
+        <BSFeedback For="@(() => building.Length)" />
+    </BSCol>
+    <BSCol ColumnSmall="3">
+        <BSLabel>Ancho <span class="required">*</span></BSLabel>
+        <BSInput InputType="BlazorStrap.InputType.Number"
+                    @bind-Value="building.Width" ValidateOnInput="true" />
+        <BSFeedback For="@(() => building.Width)" />
+    </BSCol>
+</BSRow>
+@*Next line*@
+<div class="spacing"></div>
+<BSRow Position="Position.Relative">
+    <BSCol ColumnSmall="3">
+        <BSLabel>Rotación(°) <span class="required">*</span></BSLabel>
+        <BSInput InputType="BlazorStrap.InputType.Number"
+                    @bind-Value="building.Rotation" ValidateOnInput="true" />
+        <BSFeedback For="@(() => building.Rotation)" />
+    </BSCol>
+</BSRow>

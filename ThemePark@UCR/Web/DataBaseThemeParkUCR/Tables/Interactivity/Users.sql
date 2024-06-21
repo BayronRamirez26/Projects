@@ -1,0 +1,10 @@
+﻿CREATE TABLE ThemePark.[Users] (
+	UserId VARCHAR(255) NOT NULL PRIMARY KEY,
+	UserNickName VARCHAR(64) NOT NULL  UNIQUE,
+	UserPasswordHash VARCHAR(512) NOT NULL, 
+    [IsActive] BIT NOT NULL,
+	[PersonId] VARCHAR(255) NOT NULL,
+	FOREIGN KEY ([PersonId])
+	REFERENCES ThemePark.Person([PersonId]) ON DELETE CASCADE
+
+)

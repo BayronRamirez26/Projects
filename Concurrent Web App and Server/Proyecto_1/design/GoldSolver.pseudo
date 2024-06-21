@@ -1,0 +1,18 @@
+declare goldbachCalculator as an instance of Goldbach
+
+procedure run():
+  consumeForever()
+  produce(GoldData())
+  return successOrFailure
+end procedure
+
+procedure consume(GoldData data):
+  if (data.isHomePage or not data.validRequest or data.serveNotFound) then do
+    produce(data)
+  else
+    declare reqNumber := data.number
+    run(goldbachCalculator, reqNumber)
+    data.sums := get_number_sums(goldbachCalculator)
+    produce(data)
+  end if
+end procedure

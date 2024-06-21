@@ -1,0 +1,34 @@
+﻿@using BlazorStrap
+@code {
+    // ESTE Es el de Templates
+    [Parameter] public string ModalTitle { get; set; }
+    [Parameter] public string ModalContent { get; set; }
+    [Parameter] public string ColorStatus { get; set; }
+    [Parameter] public bool ValidateStatus { get; set; }
+    [Parameter] public EventCallback GoToCLS { get; set; }
+    [Parameter] public EventCallback GoToLLS { get; set; }
+    [Parameter] public EventCallback GoToAddComponent { get; set; }
+
+}
+
+<BSModal IsStaticBackdrop="true" IsCentered="true" DataId="modal2">
+    <Header>
+        <div style="color: @ColorStatus"><b>@ModalTitle</b></div>
+    </Header>
+    <Content>
+        @ModalContent
+        <BSValidationSummary />
+    </Content>
+    <Footer Context="modal">
+        <div class="buttons_modal @(ValidateStatus ? "active" : "")">
+            <BSButton Color="BSColor.Primary" @onclick="GoToCLS">Sí</BSButton>
+            <BSButton MarginLeftAndRight="Margins.Auto" Color="BSColor.Secondary" @onclick="GoToLLS">No</BSButton>
+            <BSButton Color="BSColor.Success" @onclick="GoToAddComponent">Agregar Componente</BSButton>
+        </div>
+        <div class="buttons_modal @(ValidateStatus ?  "" : "active")">
+            <BSButton MarginLeftAndRight="Margins.Auto" Color="BSColor.Primary" @onclick="modal.HideAsync">Cerrar</BSButton>
+            <BSButton Color="BSColor.Primary" @onclick="GoToCLS">Crear nuevo espacio</BSButton>
+            <BSButton MarginLeftAndRight="Margins.Auto" Color="BSColor.Secondary" @onclick="GoToLLS">Salir</BSButton>
+        </div>
+    </Footer>
+</BSModal>

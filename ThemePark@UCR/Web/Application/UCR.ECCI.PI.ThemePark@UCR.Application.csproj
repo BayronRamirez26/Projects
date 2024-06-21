@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>UCR.ECCI.PI.ThemePark_UCR.Application</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Levels\**" />
+    <EmbeddedResource Remove="Levels\**" />
+    <None Remove="Levels\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="LearningSpace\Services\Interfaces\ITemplatesServices.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="LearningSpace\Services\Classes\NewFile1.txt" />
+    <None Remove="LearningSpace\Services\Interfaces\NewFile1.txt" />
+  </ItemGroup>
+	
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.4" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Microsoft.Kiota.Abstractions" Version="1.9.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\UCR.ECCI.PI.ThemePark@UCR.Domain.csproj" />
+  </ItemGroup>
+	
+  <ItemGroup>
+	<InternalsVisibleTo Include="UCR.ECCI.PI.ThemePark_UCR.Application.Tests.Unit" />
+	<InternalsVisibleTo Include="UCR.ECCI.PI.ThemePark_UCR.Application.Tests.Unit.LearningSpace.Services" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,21 @@
+﻿@using BlazorStrap
+@using static UCR.ECCI.PI.ThemePark_UCR.Presentation.Blazor.Pages.ModifyAccessPoint
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningArea.Entities
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningSpace.Entities
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.Shared.ValueObjects;
+@code {
+    [Parameter]
+    public bool IsDisabled { get; set; }
+    [Parameter]
+    public EventCallback OnSubmit { get; set; }
+    [Parameter]
+    public EventCallback OnCancel { get; set; }
+}
+
+<BSRow Position="Position.Relative" Justify="Justify.Start">
+    <BSCol>
+        <BSButton Color="BSColor.Primary" IsSubmit="true" IsDisabled="@IsDisabled" @onclick="OnSubmit">Modificar</BSButton>
+        <BSButton style="margin-left: 2rem;" Color="BSColor.Secondary" IsSubmit="false" @onclick="OnCancel">Cancelar</BSButton>
+    </BSCol>
+</BSRow>
+

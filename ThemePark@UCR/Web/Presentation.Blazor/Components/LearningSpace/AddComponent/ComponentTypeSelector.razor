@@ -1,0 +1,20 @@
+﻿@using static UCR.ECCI.PI.ThemePark_UCR.Presentation.Blazor.Pages.AddComponentsToLearningSpace
+
+@using BlazorStrap
+@code {
+    [Parameter] public string Type { get; set; }
+    [Parameter] public EventCallback<string> TypeChanged { get; set; }
+    public List<string> ComponentTypes { get; set; } = new List<string> { "Pizarra", "Pantalla Interactiva", "Proyector" };
+}
+
+<div class="spacing">
+    <BSInput InputType="BlazorStrap.InputType.Select" @bind-Value="Type" @onchange="@(async (e) => await TypeChanged.InvokeAsync(e.Value.ToString()))" class="dropdown-CLS">
+        <option value="null">Seleccione un tipo de componente</option>
+        @foreach (var componentName in ComponentTypes)
+        {
+            <option value="@componentName">@componentName</option>
+        }
+    </BSInput>
+    <BSFeedback For="@(() => Type)" />
+</div>
+

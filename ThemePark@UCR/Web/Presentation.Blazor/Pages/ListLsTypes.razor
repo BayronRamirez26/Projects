@@ -1,0 +1,60 @@
+﻿@page "/list-learningspacetypes"
+@inject HttpClient Http
+@using System.ComponentModel.DataAnnotations
+@using System.Text
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.LearningSpace.Services
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.LearningSpace.Services.Interfaces
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningSpace.Entities;
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningSpace.Entities.Wrappers
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.Shared.ValueObjects;
+@using MudBlazor
+@using System.Text.Json;
+@inject NavigationManager NavigationManager
+@inject ILearningSpaceService learningSpaceService
+@inject ILsTypeServices lsTypeServices
+@inject HttpClient httpClient
+@inject CurrentNavigationUser currentNavigationUser
+
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+<link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />
+<link href="css/createlearningspace.css" rel="stylesheet" />
+
+<h1 style="color:#0C344E">Tipos de Espacios de aprendizaje actuales</h1>
+<div class="spacing"></div>
+
+@if (Elements == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <MudTable Items="@Elements" Dense="@dense" Hover="@hover" Bordered="@bordered" Striped="@striped" RowsPerPage="7" Filter="new Func<LSType,bool>(FilterFunc1)" Style="top:20rem;">
+        <ToolBarContent>
+            <MudText Typo="Typo.h6">Tipos de Espacios de aprendizaje</MudText>
+            <MudSpacer />
+            <MudTextField @bind-Value="searchString1" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="MudBlazor.Size.Medium" Class="mt-0"></MudTextField>
+        </ToolBarContent>
+        <HeaderContent>
+            <MudTh>Nombre</MudTh>
+            <MudTh>Id</MudTh>
+            <MudTh></MudTh>
+            <MudTh></MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="Nombre">@context.Name.Value</MudTd>
+            <MudTd DataLabel="Id">@context.Id</MudTd>
+            <MudTd DataLabel="">
+                @if(canModify)
+                {
+                    <MudIconButton Icon="@Icons.Material.Filled.Edit" Style="@($"color:{Colors.Grey.Darken2};")" @onclick="@(e => modifyLS(context) )"></MudIconButton>
+                }
+            </MudTd>
+            <MudTd DataLabel="Ver Espacios">
+                <MudText Style="cursor: pointer; color: blue; text-decoration: underline;" @onclick="@(e => ViewTypes(context.Id))">Ver Espacios</MudText>
+            </MudTd>
+        </RowTemplate>
+        <PagerContent>
+            <MudTablePager HideRowsPerPage />
+        </PagerContent>
+    </MudTable>
+}

@@ -1,0 +1,30 @@
+﻿h1 {
+    color: #41ADE7;
+}
+
+h2 {
+    color: #666666;
+}
+
+p {
+    font-size: 1.1rem;
+}
+
+.homepage_list_acciones ul {
+    list-style-type: none;
+    padding: 0;
+    font-size: 1.1rem;
+}
+
+    .homepage_list_acciones ul li {
+        margin: 5px 0;
+    }
+
+        .homepage_list_acciones ul li a {
+            text-decoration: none;
+            color: #1E90FF;
+        }
+
+            .homepage_list_acciones ul li a:hover {
+                text-decoration: underline;
+            }

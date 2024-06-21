@@ -1,0 +1,27 @@
+﻿@code {
+    [Parameter]
+    public LevelInfo level { get; set; }
+}
+
+<BSLabel Class="spacing"><h4>Colores</h4></BSLabel>
+<div class="spacing"></div>
+<BSRow Position="BlazorStrap.Position.Relative">
+    <div class="color-picker">
+        <BSContainer>
+            <BSRow Justify="BlazorStrap.V5.Justify.Start">
+                <BSCol Column="2">Paredes</BSCol>
+                <BSCol Column="2">
+                    <BSInput InputType="BlazorStrap.InputType.Color" @bind-Value="level.wallsColor" class="input-color" />
+                </BSCol>
+                <BSCol Column="1">Techo</BSCol>
+                <BSCol Column="2">
+                    <BSInput InputType="BlazorStrap.InputType.Color" @bind-Value="level.ceilingColor" class="input-color" />
+                </BSCol>
+                <BSCol Column="1">Suelo</BSCol>
+                <BSCol Column="2">
+                    <BSInput InputType="BlazorStrap.InputType.Color" @bind-Value="level.floorColor" class="input-color" />
+                </BSCol>
+            </BSRow>
+        </BSContainer>
+    </div>
+</BSRow>

@@ -1,0 +1,152 @@
+All of the above were modifications of previous procedures or new procedures
+involving the class HttpServer
+
+procedure ~HttpServer():
+  for index := 0 to max_connections do 
+    delete(connectionHandlers[index])
+  end for
+  delete(connectionHandlerQueue)
+  delete(connectionDispatcher)
+end procedure
+
+procedure signal_handler(int signum):  // New
+  getInstance().stop()
+end procedure
+
+procedure HttpServer& getInstance():
+  static HttpServer httpServer
+  return httpServer
+end procedure
+
+procedure listenForever(const char* port):
+  return listenForever(port)
+end procedure
+
+procedure handleClientConnection(Socket& client):  // Modification
+  push(connectionHandlerQueue, client)
+end procedure
+
+procedure chainWebApp(HttpApp* application):
+  push(applications, application)
+end procedure
+
+procedure start(int argc, char* argv[]):
+  declare stopApps := false
+  bool startedConnDispatcher := false
+  signal(SIGINT, signal_handler)
+  signal(SIGTERM, signal_handler)
+  try do
+    if (analyzeArguments(argc, argv)) do
+      getInstance().start()
+      for index := 0 to size(applications) do
+        createOwnQueue(applications[index])
+      end for
+      stopApps := true
+      createConnectionHandlers()
+      connectionDispatcher := new HttpConnectionDispatcher()
+      createOwnQueue(connectionDispatcher)
+      startedConnDispatcher := true
+      for index := 0 to max_connections do
+        setProducingQueue(connectionHandlers[index],
+          getConsumingQueue(connectionDispatcher))
+      end for
+      for  index := 0 to size(applications) do 
+        registerRedirect(connectionDispatcher
+          getIdentifier(applications[index])
+          , getConsumingQueue(applications[index]))
+      end for
+      startConnectionHandlers()
+      startThread(connectionDispatcher)
+      startApplications()
+      for doindex := 0 to size(applications)do
+        startThread(applications[index])
+      end for
+      listenForConnections(port)
+      const NetworkAddress& address := this->getNetworkAddress()
+      append(INFO, "webserver", "Listening on " + address.getIP()
+        + " port " + to_string(address.getPort()))
+      acceptAllConnections()
+    end if
+  end catch (error) do
+    if (startedConnDispatcher) do
+      waitToFinish(connectionDispatcher)
+    end
+    if (stopApps) do
+      waitForApplications()
+    end
+    print("\n")
+    append(INFO, "Connection", "Closed connection with clients")
+  end try/catch
+  getInstance().stop()
+  return EXIT_SUCCESS
+end procedure
+
+procedure analyzeArguments(int argc, char* argv[]):
+  for index := 1 to argc do
+    declare argument := argv[index]
+    if (find(argument, "help") != std::string::npos) do
+      cout << usage
+      return false
+    end if
+  end for
+
+  if (argc >= 2) do
+    port := argv[1]
+    // New
+    if (argc == 3) do
+      try do
+        max_connections := stoll(argv[2])
+      end try
+      catch(exception& e) do
+        max_connections := hardware_concurrency()
+      end catch
+    end else do
+      max_connections := hardware_concurrency()
+    end if
+  end if
+  return true
+end procedure
+
+procedure stop():
+  stopListening()
+end procedure
+
+procedure waitForConnectionHandlers():
+  for (index := 0 to max_connections) do
+    push(connectionHandlerQueue, Socket())
+  end for
+  for size_t index := 0 to max_connections do
+    waitToFinish(connectionHandlers[index])
+  end for
+end procedure
+
+procedure createConnectionHandlers():
+  declare connectionHandlerQueue := new Queue<Socket>
+  resize(connectionHandlers, max_connections)
+  for index := 0 to max_connections do
+    declare connectionHandlers[index] := new HttpConnectionHandler()
+    setConsumingQueue(connectionHandlers[index], connectionHandlerQueue)
+  end
+end procedure
+
+procedure startConnectionHandlers():
+  for index := 0 to max_connections do
+    for index2 := 0 to size(applications) do
+      addWebApp(connectionHandlers[index], applications[index2])
+    end for
+    startThread(connectionHandlers[index])
+  end for
+end procedure
+
+procedure startApplications():
+  for index := 0 to size(applications) do 
+    start(applications[index])
+  end for
+end procedure
+
+procedure waitForApplications():
+  for index := 0 to size(applications) do 
+    stop(applications[index])
+    waitToFinish(applications[index])
+  end for
+end procedure

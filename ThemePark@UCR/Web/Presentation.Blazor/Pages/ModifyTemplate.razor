@@ -1,0 +1,108 @@
+﻿@page "/modify-template"
+@inject HttpClient Http
+@using BlazorStrap
+@using System.ComponentModel.DataAnnotations
+@using System.Text
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.LearningArea.Services
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningArea.Entities
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningSpace.Entities;
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningSpace.Entities.Wrappers
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.Shared.ValueObjects;
+@using Newtonsoft.Json
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.LearningSpace
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.LearningSpace.Services;
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.LearningSpace.Services.Interfaces
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningSpace.Repositories;
+
+@inject NavigationManager NavigationManager;
+@inject ILearningSpaceService _createLearningSpace;
+@inject ILsTypeServices lsTypeServices;
+@inject ILevelService levelService;
+@inject ILearningSpaceCascadeService _cascade;
+@inject ITemplateRepository templateService;
+@using System
+@using System.IO;
+@using UCR.ECCI.PI.ThemePark_UCR.Presentation.Blazor.Components
+@using UCR.ECCI.PI.ThemePark_UCR.Presentation.Blazor.Components.LearningSpace.ModifyTemplate
+
+@*reference to the create learning space stylesheet used in the page*@
+<link href="css/createlearningspace.css" rel="stylesheet" />
+<div class="spacing">
+    <h3 class="Title_CLS">Modificar Plantilla</h3>
+</div>
+
+
+
+@*Bootstrap forms used to create the wanted learning space*@
+<div class="spacing">
+
+    <BSForm Model="learningSpace" IsRow="true" Gutters="Gutters.Medium" OnSubmit="OnSubmit" OnReset="OnReset">
+        <DataAnnotationsValidator />
+        <div class="spacing">
+            <div class="page-container">
+                <BSContainer Position="Position.Relative" Class="bordered-container">
+                    <BSLabel><h3>Información de la plantilla</h3></BSLabel>
+                    <LearningSpaceInfoCLS LearningSpace="@learningSpace" LSTypesList="lSTypesList" />
+
+                    <PhysicalSpaceCLS LearningSpace="@learningSpace" />
+
+                    <ColorPickerCLS LearningSpace="learningSpace" />
+
+                    <ActionButtonsCLS Asign_later="@Asign_later"
+                                      LearningSpace="@learningSpace"
+                                      IsDisabled="@IsDisabled"
+                                      GoToLLS="GoToLLS" />
+
+                    <ModalCLS ModalTitle="@ModalTitle"
+                              ModalContent="@ModalContent"
+                              ColorStatus="@ColorStatus"
+                              ValidateStatus="@_validateStatus"
+                              GoToCLS="GoToCLS"
+                              GoToLLS="GoToLLS" />
+                    <BSAccordion>
+                        <BSAccordionItem>
+                            <Header>Componentes asociados</Header>
+                            <Content>
+                                <BSButton OnClick="GoToAddContext" Color="BSColor.Primary">Añadir Componente</BSButton>
+                                @* <p>Proyectores: @ProjectorQuantity</p>
+                                <p>Pizarras: @WhiteboardQuantity</p>
+                                <p>Pantallas: @ScreenQuantity</p>
+                                <BSButton OnClick="GoToAddContext" Color="BSColor.Primary">Añadir Componente</BSButton> *@
+                                <BSAccordion>
+                                    @foreach(var component in template_components)
+                                    {
+                                        <BSAccordionItem>
+                                            <Header>@component.Component_type.Value</Header>
+                                            <Content>
+                                                <p>Posicion X: @component.PositionX.Value</p>
+                                                <p>Posicion Y: @component.PositionY.Value</p>
+                                                <p>Posicion Z:@component.PositionZ.Value</p>
+                                                <BSButton OnClick="@(e => SelectComponent(component.Id) )" Color="BSColor.Danger">Borrar</BSButton>
+                                            </Content>
+                                        </BSAccordionItem>  
+                                    }
+                                </BSAccordion> 
+                            </Content>
+                        </BSAccordionItem>
+                    </BSAccordion>
+                </BSContainer>
+
+                <BSModal IsStaticBackdrop="true" IsCentered="true" DataId="modal2" @ref="modal">
+                    <Header>
+                        <div style="color: #B14212; "><b>Borrar componente</b></div>
+                    </Header>
+                    <Content>
+                        ¿Desea borrar el componente?
+                        <BSValidationSummary />
+                    </Content>
+                    <Footer Context="modal">
+  
+                            <BSButton Color="BSColor.Danger" @onclick="@(async () => DeleteComponent() )">Borrar</BSButton>
+                            <BSButton Color="BSColor.Secondary" @onclick="modal.HideAsync">Cancelar</BSButton>
+
+                    </Footer>
+                </BSModal>
+            </div>
+        </div>
+    </BSForm>
+</div>

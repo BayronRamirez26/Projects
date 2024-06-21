@@ -1,0 +1,22 @@
+{
+    "name": "Infrastructure",
+    "rootNamespace": "UCR.ECCI.PI.ThemePark_UCR.Unity.Infrastructure",
+    "references": [
+        "GUID:ff0c6fb856e786c46b5014958edc27a7",
+        "GUID:2eb297a41484af941b52b8c5373a7f7d",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:b82d7dfe2337b464e8be88756a24cf1b",
+        "GUID:3991e003d87e7624a93454e8fcef52bd",
+        "GUID:3fd5fac74180a16468c6c99e88b4de93",
+        "GUID:0022c094e0c7f481288196a6d3e9ce33"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

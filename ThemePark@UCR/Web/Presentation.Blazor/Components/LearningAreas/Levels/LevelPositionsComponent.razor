@@ -1,0 +1,37 @@
+﻿@using MudBlazor
+
+@code {
+    [Parameter]
+    public List<DropZoneItem> items { get; set; }
+    [Parameter]
+    public List<DropZone> zones { get; set; }
+    [Parameter]
+    public EventCallback<MudItemDropInfo<DropZoneItem>> ItemUpdated { get; set; }
+}
+
+<BSContainer Position="BlazorStrap.Position.Relative" Class="bordered-container">
+    <BSLabel Class="spacing"><h4>Posición de los niveles</h4></BSLabel>
+        @if (items.Count > 0)
+        {
+        <MudDropContainer T="DropZoneItem" Items="items" ItemsSelector="@((item, dropzone) => item.Zone.Name == dropzone)" ItemDropped="ItemUpdated" Class="4 flex-grow-1">
+                    <ChildContent>
+            <MudDropContainer T="DropZone" Items="zones" ItemsSelector="@((item, dropzone) => true)" Class="5">
+                <ChildContent>
+                    <MudDropZone T="DropZone" AllowReorder Class="6 rounded mud-background-gray px-4 py-1 ma-4" />
+                 </ChildContent>
+                 <ItemRenderer>
+                     <MudPaper Class="pa-4 my-4">
+                         <MudText Typo="Typo.h6">@context.Name</MudText>
+                         <MudDropZone T="DropZoneItem" Identifier="@context.Name" AllowReorder Class="bordered-container rounded mud-background-gray px-4 py-1 ma-4" />
+                     </MudPaper>
+                 </ItemRenderer>
+             </MudDropContainer>
+         </ChildContent>
+         <ItemRenderer>
+             <MudPaper Class="pa-4 my-4">
+                 <MudText>@context.Name</MudText>
+             </MudPaper>
+         </ItemRenderer>
+     </MudDropContainer>
+     }
+</BSContainer>

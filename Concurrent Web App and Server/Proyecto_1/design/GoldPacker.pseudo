@@ -1,0 +1,44 @@
+procedure run():
+  consumeForever()
+  push to producingQueue(GoldData()) // stop condition
+  return successOrFailure
+end procedure
+
+procedure consume(GoldData data)
+  if is home page or not a valid request or serve not found then
+    produce(data)
+  else
+     int64_t index := searchIndexClient(data.httpResponse);
+     if index == -1 then // New client
+       // Append new client
+       clients.push_back(data.httpResponse);
+       index := this->clients.size()-1
+       // Create new reponse vector for the client
+       packedAnswers.emplace_back(vector of GoldbachNumber());
+       receivedNumbers.push_back(1)
+       // Resize that vector to the size of the number
+       packedAnswers[index].resize(data.numberCount)
+       // Append the sums of the number to the response vector
+       packedAnswers[index][data.priority] := data.sums
+      else   // Old client
+       // Append the sums of the number to the response vector
+       packedAnswers[index][data.priority] := data.sums
+       ++receivedNumbers[index]
+     end if 
+     // Package ready to be send
+     if receivedNumbers[index] == data.numberCount then 
+       // Produce goldbach response
+       data.outputs
+         := declare vector of GoldbachNumber(this->packedAnswers[index]);
+       // Push to producing queue
+       produce(data)
+     end if
+  end if 
+  
+procedure searchIndexClient(HttpResponse* client) {
+  for index := 0 to size of clients 
+    if client == clients[index] then 
+      return index;  // Client found
+    end if
+  return -1;  // Not found
+ 

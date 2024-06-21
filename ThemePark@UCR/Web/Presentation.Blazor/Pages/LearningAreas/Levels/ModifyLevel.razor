@@ -1,0 +1,88 @@
+﻿@page "/modify-level"
+@inject HttpClient Http
+@inject HttpClient httpClient
+@inject NavigationManager NavigationManager
+@using BlazorStrap
+@using MudBlazor
+@using System.ComponentModel.DataAnnotations
+@using System.Text
+@using System.Web
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.LearningArea.Services
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningArea.Dtos;
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningArea.Entities;
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.Shared.ValueObjects;
+@using UCR.ECCI.PI.ThemePark_UCR.Presentation.Blazor.Components.LearningAreas.Levels;
+@using System.Text.Json
+@inject ILevelService levelService
+@inject NavigationManager NavigationManager
+@inject CurrentNavigationUser currentNavigationUser
+@inject Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider authenticationStateProvider
+
+<link href="../../css/AddLevel.css" rel="stylesheet" />
+
+@if (updatePermission)
+{
+<div class="spacing">
+    <h3 class="Title">Modificar Nivel de @level.buildingAcronym</h3>
+</div>
+<div class="spacing"></div>
+
+<div class="parent-container">
+<BSForm Model="level" IsRow="true" Gutters="Gutters.Large" OnSubmit="OnSubmitAsync" OnReset="OnReset" >
+<div class="middle-container ">
+<div class="form-container">
+<BSCol>
+    <DataAnnotationsValidator />
+    <div class="spacing"></div>
+    <div class="page-container">
+        <BSContainer Position="BlazorStrap.Position.Relative" Class="bordered-container">
+            <LevelDimensionsComponent level="level" />
+            <div class="spacing"></div>
+            <LevelColorsComponent level="level" />
+            <div class="spacing"></div>
+            <BSRow Position="BlazorStrap.Position.Relative" Justify="BlazorStrap.V5.Justify.Start">
+                <div class="spacing"></div>
+                <BSCol>
+                    <BSButton Color="BSColor.Primary" IsSubmit="true">Modificar</BSButton>
+                    <BSButton style="margin-left: 2rem;" Color="BSColor.Secondary" IsSubmit="true"
+                        @onclick="GoToLevelList">Cancelar</BSButton>
+                </BSCol>
+            </BSRow>
+        </BSContainer>
+    </div>
+</BSCol>
+
+</div>
+
+<div class="level-container">
+<BSCol>
+    <LevelPositionsComponent items="_items" zones="_zones" ItemUpdated="ItemUpdated" />
+</BSCol>
+</div>
+</div>
+    <BSModal IsStaticBackdrop="true" IsCentered="true" DataId="modal2" @ref="modal">
+        <Header>
+            <div style="color: @colorStatus "><b>@modalTitle</b></div>
+        </Header>
+        <Content>
+            @((MarkupString)modalContent)
+            <BSValidationSummary />
+        </Content>
+        <Footer Context="modal">
+            @if (success)
+            {
+                <BSButton Color="BSColor.Primary" @onclick="GoToLevelList">@messageButton2</BSButton>
+            }
+            else
+            {
+                <BSButton Color="BSColor.Primary" @onclick="RefreshModifyLevel">@messageButton1</BSButton>
+            }
+        </Footer>
+    </BSModal>
+</BSForm>
+</div>
+}
+else if (initialized)
+{
+        <h3>No tiene permiso para acceder a esta página</h3>
+}

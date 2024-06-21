@@ -1,0 +1,146 @@
+﻿@page "/list-buildings"
+@inject HttpClient Http
+@using BlazorStrap
+@using System.ComponentModel.DataAnnotations
+@using System.Text
+@using System.Text.Json
+@using System.Web
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.LearningArea.Services;
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningArea.Dtos
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningArea.Entities;
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.Shared.ValueObjects;
+@using MudBlazor
+@inject NavigationManager NavigationManager
+@inject IBuildingService buildingService
+@inject Microsoft.AspNetCore.Components.NavigationManager navigationManager
+@inject CurrentNavigationUser currentNavigationUser
+
+@*
+ Actividad 3 Pair Programming
+Sara Espinoza B92771
+Jorge Sagot C12565
+* CAD-CRB-03 Modify properties
+* CAD-CRB-04 Delete Building
+* CAD-CRB-14 Building colissions on update
+*@
+
+<PageTitle>List of Buildings</PageTitle>
+
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+<link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />
+<link href="css/CreateLearningSpace.css" rel="stylesheet" />
+
+<h1 style="color:#0C344E">Edificios actuales</h1>
+<div class="spacing"></div>
+
+@if (_buildings == null && !initialized)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+@if (readPermission)
+{
+    @if (showSuccessDeleteAlert)
+    {
+        <MudAlert Severity="Severity.Success" ContentAlignment="HorizontalAlignment.Center"
+                  ShowCloseIcon="true" CloseIconClicked="(() => CloseMe(true))">Edificio eliminado con éxito</MudAlert>
+    }
+
+    @if (showFailDeleteAlert)
+    {
+        <MudAlert Severity="Severity.Error" ContentAlignment="HorizontalAlignment.Center"
+                  ShowCloseIcon="true" CloseIconClicked="(() => CloseMe(false))">Error borrando el edificio</MudAlert>
+    }
+
+    @if (showSuccessModifyAlert)
+    {
+        <MudAlert Severity="Severity.Success" ContentAlignment="HorizontalAlignment.Center"
+                  ShowCloseIcon="true" CloseIconClicked="(() => CloseMe(true))">Edificio modificado con éxito</MudAlert>
+    }
+
+    @* Declaring the table of buildings and their properties *@
+    <MudTable Items="@_buildings" Dense="@dense" Hover="@hover" Bordered="@bordered"
+              Striped="@striped" RowsPerPage="7" Filter="new Func<Building,bool>(SearchCall)"
+              Style="top:20rem;">
+        @* The title bar of the table *@
+        <ToolBarContent>
+            <MudText Typo="Typo.h6">Lista de edificios</MudText>
+            <MudSpacer />
+            <MudTextField @bind-Value="searchString" Placeholder="Buscar" Immediate="true" Adornment="Adornment.Start"
+                          AdornmentIcon="@Icons.Material.Filled.Search" IconSize="MudBlazor.Size.Small" Class="mt-0">
+            </MudTextField>
+        </ToolBarContent>
+        <HeaderContent>
+            <MudTh>Universidad</MudTh>
+            <MudTh>Sede</MudTh>
+            <MudTh>Finca</MudTh>
+            <MudTh>Nombre Edificio</MudTh>
+            <MudTh>Abreviación Edificio</MudTh>
+            <MudTh>Cantidad de pisos</MudTh>
+            <MudTh>Niveles</MudTh>
+            @if (updatePermission)
+            {
+                <MudTh></MudTh>
+            }
+            @if (deletePermission)
+            {
+                <MudTh></MudTh>
+            }
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="Universidad">@context.UniversityName.Value</MudTd>
+            <MudTd DataLabel="Sede">@context.CampusName.Value</MudTd>
+            <MudTd DataLabel="Finca">@context.SiteName.Value</MudTd>
+            <MudTd DataLabel="Nombre Edificio">@context.BuildingName.Value</MudTd>
+            <MudTd DataLabel="Abreviación Edificio">@context.BuildingAcronym.Value</MudTd>
+            <MudTd DataLabel="Cantidad de pisos">@context.LevelCount.Value</MudTd>
+            <MudTd DataLabel="Niveles">
+                <MudIconButton Icon="@Icons.Material.Filled.List"
+                               Style="@($"color:{Colors.Grey.Darken2};")" @onclick="@(e => ListLevels(context) )">
+                </MudIconButton>
+            </MudTd>
+            @if (updatePermission)
+            {
+                <MudTd DataLabel="">
+                    <MudIconButton Icon="@Icons.Material.Filled.Edit"
+                                   Style="@($"color:{Colors.Grey.Darken2};")" @onclick="@(e => ModifyBuilding(context) )">
+                    </MudIconButton>
+                </MudTd>
+            }
+            @if (deletePermission)
+            {
+                <MudTd DataLabel="">
+                    <MudIconButton Icon="@Icons.Material.Filled.Delete"
+                                   Style="@($"color:{Colors.Red.Darken2};")" @onclick="@(e => ShowModalOnSubmit(context) )">
+                    </MudIconButton>
+                </MudTd>
+            }
+        </RowTemplate>
+        <PagerContent>
+            <MudTablePager HideRowsPerPage />
+        </PagerContent>
+    </MudTable>
+
+    <BSModal IsStaticBackdrop="true" IsCentered="true" DataId="modal2" @ref="modalConfirmation">
+        <Header>
+            <div style="color: @colorStatus "><b>@modalTitle</b></div>
+        </Header>
+        <Content>
+            @((MarkupString)modalContent)
+            <BSValidationSummary />
+        </Content>
+        <Footer Context="modal">
+            @if (success)
+            {
+                <BSButton Color="BSColor.Danger" @onclick="DeleteBuilding">@acceptMessage</BSButton>
+                <BSButton Color="BSColor.Secondary" @onclick="modal.HideAsync">@cancelMenssage</BSButton>
+            }
+        </Footer>
+    </BSModal>
+}
+else if (initialized)
+{
+    <h3>No tiene permiso para acceder a esta página</h3>
+}
+}

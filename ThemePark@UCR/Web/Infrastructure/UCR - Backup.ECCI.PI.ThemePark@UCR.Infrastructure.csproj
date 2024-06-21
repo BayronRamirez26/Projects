@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>UCR.ECCI.PI.ThemePark_UCR.Infrastructure</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="LearningSpace\Repositories\SqlGetLevelFromBuilding.cs" />
+    <Compile Remove="LearningSpace\Repositories\SqlGetLevelFromBuildingRerpository.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="LearningSpace\EntityConfigurations\NewFile1.txt" />
+    <None Remove="LearningSpace\Repositories\NewFile1.txt" />
+    <None Remove="LearningSpace\Repositories\NewFile2.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="8.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.4" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Riok.Mapperly" Version="3.5.1" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Shared\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\UCR.ECCI.PI.ThemePark@UCR.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

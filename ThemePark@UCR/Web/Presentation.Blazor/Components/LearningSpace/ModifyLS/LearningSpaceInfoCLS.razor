@@ -1,0 +1,38 @@
+﻿@using BlazorStrap
+@using static UCR.ECCI.PI.ThemePark_UCR.Presentation.Blazor.Pages.ModifyLearningSpace
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningSpace.Entities
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.Shared.ValueObjects;
+@code {
+    [Parameter] public LearningSpace LearningSpace { get; set; }
+    [Parameter] public IEnumerable<LSType>? LSTypesList { get; set; }
+}
+
+<BSRow Position="Position.Relative" ColumnSmall="6">
+    <BSCol Position="Position.Relative" Justify="Justify.Start">
+        <div class="spacing">
+            <BSLabel style="font-size: 20px;">Nombre</BSLabel>
+            <BSInput InputType="InputType.Text" @bind-Value="LearningSpace.Name" />
+            <BSFeedback For="@(() => LearningSpace.Name)" />
+        </div>
+    </BSCol>
+    <BSCol Position="Position.Relative" Justify="Justify.Start">
+        <BSLabel style="font-size: 20px;">Tipo de Espacio</BSLabel>
+        <div class="spacing">
+            <BSInput InputType="InputType.Select" @bind-Value="LearningSpace.type" class="dropdown-CLS">
+                <option value="null">Tipo de espacio</option>
+                @if (LSTypesList == null)
+                {
+                    <option value="DEFAULT">DEFAULT</option>
+                }
+                else
+                {
+                    @foreach (var option in LSTypesList)
+                    {
+                        <option value="@option.Id">@option.Name.Value</option>
+                    }
+                }
+            </BSInput>
+            <BSFeedback For="@(() => LearningSpace.type)" />
+        </div>
+    </BSCol>
+</BSRow>

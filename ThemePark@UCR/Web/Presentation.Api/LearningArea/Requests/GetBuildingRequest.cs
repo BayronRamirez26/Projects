@@ -1,0 +1,11 @@
+﻿using UCR.ECCI.PI.ThemePark_UCR.Presentation.Api.LearningArea.Dtos;
+
+namespace UCR.ECCI.PI.ThemePark_UCR.Presentation.Api.LearningArea.Requests;
+
+/// <summary>
+/// Endpoint response for GetBuildings
+/// </summary>
+/// <param name="Building"></param>
+public record GetBuildingRequest(BuildingDto BuildingDto);
+
+public record GetBuildingDetailsRequest(Guid BuildingId);

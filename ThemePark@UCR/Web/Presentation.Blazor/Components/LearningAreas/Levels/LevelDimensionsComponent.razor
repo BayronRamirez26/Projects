@@ -1,0 +1,28 @@
+﻿@code {
+    [Parameter]
+    public LevelInfo level { get; set; }
+}
+
+<BSLabel Class="spacing"><h4>Dimensiones del nivel</h4></BSLabel>
+<div class="spacing"></div>
+<BSRow Position="BlazorStrap.Position.Relative">
+    <BSCol ColumnSmall="3">
+        <BSLabel>Largo <span class="required">*</span> </BSLabel>
+        <BSInput InputType="BlazorStrap.InputType.Number"
+            @bind-Value="level.length" ValidateOnInput="true" />
+        <BSFeedback For="@(() => level.length)"/>
+    </BSCol>
+    <BSCol ColumnSmall="3">
+        <BSLabel>Ancho <span class="required">*</span> </BSLabel>
+        <BSInput InputType="BlazorStrap.InputType.Number"
+            @bind-Value="level.width" ValidateOnInput="true" />
+        <BSFeedback For="@(() => level.width)"/>
+    </BSCol>
+    <BSCol ColumnSmall="3">
+        <BSLabel>Alto <span class="required">*</span></BSLabel>
+        <BSInput InputType="BlazorStrap.InputType.Number"
+            @bind-Value="level.height" ValidateOnInput="true" />
+        <BSFeedback For="@(() => level.height)"/>
+    </BSCol>
+<div class="spacing"></div>
+</BSRow>

@@ -1,0 +1,111 @@
+﻿@page "/ShowActiveUsers"
+@using BlazorStrap
+@using BlazorStrap.V5
+@using MudBlazor
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.Person.Services
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.Person.Entities
+@inject IUserService UserService
+@inject IPersonService PersonService
+@inject CurrentNavigationUser CurrentNavigationUser
+@inject Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider AuthenticationStateProvider
+@inject NavigationManager NavigationManager
+@inject UserState UserState
+
+
+<PageTitle>Lista de Usuarios</PageTitle>
+
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+<link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />
+<link href="css/ShowActiveUsers.css" rel="stylesheet" />
+<link href="css/CreateLearningSpace.css" rel="stylesheet" />
+
+<h1 style="color:#0C344E">Lista de Usuarios</h1>
+<div class="spacing"></div>
+
+<MudTable Items="@personData" Dense="@dense" Hover="@hover" Bordered="@bordered"
+          Striped="@striped" RowsPerPage="7"
+          Filter="new Func<Persons,bool>(FilterFunc1)"
+          Style="top:20rem;">
+    <ToolBarContent>
+        <MudText Typo="Typo.h6">Esta lista muestra todass las personas que se han registrado en el sistema.</MudText>
+        <MudSpacer />
+        <MudTextField @bind-Value="searchString1" Placeholder="Search" Adornment="Adornment.Start" 
+            AdornmentIcon="@Icons.Material.Filled.Search" IconSize="MudBlazor.Size.Small" Class="mt-0">
+        </MudTextField>
+    </ToolBarContent>
+    <HeaderContent>
+        <MudTh>Nombre</MudTh>
+        <MudTh>Segundo Nombre</MudTh>
+        <MudTh>Primer Apellido</MudTh>
+        <MudTh>Segundo Apellido</MudTh>
+        <MudTh>Fecha Nacimiento</MudTh>
+        <MudTh>Telefono</MudTh>
+        <MudTh>Correo</MudTh>
+        <MudTh>Activo</MudTh>
+        <MudTh>Nombre Usuario</MudTh>
+        <MudTh>Ver Roles</MudTh>
+        <MudTh>Eliminar usuario</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Nombre">@context.FirstName?.Value</MudTd>
+        <MudTd DataLabel="SegundoNombre">@context.MiddleName?.Value</MudTd>
+        <MudTd DataLabel="PrimerApellido">@context.FirstLastName?.Value</MudTd>
+        <MudTd DataLabel="SegundoApellido">@context.SecondLastName?.Value</MudTd>
+        <MudTd DataLabel="FechaNacimiento">@context.BirthDate?.ToString()</MudTd>
+        <MudTd DataLabel="Telefono">@context.PhoneNumber?.Value</MudTd>
+        <MudTd DataLabel="Correo">@context.Email?.Value</MudTd>
+        @if(@context.User!= null){
+            <MudTd DataLabel="Activo">@(context.User.IsActive ? "Sí" : "No")</MudTd>
+            <MudTd DataLabel="NombreUsuario">@context.User.UserNickName?.Value</MudTd>
+        }
+        else
+        {
+            <MudTd DataLabel="Activo">No tiene usuario.</MudTd>
+            <MudTd DataLabel="NombreUsuario"> - </MudTd>
+        }
+        <MudIconButton Icon="@Icons.Material.Filled.List"
+                       Style="@($"color:{Colors.Grey.Darken2};")" @onclick="@(e => NavigateToUserRoles(context) )">
+        </MudIconButton>
+        <MudTd DataLabel="">
+            <MudIconButton Icon="@Icons.Material.Filled.Delete"
+                           Style="@($"color:{Colors.Red.Darken2};")" @onclick="@(e => ShowModalOnSubmit(context) )"></MudIconButton>
+        </MudTd>
+    </RowTemplate>
+    <PagerContent>
+        <MudTablePager HideRowsPerPage />
+    </PagerContent>
+</MudTable>
+
+<BSModal IsStaticBackdrop="true" IsCentered="true" DataId="modal2" @ref="modalConfirmation">
+    <Header>
+        <div style="color: @colorStatus "><b>@modalTitle</b></div>
+    </Header>
+    <Content>
+        @((MarkupString)modalContent)
+        <BSValidationSummary />
+    </Content>
+    <Footer Context="modal">
+        @if (success)
+        {
+            <BSButton Color="BSColor.Danger" @onclick="DeletePersons">@acceptMessage</BSButton>
+            <BSButton Color="BSColor.Secondary" @onclick="modal.HideAsync">@cancelMenssage</BSButton>
+        }
+    </Footer>
+</BSModal>
+
+<BSModal IsStaticBackdrop="true" IsCentered="true" DataId="modal2" @ref="modalFeedback">
+    <Header>
+        <div style="color: @colorStatus ">@modalTitle</div>
+    </Header>
+    <Content>
+        @((MarkupString)modalContent)
+        <BSValidationSummary />
+    </Content>
+    <Footer Context="modal">
+        @if (success)
+        {
+            <BSButton Color="BSColor.Primary" @onclick="modal.HideAsync">Continuar</BSButton>
+        }
+    </Footer>
+</BSModal>
+

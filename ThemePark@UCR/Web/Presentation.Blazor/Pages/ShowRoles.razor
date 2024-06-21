@@ -1,0 +1,60 @@
+﻿@page "/ShowRoles"
+@using BlazorStrap
+@using BlazorStrap.V5
+@using MudBlazor
+@using System.Diagnostics
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.Person.Services
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.Person.Entities
+@inject IPermissionService PermissionService
+@inject Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider AuthenticationStateProvider
+@inject NavigationManager NavigationManager
+@inject UserState UserState
+@inject IRoleService RoleService
+
+<PageTitle>Lista de Roles</PageTitle>
+
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+<link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />
+<link href="css/ShowActiveUsers.css" rel="stylesheet" />
+
+<h1 style="color:#0C344E">Lista de Roles del sistema.</h1>
+<div class="spacing"></div>
+
+<MudTable Items="@allRoles" Dense="@dense" Hover="@hover" Bordered="@bordered"
+          Striped="@striped" RowsPerPage="7"
+          Filter="new Func<Role,bool>(FilterFunc1)"
+          Style="top:20rem;">
+    <ToolBarContent>
+        <MudSpacer />
+        <MudTextField @bind-Value="searchString1" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="MudBlazor.Size.Medium" Class="mt-0"></MudTextField>
+    </ToolBarContent>
+    <HeaderContent>
+        <MudTh>Nombre Rol</MudTh>
+        <MudTh>Permisos</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="NombreRol">@context.RoleName.Value</MudTd>
+        @if (@context.Permissions.Count() > 0)
+        {
+            <MudTd DataLabel="Permisos">
+                @{
+                    var permissions = string.Join(", ", context.Permissions.Select(p => p.PermissionDescription.Value));
+                }
+                @if (!string.IsNullOrEmpty(permissions))
+                {
+                    @permissions
+                }
+            </MudTd>
+        }
+        else
+        {
+            <MudTd DataLabel="Permiso">-</MudTd>
+        }
+        <MudIconButton Icon="@Icons.Filled.Delete"
+                       Style="@($"color:{Colors.Red.Darken4};")" @onclick="@(e => DeleteRole(context) )">
+        </MudIconButton>
+    </RowTemplate>
+    <PagerContent>
+        <MudTablePager HideRowsPerPage />
+    </PagerContent>
+</MudTable>

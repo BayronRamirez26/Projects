@@ -1,0 +1,15 @@
+﻿@using static UCR.ECCI.PI.ThemePark_UCR.Presentation.Blazor.Pages.ModifyAccessPoint
+@using BlazorStrap
+@code {
+    [Parameter] public bool IsDisabled { get; set; }
+    [Parameter] public EventCallback OnSubmit { get; set; }
+    [Parameter] public EventCallback OnCancel { get; set; }
+}
+
+<BSRow Position="Position.Relative" Justify="Justify.Start">
+    <BSCol>
+        <BSButton Color="BSColor.Primary" IsSubmit="true" IsDisabled="@IsDisabled">Modificar</BSButton>
+        <BSButton style="margin-left: 2rem;" Color="BSColor.Secondary" @onclick="OnCancel">Cancelar</BSButton>
+    </BSCol>
+</BSRow>
+

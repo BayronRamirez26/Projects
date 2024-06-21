@@ -1,0 +1,75 @@
+﻿@using BlazorStrap
+@using static UCR.ECCI.PI.ThemePark_UCR.Presentation.Blazor.Pages.CreateLearningSpace
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.LearningSpace.Services.Interfaces
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningSpace.Entities
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.Shared.ValueObjects;
+@inject ITemplateService templateService;
+
+@code {
+    [Parameter] public LearningSpace LearningSpace { get; set; }
+    [Parameter] public IEnumerable<Templates>? templatesList { get; set; }
+    String? name { get; set; }
+
+    public async void asignValuesFromTemplate(string templateId)
+    {
+        Console.WriteLine("Se van a asignar valores desde componente");
+        LearningSpace.templateId = new Guid(templateId);
+        Templates template = (await templateService.GetTemplateFromIdAsync(new Guid(templateId.ToString()))).First();
+        
+        LearningSpace.validate();
+        LearningSpace.SizeX = template.SizeX.Value;
+        LearningSpace.validate();
+        LearningSpace.SizeY = template.SizeY.Value;
+        LearningSpace.validate();
+        LearningSpace.SizeZ = template.SizeZ.Value;
+        LearningSpace.validate();
+        LearningSpace.lSType = template.Type;
+        LearningSpace.validate();
+
+        LearningSpace.Ccolor = template.CeilingColor.Value;
+        
+        LearningSpace.Fcolor = template.FloorColor.Value;
+       
+        LearningSpace.Wcolor = template.WallsColor.Value;
+        
+        Console.WriteLine("Se asignaron los valores");
+        
+        StateHasChanged();
+    }
+}
+
+<BSRow Position="Position.Relative" ColumnSmall="6">
+    <BSCol Position="Position.Relative" Justify="Justify.Start">
+        <div class="spacing">
+            <BSLabel style="font-size: 20px;">Nombre</BSLabel>
+            <BSInput InputType="InputType.Text" @bind-Value="@LearningSpace.Id" />
+            <BSFeedback For="@(() => LearningSpace.Id)" />
+        </div>
+    </BSCol>
+    <BSCol Position="Position.Relative" Justify="Justify.Start">
+        <BSLabel style="font-size: 20px;">Plantilla a utilizar</BSLabel>
+        <div class="spacing">
+            <BSInput InputType="InputType.Select" @bind-Value="LearningSpace.templateId" class="dropdown-CLS"
+                     @onchange="@(async (e) => {
+                        if(e.Value != null){
+                            LearningSpace.templateId = new Guid(e.Value.ToString());
+                            asignValuesFromTemplate(e.Value.ToString());
+                        }
+                    })">
+                <option value="null">Plantilla</option>
+                @if (templatesList == null)
+                {
+                    <option value="DEFAULT">DEFAULT</option>
+                }
+                else
+                {
+                    @foreach (var option in templatesList)
+                    {
+                        <option value=@option.Id>@option.TemplateName.Value</option>
+                    }
+                }
+            </BSInput>
+            <BSFeedback For="@(() => LearningSpace.templateId )" />
+        </div>
+    </BSCol>
+</BSRow>

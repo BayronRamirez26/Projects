@@ -1,0 +1,18 @@
+{
+    "name": "Application",
+    "rootNamespace": "UCR.ECCI.PI.ThemePark_UCR.Unity.Application",
+    "references": [
+        "GUID:ff0c6fb856e786c46b5014958edc27a7",
+        "GUID:3fd5fac74180a16468c6c99e88b4de93",
+        "GUID:3991e003d87e7624a93454e8fcef52bd"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

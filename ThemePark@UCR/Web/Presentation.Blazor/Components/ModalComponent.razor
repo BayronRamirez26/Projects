@@ -1,0 +1,34 @@
+﻿@using BlazorStrap
+@using static UCR.ECCI.PI.ThemePark_UCR.Presentation.Blazor.Pages.ModifyAccessPoint
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningArea.Entities
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningSpace.Entities
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.Shared.ValueObjects;
+@code {
+    [Parameter]
+    public string ModalTitle { get; set; }
+    [Parameter]
+    public string ModalContent { get; set; }
+    [Parameter]
+    public string ColorStatus { get; set; }
+    [Parameter]
+    public EventCallback OnAccept { get; set; }
+    [Parameter]
+    public EventCallback OnCancel { get; set; }
+}
+
+<BSModal IsStaticBackdrop="true" IsCentered="true" DataId="modal2">
+    <Header>
+        <div style="color: @ColorStatus"><b>@ModalTitle</b></div>
+    </Header>
+    <Content>
+        @ModalContent
+        <BSValidationSummary />
+    </Content>
+    <Footer>
+        <div class="buttons_modal">
+            <BSButton Color="BSColor.Primary" @onclick="OnAccept">Sí</BSButton>
+            <BSButton MarginLeftAndRight="Margins.Auto" Color="BSColor.Secondary" @onclick="OnCancel">No</BSButton>
+        </div>
+    </Footer>
+</BSModal>
+

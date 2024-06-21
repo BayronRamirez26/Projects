@@ -1,0 +1,9 @@
+procedure run():
+  consumeForever()
+  return successOrFailure
+end procedure
+
+procedure consume(GoldBodyResponse data):
+  body(data.httpResponse).str(data.body)
+  send(data.httpResponse)
+procedure

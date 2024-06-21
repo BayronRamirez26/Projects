@@ -1,0 +1,58 @@
+h3 {
+    color: #333;
+    font-size: 24px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.lower-button {
+    margin-top: 28px; /* Adjust the value as needed */
+}
+
+.alert, .info {
+    color: #d9534f; /* Color para las alertas */
+    background-color: #fff3cd; /* Color del fondo */
+    border-color: #ffeeba;
+    padding: 10px;
+    border-radius: 5px; /* Redondeo de bordes */
+    font-size: 18px; /* Tamaño de fuente */
+    text-align: center; /* Centrar el texto */
+    margin: 20px auto; /* Centrar en la página y dar espacio vertical */
+    width: 80%; /* Define el ancho */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Sombreado */
+}
+
+.table {
+    margin-top: 20px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+}
+
+    .table th, .table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    .table th {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+.user-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #2980B9;
+    color: white;
+}
+
+.table tbody tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+
+.table tbody tr:hover {
+    background-color: #ddd;
+}

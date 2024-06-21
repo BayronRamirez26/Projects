@@ -1,0 +1,58 @@
+Inheriths from an assembler with types GoldData and GoldData
+
+identifier := "/gold"
+
+procedure run():
+  consumeForever()
+  produce(HttpSocketData())
+  return successOrFailure
+end procedure
+
+procedure consume(HttpSocketData data):
+  produce(data)
+end procedure
+
+procedure start():
+  declare constant processor_count := max_threads
+  declare urlAnalizer as an instance of GoldUrlAnalizer
+  declare solvers as array of GoldSolvers
+  for index := 0 to processor_count in steps of 1 do
+    declare solvers[index] as an instance of GoldSolvers
+  end for
+  declare packer as an instace of GoldPacker
+  declare bodyCreator as an instance of GoldBodyCreator
+  declare sender as an instance of GoldSender
+
+  createOwnQueue(urlAnalizer)
+  setProducingQueue(urlAnalizer, Queue<GoldData>())
+  createOwnQueue(packer)
+  createOwnQueue(bodyCreator)
+  createOwnQueue(sender)
+
+  setProducingQueue(getConsumingQueue(urlAnalizer))
+  for index := 0 to processor_count in steps of 1 do
+    setConsumingQueue(solvers[index], getProducingQueue(urlAnalizer))
+    setProducingQueue(solvers[index], getConsumingQueue(packer))
+  end for
+  setProducingQueue(packer, getConsumingQueue(bodyCreator))
+  setProducingQueue(bodyCreator, getConsumingQueue(sender))
+
+  startThread(urlAnalizer)
+  for index := 0 to processor_count in steps of 1 do
+    startThread(solvers[index])
+  end for
+  startThread(packer)
+  startThread(bodyCreator)
+  startThread(sender)
+end procedure
+
+procedure stop():
+  declare constant processor_count := count(solvers)
+  waitToFinish(urlAnalizer)
+  for index := 0 to processor_count in steps of 1 do
+    waitToFinish(solvers[index])
+  end for
+  waitToFinish(packer)
+  waitToFinish(bodyCreator)
+  waitToFinish(sender)
+end procedure

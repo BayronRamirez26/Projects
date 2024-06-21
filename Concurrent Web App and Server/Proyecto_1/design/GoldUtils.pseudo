@@ -1,0 +1,80 @@
+procedure get_invalid_output_string(int64_t index)
+  string invalidOutputString = ""
+  declare integer := this->inputs[index]
+  if (integer >= (MAX_RANGE)) do
+      invalidOutputString += integer
+      invalidOutputString += ": NA\n"
+  end else do
+      invalidOutputString += integer
+      invalidOutputString += ": NA\n"
+  end
+  return invalidOutputString
+end procedure
+  
+procedure string get_global_total_sums(int64_t globalTotalSums,
+int64_t sizeInput):
+  string globalTotalSumsString = ""
+  globalTotalSumsString += "Total " + this->inputs.size() + " numbers "
+  + this->globalTotalSums + " sums"
+  return globalTotalSumsString
+end procedure
+  
+  
+procedure get_total_of_sums_string(int64_t input, GoldbachNumber* output):
+  string totalSumsString = ""
+  declare integer := input
+  if (integer >= (MAX_RANGE) || integer <= 3 || integer == 5) do
+    totalSumsString += get_invalid_output_string(input)
+  end else do
+    totalSumsString +=  input + ": " + output->totalSums + " sums"
+  end
+  return totalSumsString;
+end procedure
+
+procedure get_sums_string(int64_t input, GoldbachNumber* output)
+  string sumsString = ""
+  declare integer = input * (-1);
+  if (integer >= (MAX_RANGE) || integer <= 3 || integer == 5) do
+    sumsString += get_invalid_output_string(integer)
+  end else do
+    sumsString += input + ": " + output->totalSums + " sums: "
+    if (integer%2 == 0) do
+      sumsString += get_even_sums_string(output)
+    end else do
+      sumsString += get_odd_sums_string(output)
+    end
+  end
+  return sumsString
+end procedure
+
+procedure get_even_sums_string(GoldbachNumber* output):
+  string sumsString = ""
+  declare total_sums = size(output.goldbachSums)
+  for array_index := 0 to _total_sums do
+    if (array_index == total_sums-1) do
+        sumsString += output->goldbachSums[array_index].value2 + " + "
+        sumsString += output->goldbachSums[array_index].value3 + "\n";
+    end else do
+      sumsString += output->goldbachSums[array_index].value2 + " + ";
+      sumsString += output->goldbachSums[array_index].value3 + ", ";
+    end
+  end
+  return sumsString;
+end procedure
+
+procedure get_odd_sums_string(GoldbachNumber* output)
+  string sumsString = " "
+  declare total_sums = size(output->goldbachSums)
+  for array_index := 0 to total_sums do
+    if (array_index == total_sums-1) do
+      sumsString += output->goldbachSums[array_index].value1 + " + "
+      sumsString += output->goldbachSums[array_index].value2 + " + "
+      sumsString += output->goldbachSums[array_index].value3 + "\n";
+    end else do
+      sumsString += output->goldbachSums[array_index].value1 + " + "
+      sumsString += output->goldbachSums[array_index].value2 + " + "
+      sumsString += output->goldbachSums[array_index].value3 + ", "
+    end
+  end
+  return sumsString
+end procedure

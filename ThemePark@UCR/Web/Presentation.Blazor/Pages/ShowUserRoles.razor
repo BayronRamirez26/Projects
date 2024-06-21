@@ -1,0 +1,59 @@
+﻿@page "/ShowUserRoles"
+@inject UserState UserState
+@inject IRoleService RoleService
+@inject IPermissionService PermissionService
+@inject IPersonService PersonService
+@inject NavigationManager NavigationManager
+@inject Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider AuthenticationStateProvider
+
+@using MudBlazor
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.Person.Services
+@using System.ComponentModel.DataAnnotations
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.Person.Entities
+@using BlazorStrap
+@using BlazorStrap.V5
+
+<PageTitle>Lista de Roles</PageTitle>
+
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+<link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />
+<link href="css/ShowActiveUsers.css" rel="stylesheet" />
+
+<h1 style="color:#0C344E">Roles actuales de @user.UserNickName.Value</h1>
+<div class="spacing"></div>
+
+<MudTable Items="@userRoles" Dense="@dense" Hover="@hover" Bordered="@bordered"
+          Striped="@striped" RowsPerPage="7"
+          Filter="new Func<Role,bool>(FilterFunc1)"
+          Style="top:20rem;">
+    <ToolBarContent>
+        <MudSpacer />
+        <MudTextField @bind-Value="searchString1" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="MudBlazor.Size.Medium" Class="mt-0"></MudTextField>
+    </ToolBarContent>
+    <HeaderContent>
+        <MudTh>Nombre Rol</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="NombreRol">@context.RoleName.Value</MudTd>
+        <MudTd DataLabel="">
+        </MudTd>
+    </RowTemplate>
+    <PagerContent>
+        <MudTablePager HideRowsPerPage />
+    </PagerContent>
+</MudTable>
+
+<BSButton Class="mt-6">
+    <BSButton Color="BSColor.Primary" OnClick="NavigateToUserRoles" IsSubmit="true">Administrar</BSButton>
+</BSButton>
+
+<BSButton Class="lower-button">
+    <BSButton Color="BSColor.Secondary" OnClick="GoBack">Regresar</BSButton>
+</BSButton>
+
+@code {
+    private void GoBack()
+    {
+        NavigationManager.NavigateTo("/ShowActiveUsers");
+    }
+}

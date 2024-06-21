@@ -1,0 +1,9 @@
+﻿CREATE TABLE [ThemePark].[AccessPoint]
+(
+	[AccessPointId] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
+	[LevelId] UNIQUEIDENTIFIER NOT NULL,
+	[LearningSpaceId] UNIQUEIDENTIFIER NOT NULL,
+	[SizeX] DOUBLE,
+	[SizeY] DOUBLE,
+	[SizeZ] DOUBLE
+);

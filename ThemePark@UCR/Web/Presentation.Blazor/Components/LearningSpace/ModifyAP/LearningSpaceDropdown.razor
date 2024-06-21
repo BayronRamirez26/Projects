@@ -1,0 +1,19 @@
+﻿@using static UCR.ECCI.PI.ThemePark_UCR.Presentation.Blazor.Pages.ModifyAccessPoint
+@using BlazorStrap
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningSpace.Entities
+@code {
+    [Parameter] public IEnumerable<LearningSpaces> Elements { get; set; }
+    [Parameter] public Guid LsGuid { get; set; }
+    [Parameter] public EventCallback<Guid> LsGuidChanged { get; set; }
+}
+
+<div class="spacing">
+    <BSLabel><h3>Nombre del Learning Space</h3></BSLabel>
+    <BSInput InputType="InputType.Select" @bind-Value="LsGuid" @onchange="@(async (e) => await LsGuidChanged.InvokeAsync(Guid.Parse(e.Value.ToString())))" class="dropdown-CLS">
+        <option value="null">Nombre del espacio</option>
+        @foreach (var name in Elements)
+        {
+            <option value="@name.LearningSpaceId.Value">@name.LearningSpaceName.Value</option>
+        }
+    </BSInput>
+</div>

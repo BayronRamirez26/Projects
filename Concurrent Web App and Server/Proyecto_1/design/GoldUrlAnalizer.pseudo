@@ -1,0 +1,86 @@
+Inheriths from an assembler with types HttpSocketData and GoldData
+
+procedure run():
+  consumeForever()
+  for index := 0 to max_threads in steps of 1 do
+    produce(GoldData())
+  end for
+  return successOrFailure
+end procedure
+
+procedure consume(HttpSocketData data):
+  declare goldData as instance of GoldData
+  goldData.httpRequest := data.httpRequest
+  goldData.httpResponse := data.httpResponse
+  goldData.serveNotFound := data.serveNotFound
+  if (goldData.serveNotFound) then do
+    produce(goldData)
+  else
+    analizeUrl(data, goldData)
+    if (goldData.isHomePage == true) then do
+      produce(goldData)
+    else
+      declare goldDataSend as an instance of GolData
+      goldDataSend.httpRequest := goldData.httpRequest
+      goldDataSend.httpResponse := goldData.httpResponse
+      goldDataSend.inputs := goldData.inputs
+      goldDataSend.numberCount := goldData.numberCount
+      goldDataSend.validRequest := goldData.validRequest
+      if (goldDataSend.numberCount := 0) then do
+        produce(goldDataSend)
+      else
+        for index := 0 to goldDataSend.numberCount in steps of 1 do
+          goldDataSend.number := goldDataSend.inputs->at(index)
+          goldDataSend.priority := index
+          produce(goldDataSend)
+        end for
+      end if
+    end if
+  end if
+end procedure
+
+procedure analizeUrl(data, goldData):
+  if (getMethod(data.httpRequest) == "GET" and getURI(data.httpRequest) == "/") then do
+    goldData.isHomePage := true
+  else
+    declare inQuery("^/gold([/]|\\?number=)((-?\\d+)$|(-?\\d+)(([%2C]|[,])-?\\d+)+)$")
+    declare validRequest as boolean := search(data.httpRequest_getURI(), matches, inQuery)
+    if (validRequest) then do
+      declare inputs as dynamic array of integers
+      parseMatches(inputs, matches)
+      if (count(inputs) == 0) then do
+        goldData.validRequest := false
+      else
+        goldData.inputs := inputs
+        goldData.numberCount := count(inputs)
+      end if
+    else
+      goldData.validRequest := false
+    end if
+  end if
+end procedure
+
+procedure split(String answers[], String string, String delimiter):  // New
+  declare start := 0, theEnd, delimL = length(delimiter)
+  declare token := ""
+  while ((theEnd = string.find(delimiter, start)) != std::string::npos) do
+    token := substring(string, start, theEnd - start)
+    start := theEnd + delimL
+    append(answers, token)
+  end while
+  append(answers, substring(string, start))
+  return answers
+end procedure
+
+
+procedure parseMatches(int results[], String matches[]):  // New
+  declare stringsRead[]
+  if (find(",") in matches[2] == 1) then  // Found a coma
+    split(stringsRead, matches[2], ",")
+  else
+    split(stringsRead, matches[2], "%2C")
+  end if
+  for index := 0 to stringsRead size do
+    append(results, int(stringsRead[index]))  // Convert strings
+  end for
+end procedure

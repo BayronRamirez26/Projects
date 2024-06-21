@@ -1,0 +1,86 @@
+@page "/addcomponent-to-template"
+@inject HttpClient Http
+@using BlazorStrap
+@using MudBlazor
+@using System.ComponentModel.DataAnnotations
+@using System.Numerics
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.LearningSpace.Services.Interfaces
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningComponents.Entities
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningSpace.Entities
+@using System
+@using System.IO;
+@using System.Text.Json;
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningSpace.Entities.Wrappers
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.Person.Entities
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.Shared.ValueObjects
+@using UCR.ECCI.PI.ThemePark_UCR.Presentation.Blazor.Components.LearningSpace.AddComponent
+@using UCR.ECCI.PI.ThemePark_UCR.Presentation.Blazor.Components.LearningSpace.ModifyLS
+@using System.Collections.Generic;
+@inject NavigationManager NavigationManager
+@inject IDialogService DialogService
+@inject ITemplateService TemplateService
+@inject CurrentNavigationUser CurrentNavigationUser
+
+<link href="css/createlearningspace.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+<link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />
+<link href="css/createlearningspace.css" rel="stylesheet" />
+
+<div class="spacing">
+    <h3 class="Title_CLS">Añadir Componentes</h3>
+</div>
+
+@if (colitionFlag)
+{
+    <MudAlert Severity="Severity.Error" ContentAlignment="HorizontalAlignment.Center"
+              ShowCloseIcon="true" CloseIconClicked="(() => CloseMe(true))">No se puede agregar el componente, se detectaron colisiones</MudAlert>
+}
+@if (isOutside)
+{
+    <MudAlert Severity="Severity.Error" ContentAlignment="HorizontalAlignment.Center"
+              ShowCloseIcon="true" CloseIconClicked="(() => CloseMe(true))">No se puede agregar el componente, no está dentro del espacio de aprendizaje</MudAlert>
+}
+
+<BSForm Model="newComponent" IsRow="true" Gutters="Gutters.Medium" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <BSContainer Position="BlazorStrap.Position.Relative" Class="bordered-container">
+        <BSLabel><h3>Agregar</h3></BSLabel>
+        <ComponentTypeSelector Type="@newComponent.Type" TypeChanged="OnTypeChanged" />
+        <PositionInputs PositionX="@newComponent.PositionX" PositionXChanged="OnPositionXChanged"
+                        PositionY="@newComponent.PositionY" PositionYChanged="OnPositionYChanged"
+                        PositionZ="@newComponent.PositionZ" PositionZChanged="OnPositionZChanged" />
+        <SizeSelector component="@newComponent" template="@template" />
+
+        <RotationInputAC component="@newComponent" RotationChanged="OnRotationChanged" />
+        <div style="margin-top: 20px;">
+            <ActionButtonsForComponents IsDisabled="@IsDisabled" OnSubmit="HandleValidSubmit" OnCancel="HandleCancel" />
+        </div>
+    </BSContainer>
+</BSForm>
+
+<BSModal IsStaticBackdrop="true" IsCentered="true" @ref="modal">
+    <Header>
+        <div style="color: @ColorStatus"><b>@ModalTitle</b></div>
+    </Header>
+    <Content>
+        @ModalContent
+    </Content>
+    <Footer>
+        <div class="buttons_modal active">
+            <BSButton Color="BSColor.Primary" OnClick="ConfirmSubmit">Sí</BSButton>
+            <BSButton MarginLeftAndRight="Margins.Auto" Color="BSColor.Secondary" OnClick="CloseModal">No</BSButton>
+        </div>
+    </Footer>
+</BSModal>
+
+<style>
+    .rectangle {
+        width: 400px;
+        height: 400px;
+        margin-top: 10px;
+        margin-left: 40px;
+    }
+</style>
+
+

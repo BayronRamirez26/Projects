@@ -1,0 +1,347 @@
+﻿@page "/modify-accesspoint"
+@inject NavigationManager NavigationManager
+@inject ILearningSpaceService learningSpaceService
+@inject ILearningSpaceCascadeService _cascade
+@inject IAccessPointService accessPointService
+@inject ISiteService siteService
+@inject ILevelService levelService
+@using System.ComponentModel.DataAnnotations
+@using System.Text
+@using BlazorStrap
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.LearningArea.Services
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.LearningSpace.Services
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.LearningSpace.Services.Interfaces
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningArea.Entities
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningSpace.Entities
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningSpace.Entities.Wrappers
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.Shared.ValueObjects
+@using System.Text.Json
+@using UCR.ECCI.PI.ThemePark_UCR.Presentation.Blazor.Components.LearningSpace.ModifyAP
+@using static UCR.ECCI.PI.ThemePark_UCR.Presentation.Blazor.Pages.CreateAccessPoint
+
+<link href="css/createlearningspace.css" rel="stylesheet" />
+<div class="spacing">
+    <h3 class="Title_CLS">Modificar Punto de Acceso</h3>
+</div>
+
+<BSForm Model="accessPoint" IsRow="true" Gutters="Gutters.Medium" OnValidSubmit="HandleSubmit" OnReset="OnReset">
+    <DataAnnotationsValidator />
+    <div class="spacing">
+        <div class="page-container" style="align-content: center;">
+            <BSContainer Position="Position.Relative" Class="bordered-container">
+                <LearningSpaceDropdown Elements="@Elements" LsGuid="@LsGuid" LsGuidChanged="OnLsGuidChanged" />
+                <LocationSelectorAP LearningSpace="@currentLearningSpace" />
+                <PositionInputs SizeX="@SizeX" SizeXChanged="OnSizeXChanged" SizeY="@SizeY" SizeYChanged="OnSizeYChanged" SizeZ="@SizeZ" SizeZChanged="OnSizeZChanged" />
+                <RotationInputs RotationX="@RotationX" RotationXChanged="OnRotationXChanged" RotationY="@RotationY" RotationYChanged="OnRotationYChanged" />
+                <div style="margin-top: 20px;">
+                    <ActionButtonsAP IsDisabled="@_IsDisabled" OnSubmit="HandleSubmit" OnCancel="HandleCancel" />
+                </div>
+            </BSContainer>
+        </div>
+    </div>
+</BSForm>
+
+
+@code {
+    private AccessPointR accessPoint { get; set; } = new AccessPointR();
+    private AccessPoint oldAccessPoint;
+    private AccessPoint newAccessPoint;
+    private IEnumerable<string> CampusList;
+    private IEnumerable<string> SiteList;
+    private IEnumerable<string> BuildingList;
+    private IEnumerable<Level> LevelList;
+    private bool _validateStatus;
+    private bool _IsDisabled = true;
+    private BSModal modal;
+    private string ModalTitle;
+    private string ModalContent;
+    private string ColorStatus;
+
+    private Guid LsGuid;
+    private string University;
+    private string Campus;
+    private string SiteName;
+    private string BuildingName;
+    private string LevelNumber;
+    private double SizeX;
+    private double SizeY;
+    private double SizeZ;
+    private double RotationX;
+    private double RotationY;
+
+    private IEnumerable<LearningSpaces> Elements = new List<LearningSpaces>();
+
+    private LearningSpace currentLearningSpace = new LearningSpace();
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        var uri = new Uri(NavigationManager.Uri);
+        var accessPointJson = uri.Query.Replace("?accesspoint=", "");
+
+        if (string.IsNullOrEmpty(accessPointJson))
+        {
+            Console.WriteLine("Error: el parámetro 'accesspoint' está vacío o no presente.");
+            return;
+        }
+
+        try
+        {
+            var decodedAccessPointJson = Uri.UnescapeDataString(accessPointJson);
+            oldAccessPoint = JsonSerializer.Deserialize<AccessPoint>(decodedAccessPointJson);
+
+            if (oldAccessPoint == null)
+            {
+                Console.WriteLine("Error: no se pudo deserializar el JSON a un objeto AccessPoint.");
+                return;
+            }
+
+            SizeX = oldAccessPoint.CoordX;
+            SizeY = oldAccessPoint.CoordY;
+            SizeZ = oldAccessPoint.CoordZ;
+            RotationX = oldAccessPoint.RotationX;
+            RotationY = oldAccessPoint.RotationY;
+            LsGuid = oldAccessPoint.LearningSpaceId.Value;
+
+            currentLearningSpace = new LearningSpace
+                {
+                    levelId = oldAccessPoint.LevelId.Value.ToString(),
+                    University = University,
+                    Campus = Campus,
+                    SiteName = SiteName,
+                    BuildingAcronym = BuildingName
+                };
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error al deserializar el JSON: {ex.Message}");
+        }
+    }
+
+    private async void submit()
+    {
+        Console.WriteLine("XXXXXXXXXXXXXXXXXXXXXXXXXXX");
+        AccessPoint accessPoint = new AccessPoint(
+            oldAccessPoint.AccessPointId,
+            GuidWrapper.Create(LsGuid),
+            GuidWrapper.Create(new Guid(currentLearningSpace.levelId)),
+            SizeX,
+            SizeY,
+            SizeZ,
+            RotationX,
+            RotationY
+        );
+        await accessPointService.ModifyAccessPointAsync(accessPoint);
+
+        ModalTitle = "Access point modificado exitosamente!";
+        ModalContent = "¿Desea modificar otro access point?";
+        ColorStatus = "#95B60A;";
+        NavigationManager.NavigateTo("/list-accesspoints");
+    }
+
+    private void ConfirmSubmit()
+    {
+        submit();
+        CloseModal();
+    }
+
+    private void CloseModal()
+    {
+        modal.HideAsync();
+    }
+
+    private void GoToCreateAnother()
+    {
+        NavigationManager.NavigateTo(NavigationManager.Uri, true);
+    }
+
+    private void GoToList()
+    {
+        NavigationManager.NavigateTo("/list-accesspoints");
+    }
+
+    private void OnReset(IBSForm bSForm)
+    {
+        bSForm.Reset();
+    }
+
+    private void HandleSubmit()
+    {
+        submit();
+    }
+
+    private void HandleCancel()
+    {
+        NavigationManager.NavigateTo("/list-accesspoints");
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Elements = await learningSpaceService.GetLearningSpaceAsync();
+    }
+
+    private void OnUniversityChanged(string university)
+    {
+        University = university;
+        _ = SearchCampus();
+        SiteList = null;
+        BuildingList = null;
+        LevelList = null;
+        Campus = null;
+        currentLearningSpace.University = university;
+        ValidateForm();
+    }
+
+    private async Task SearchCampus()
+    {
+        try
+        {
+            CampusList = await _cascade.GetCampusFromUniversity(University);
+            ValidateForm();
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error al obtener los campus: {ex.Message}");
+        }
+    }
+
+    private void OnCampusChanged(string campus)
+    {
+        Campus = campus;
+        _ = SearchSite();
+        BuildingList = null;
+        LevelList = null;
+        currentLearningSpace.Campus = campus;
+        ValidateForm();
+    }
+
+    private async Task SearchSite()
+    {
+        try
+        {
+            SiteList = await _cascade.GetSitesFromCampus(Campus);
+            ValidateForm();
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error al obtener los sitios: {ex.Message}");
+        }
+    }
+
+    private void OnSiteNameChanged(string siteName)
+    {
+        SiteName = siteName;
+        _ = FindBuilding();
+        currentLearningSpace.SiteName = siteName;
+        LevelList = null;
+        ValidateForm();
+    }
+
+    private async Task FindBuilding()
+    {
+        try
+        {
+            BuildingList = await _cascade.GetBuildingsFromSite(SiteName);
+            ValidateForm();
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error al obtener los edificios: {ex.Message}");
+        }
+    }
+
+    private void OnBuildingNameChanged(string buildingName)
+    {
+        BuildingName = buildingName;
+        _ = FindLevels();
+        currentLearningSpace.BuildingAcronym = buildingName;
+        ValidateForm();
+    }
+
+    private async Task FindLevels()
+    {
+        try
+        {
+            LevelList = await levelService.GetLevelsFromBuildingAsync(LongName.Create(University), LongName.Create(Campus), MediumName.Create(SiteName), ShortName.Create(BuildingName));
+            ValidateForm();
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error al obtener los niveles: {ex.Message}");
+        }
+    }
+
+    private void OnLevelNumberChanged(string levelNumber)
+    {
+        LevelNumber = levelNumber;
+        currentLearningSpace.levelId = levelNumber;
+        ValidateForm();
+    }
+
+    private void OnLsGuidChanged(Guid lsGuid)
+    {
+        LsGuid = lsGuid;
+        ValidateForm();
+    }
+
+    private void OnSizeXChanged(double sizeX)
+    {
+        SizeX = sizeX;
+        ValidateForm();
+    }
+
+    private void OnSizeYChanged(double sizeY)
+    {
+        SizeY = sizeY;
+        ValidateForm();
+    }
+
+    private void OnSizeZChanged(double sizeZ)
+    {
+        SizeZ = sizeZ;
+        ValidateForm();
+    }
+
+    private void OnRotationXChanged(double rotationX)
+    {
+        RotationX = rotationX;
+        ValidateForm();
+    }
+
+    private void OnRotationYChanged(double rotationY)
+    {
+        RotationY = rotationY;
+        ValidateForm();
+    }
+
+    public class LearningSpace
+    {
+        public string? levelId { get; set; }
+        public string? University { get; set; }
+        public string? Campus { get; set; }
+        public string? SiteName { get; set; }
+        public string? BuildingAcronym { get; set; }
+        
+    }
+
+    private void ValidateForm()
+    {
+        _IsDisabled = string.IsNullOrWhiteSpace(currentLearningSpace.University) ||
+                      string.IsNullOrWhiteSpace(currentLearningSpace.Campus) ||
+                      string.IsNullOrWhiteSpace(currentLearningSpace.SiteName) ||
+                      string.IsNullOrWhiteSpace(currentLearningSpace.BuildingAcronym) ||
+                      string.IsNullOrWhiteSpace(currentLearningSpace.levelId) ||
+                      LsGuid == Guid.Empty ||
+                      SizeX == 0 ||
+                      SizeY == 0 ||
+                      SizeZ == 0 ||
+                      RotationX < 0 ||
+                      RotationY < 0;
+
+        StateHasChanged();
+    }
+}

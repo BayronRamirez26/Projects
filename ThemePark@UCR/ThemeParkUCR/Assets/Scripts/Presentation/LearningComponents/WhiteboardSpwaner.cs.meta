@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 97bbd104cd9a94d459042148eaa09642
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _whiteboardPrefab: {fileID: 5970850491471980618, guid: 47ff935a84b28714baa86f15aa7bd0f8, type: 3}
+  - _whiteboardLabel: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

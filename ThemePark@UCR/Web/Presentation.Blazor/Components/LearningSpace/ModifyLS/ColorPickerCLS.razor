@@ -1,0 +1,33 @@
+﻿@using BlazorStrap
+@using static UCR.ECCI.PI.ThemePark_UCR.Presentation.Blazor.Pages.ModifyLearningSpace
+@code {
+    [Parameter] public LearningSpace LearningSpace { get; set; }
+}
+
+<div class="spacing">
+    <BSLabel style="font-size: 20px">Colores</BSLabel>
+</div>
+<div class="color-picker">
+    <BSContainer>
+        <BSRow Justify="Justify.Start">
+            <BSCol Column="1">
+                Paredes
+            </BSCol>
+            <BSCol Column="1">
+                <BSInput InputType="InputType.Color" @bind-Value="LearningSpace.Wcolor" class="input-color" />
+            </BSCol>
+            <BSCol Column="1">
+                Techo
+            </BSCol>
+            <BSCol Column="1">
+                <BSInput InputType="InputType.Color" @bind-Value="LearningSpace.Ccolor" class="input-color" />
+            </BSCol>
+            <BSCol Column="1">
+                Suelo
+            </BSCol>
+            <BSCol Column="1">
+                <BSInput InputType="InputType.Color" @bind-Value="LearningSpace.Fcolor" class="input-color" />
+            </BSCol>
+        </BSRow>
+    </BSContainer>
+</div>

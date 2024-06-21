@@ -1,0 +1,57 @@
+﻿@using BlazorStrap
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningSpace.Entities
+@code {
+    [Parameter] public double PositionX { get; set; }
+    [Parameter] public EventCallback<double> PositionXChanged { get; set; }
+    [Parameter] public double PositionY { get; set; }
+    [Parameter] public EventCallback<double> PositionYChanged { get; set; }
+    [Parameter] public double PositionZ { get; set; }
+    [Parameter] public EventCallback<double> PositionZChanged { get; set; }
+
+    private async Task HandlePositionXChange(ChangeEventArgs e)
+    {
+        if (double.TryParse(e.Value?.ToString(), out var value))
+        {
+            PositionX = value;
+            await PositionXChanged.InvokeAsync(PositionX);
+        }
+    }
+
+    private async Task HandlePositionYChange(ChangeEventArgs e)
+    {
+        if (double.TryParse(e.Value?.ToString(), out var value))
+        {
+            PositionY = value;
+            await PositionYChanged.InvokeAsync(PositionY);
+        }
+    }
+
+    private async Task HandlePositionZChange(ChangeEventArgs e)
+    {
+        if (double.TryParse(e.Value?.ToString(), out var value))
+        {
+            PositionZ = value;
+            await PositionZChanged.InvokeAsync(PositionZ);
+        }
+    }
+}
+
+<div class="spacing">
+    <BSRow Position="BlazorStrap.Position.Relative">
+        <BSCol>
+            <BSLabel style="font-size: 20px;">Posición X</BSLabel>
+            <BSInput InputType="BlazorStrap.InputType.Number" @bind-Value="PositionX" step="any" @oninput="HandlePositionXChange" />
+            <BSFeedback For="@(() => PositionX)" ValidMessage="Posición X válida" InvalidMessage="Posición X inválida" />
+        </BSCol>
+        <BSCol>
+            <BSLabel style="font-size: 20px;">Posición Y</BSLabel>
+            <BSInput InputType="BlazorStrap.InputType.Number" @bind-Value="PositionY" step="any" @oninput="HandlePositionYChange" />
+            <BSFeedback For="@(() => PositionY)" ValidMessage="Posición Y válida" InvalidMessage="Posición Y inválida" />
+        </BSCol>
+        <BSCol>
+            <BSLabel style="font-size: 20px;">Posición Z</BSLabel>
+            <BSInput InputType="BlazorStrap.InputType.Number" @bind-Value="PositionZ" step="any" @oninput="HandlePositionZChange" />
+            <BSFeedback For="@(() => PositionZ)" ValidMessage="Posición Z válida" InvalidMessage="Posición Z inválida" />
+        </BSCol>
+    </BSRow>
+</div>

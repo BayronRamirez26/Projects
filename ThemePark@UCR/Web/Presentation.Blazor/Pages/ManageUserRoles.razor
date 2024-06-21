@@ -1,0 +1,69 @@
+﻿@page "/ManageRoles"
+@using BlazorStrap
+@using BlazorStrap.V5
+@using MudBlazor
+@using System.Diagnostics
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.Person.Services
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.Person.Entities
+@using UCR.ECCI.PI.ThemePark_UCR.Presentation.Blazor.Services;
+
+@inject IUserService UserService
+@inject IPersonService PersonService
+@inject IPermissionService PermissionService
+@inject Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider AuthenticationStateProvider
+@inject NavigationManager NavigationManager
+@inject UserState UserState
+@inject IRoleService RoleService
+@inject IRoleService RoleService
+@inject HttpClient Http
+@inject CurrentNavigationUser CurrentNavigationUser;
+
+
+<PageTitle>Manage User Roles</PageTitle>
+
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+<link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />
+<link href="css/ShowActiveUsers.css" rel="stylesheet" />
+
+<h1 style="color:#0C344E">Estado de roles de @user.UserNickName.Value</h1>
+<div class="spacing"></div>
+
+<MudTable Items="@allRoles" Dense="@dense" Hover="@hover" Bordered="@bordered"
+          Striped="@striped" RowsPerPage="7"
+          Filter="new Func<Role,bool>(FilterFunc1)"
+          Style="top:20rem;">
+    <ToolBarContent>
+        <MudSpacer />
+        <MudTextField @bind-Value="searchString1" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="MudBlazor.Size.Medium" Class="mt-0"></MudTextField>
+    </ToolBarContent>
+    <HeaderContent>
+        <MudTh>Nombre Rol</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="NombreRol">
+            <span style="color:@(isRoleAssignedInternal(@context.RoleId) ? "green" : "red" )">
+                @context.RoleName.Value
+            </span>
+        </MudTd>
+        <MudTd DataLabel="">
+            <MudSelect T=string Value="@roleStatus[@context.RoleId]" ValueChanged="@(e => OnRoleStatusChanged(e, @context.RoleId))">
+                <MudSelectItem T=string Value="@("Asignado")">Asignado</MudSelectItem>
+                <MudSelectItem T=string Value="@("No Asignado")">No Asignado</MudSelectItem>
+            </MudSelect>
+        </MudTd>
+    </RowTemplate>
+    <PagerContent>
+        <MudTablePager HideRowsPerPage />
+    </PagerContent>
+</MudTable>
+
+<BSButton Class="lower-button">
+    <BSButton Color="BSColor.Secondary" OnClick="GoBack">Regresar</BSButton>
+</BSButton>
+
+@code {
+    private void GoBack()
+    {
+        NavigationManager.NavigateTo("/ShowUserRoles");
+    }
+}

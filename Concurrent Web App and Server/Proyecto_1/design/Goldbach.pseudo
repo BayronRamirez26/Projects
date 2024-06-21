@@ -1,0 +1,209 @@
+All of the above were modifications of previous procedures or new procedures
+involving the class Goldbach
+
+procedure int64_t calculateBiggest(vector<int64_t>& inputs):
+  biggestNumber := 0
+  for  index = 0 index to inputs.size() do
+    if (inputs[index] < 0) then
+      if (inputs[index]*(-1) > biggestNumber) then
+        biggestNumber := inputs[index]*(-1)
+    else
+      if (inputs[index] > biggestNumber) then
+        biggestNumber := inputs[index]
+  end for
+  return biggestNumber
+end procedure
+
+procedure copyInputs( int inputsReceive[] ):
+  for index != 0 to inputs size do
+    append(inputs,inputsReceive[index])
+  end for 
+end procedure
+
+procedure processInputs():
+  declare value := 0
+  declare amount_inputs := inputs_array count
+  for index := 0 to amount_inputs do
+      value := dynamic_array_calculate(inputs_array, index)
+      if (value < 0) then
+          value := value*(-1)
+          if ((value > 5 || value == 4) && value < MAX_RANGE) then
+            calculate_sums(value, index)
+            outputs_information[index]_total_sums :=
+            outputs_information[index]_goldbachSums count
+      else
+        if ((value > 5 || value == 4) && (uint64_t)value < MAX_RANGE)
+          calculate_total_of_sums(value, index)
+  end for
+end procedure
+
+procedure vector<goldbachNumber> run(vector<int64_t> inputs):
+    copyInputs(inputs)
+    calculatePrimes(calculateBiggest(inputs))
+    this->outputs.resize(inputs.size())
+    processInputs()
+    return (this->outputs)
+end procedure
+
+procedure calculatePrimes(biggestNumber):
+    declare vector<bool> isPrimeArray(biggestNumber+1)
+    for size_t index := 0 to count(isPrimeArray) do
+        isPrimeArray[index] := false
+    end for    
+    isPrimeArray[2] := true
+    isPrimeArray[3] := true
+    isPrimeArray[5] := true
+    append(primes, 2)
+    append(primes, 3)
+    declare factor := sqrt(biggest_number) + 1
+    declare verif_number := 0
+    for x := 1 to factor do
+        for y := 1 to factor do
+            verif_number := 4 * x * x + y * y
+            verification_1 :=
+            mod(verif_number, 60) == 1 or mod(verif_number, 60) == 13 or
+            mod(verif_number, 60) == 17 or mod(verif_number, 60) == 29 or
+            mod(verif_number, 60) == 37 or mod(verif_number, 60) == 41 or
+            mod(verif_number, 60) == 49 or mod(verif_number, 60) == 53
+            if (verif_number <= biggestNumber and verification_1) then
+                    isPrimeArray[verif_number] = !isPrimeArray[verif_number]
+            verif_number := 3 * x * x + y * y
+            verification_number = 3 * x * x + y * y
+            verification_2 :=
+            mod(verif_number, 60) == 7 or mod(verif_number, 60) == 19 or
+            mod(verif_number, 60) == 31 or mod(verif_number, 60) == 43
+            if (verif_number <= biggest_number and verification_2) then
+                isPrimeArray[verif_number] = !isPrimeArray[verif_number]
+            verif_number := 3 * x * x - y * y
+            verification_3 :=
+            mod(verif_number, 60) == 11 or mod(verif_number, 60) == 23 or
+            mod(verif_number, 60) == 47 or mod(verif_number, 60) == 59
+            if x > y and verif_number <= biggestNumber and verification_3 then
+                isPrimeArray[verif_number] = !isPrimeArray[verif_number]
+        end for
+    end for
+    for number1 := 5 to factor do
+        if (isPrimeArray[number1] == 1) then
+            for number2 := 1 until number2*number1*number1 <= biggestNumber do
+                isPrimeArray[number2*number1*number1] = false
+            end for
+    end for
+    for number := 5 to biggestNumber do
+        if (isPrimeArray[number] == 1) then
+            append(primes,number)
+    end for
+end procedure
+
+procedure calculate_total_of_sums(integer, index):
+  if (integer % 2 == 0) then
+   even_calculate_total_sums(primes, integer)
+  else
+   odd_calculate_total_sums(primes, integer)
+  end if
+end procedure
+
+procedure even_calculate_total_sums(integer, index):
+  declare prime1 := 0, prime2 := 0
+  declare total_sums := 0
+  declare index1 := 0
+  declare half_integer := integer/2
+
+  prime1 := primes[0]
+  while (prime1 <= half_integer) do 
+    prime2 = integer - prime1
+    if (isPrime(prime2)) then
+      ++total_sums
+    end if
+    ++index1
+    prime1 = primes[index1]
+  end while
+  outputs[index]_total_sums = total_sums
+end procedure
+
+procedure odd_calculate_total_sums(integer, index):
+  declare prime1 := 0, prime2 := 0, prime3 := 0
+  declare total_sums := 0
+  declare index1 := 0, index2 := 0
+  declare third_integer = integer/3
+  declare half_integer = integer/2
+
+  prime1 := primes[0]
+  while (prime1 <= third_integer) do
+    prime2 := prime1
+    index2 := index1
+    while (prime2 <= half_integer) do
+      prime3 := integer - prime1 - prime2
+      if (prime3 >= prime2 and isPrime(prime3)) then
+        ++total_sums
+      end if
+      ++index2
+      prime2 := primes[index2]
+    end while
+    ++index1
+    prime1 := primes[index]
+  end while
+  outputs[index]_total_sums = total_sums
+end procedure
+
+procedure calculate_sums(integer, index):
+  if integer % 2 == 0 then
+    even_calculate_sums(integer, index)
+  else
+    odd_calculate_sums(integer, index)
+  end if
+end procedure
+
+procedure even_calculate_sums(integer, index):
+  declare prime1 := 0, prime2 := 0
+  declare index := 0
+  declare half_integer := integer/2
+
+  prime1 := primes[0]
+  while (prime1 <= half_integer) do 
+    prime2 = integer - prime1
+    if (isPrime(prime2)) then
+      triple_elements_array_append(outputs[index]_goldbachSums, 0, prime1, prime2)
+    end if
+    ++index
+    prime1 = primes[index]
+  end while
+end procedure
+
+procedure odd_calculate_sums(integer, index):
+  declare prime1 := 0, prime2 := 0, prime3 := 0
+  declare index1 := 0, index2 := 0
+  declare third_integer = integer/3
+  declare half_integer = integer/2
+
+  prime1 := primes[0]
+  while (prime1 <= third_integer) do
+    prime2 := prime1
+    index2 := index1
+    while (prime2 <= half_integer) do
+      prime3 := integer - prime1 - prime2
+      if (prime3 >= prime2 and goldbach_is_prime(is_prime_array, prime3)) then
+        triple_elements_array_append(outputs[index]_goldbachSums, prime1, prime2, prime3)
+      end if
+      ++index2
+      prime2 := primes[index2]
+    end while
+    ++index1
+    prime1 := primes[index1]
+  end while
+end procedure
+
+procedure isPrime(integer)
+  return isPrimeArray[integer]
+end procedure
+
+procedure vector<goldbachNumber>& getOutputs():
+    return this->outputs
+end procedure
+  
+procedure vector<int64_t>& getInputs():
+    return this->inputs
+end procedure
+
+procedure vector<int64_t>& :getPrimes():
+    return this->primes
+end procedure

@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>UCR.ECCI.PI.ThemePark_UCR.Domain</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="LearningSpace\Entities\NewFile1.txt" />
+    <None Remove="LearningSpace\Repositories\IGetLevel" />
+    <None Remove="LearningSpace\Repositories\IGetSiteFromCampus" />
+    <None Remove="LearningSpace\Repositories\NewFile1.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.4" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+	
+  <ItemGroup>
+	  <InternalsVisibleTo Include="UCR.ECCI.PI.ThemePark@UCR.Domain.Tests.Unit"/>
+  </ItemGroup>
+
+	<ItemGroup>
+		<InternalVisibleTo Include="UCR.ECCI.PI.ThemePark@UCR.Domain.Tests.Unit" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+			<_Parameter1>$UCR.ECCI.PI.ThemePark_UCR.Domain.Tests.Unit</_Parameter1>
+		</AssemblyAttribute>
+	</ItemGroup>
+    
+	
+</Project>

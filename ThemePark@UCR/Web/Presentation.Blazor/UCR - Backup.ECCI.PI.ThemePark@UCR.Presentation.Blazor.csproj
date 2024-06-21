@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\css\CreateBuilding.css" />
+    <Content Remove="wwwroot\css\LearningComponent.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\css\CreateBuilding.css" />
+    <None Include="wwwroot\css\LearningComponent.css" />
+    <None Include="wwwroot\css\CreateLearningSpace.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Blazored.Modal" Version="7.3.1" />
+    <PackageReference Include="BlazorStrap" Version="5.1.102.51923" />
+    <PackageReference Include="BlazorStrap.V5" Version="5.1.102.51723" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.4" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.4" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Kiota.Http.HttpClientLibrary" Version="1.4.0" />
+    <PackageReference Include="MudBlazor" Version="6.19.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Application\UCR.ECCI.PI.ThemePark@UCR.Application.csproj" />
+    <ProjectReference Include="..\Domain\UCR.ECCI.PI.ThemePark@UCR.Domain.csproj" />
+    <ProjectReference Include="..\FrontendDependencyInjection\UCR.ECCI.PI.ThemePark@UCR.FrontendDependencyInjection.csproj" />
+  </ItemGroup>
+
+</Project>

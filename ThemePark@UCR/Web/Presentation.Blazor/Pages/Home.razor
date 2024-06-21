@@ -1,0 +1,172 @@
+﻿@page "/"
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using System.Security.Claims
+@using Newtonsoft.Json
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.Person.Services
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.Person.Entities
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.Person.ValueObjects
+@inject HttpClient Http
+@inject IAccessTokenProvider TokenProvider
+@inject IPersonService PersonService
+@inject IUserService UserService
+@inject CurrentNavigationUser CurrentNavigationUser
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject NavigationManager NavigationManager
+@inject LayoutStateService LayoutStateService
+
+<PageTitle>Inicio - Administrador</PageTitle>
+
+<link href="css/Homepage.css" rel="stylesheet" />
+
+@if (isAuthenticated && userName != "Anonymous")
+{
+    <h1>Bienvenido @userName al Panel de Administración de ThemePark@UCR</h1>
+
+    <p>Administra y supervisa el parque temático virtual desde aquí.</p>
+
+    <div>
+        <h2>Acciones Rápidas</h2>
+        <ul class="homepage_list_acciones">
+            <li><a href="/ShowActiveUsers">Ver Todos los Usuarios</a></li>
+            <li><a href="/list-buildings">Ver Todos los Edificios</a></li>
+            <li><a href="/list-learningspaces">Ver Espacios de Aprendizaje</a></li>
+            <li><a href="/TestAuthorization">Probar autorizacion</a></li>
+        </ul>
+    </div>
+
+   @*  @foreach(var claim in userClaims)
+    {
+        <li>@claim.Type: @claim.Value</li>
+    } *@
+}
+else
+{
+    <h1>Bienvenido al Panel de Administración de ThemePark@UCR</h1>
+
+    <p>Administra y supervisa el parque temático virtual desde aquí.</p>
+
+    <div>
+        <h2>Acciones Rápidas</h2>
+        <ul class="homepage_list_acciones">
+            <li><a href="/list-buildings">Ver Todos los Edificios</a></li>
+            <li><a href="/list-learningspaces">Ver Espacios de Aprendizaje</a></li>
+        </ul>
+    </div>
+}
+@code {
+    private AuthenticationState authState;
+    bool isAuthenticated = false;
+    private string userName;
+    private List<Claim> userClaims;
+    private List<string> userRoles = new List<string>();
+    private IEnumerable<Persons>? allPersons;
+    [Inject]
+    private IJSRuntime JSRuntime { get; set; }
+    //Creo persona con los datos que me da B2C -> Nombre normal, apellidos
+    //Creo usuario con los datos que me da B2C -> Nombre para mostrar, Guid(sub)
+    protected override async Task OnInitializedAsync()
+    {
+        CurrentNavigationUser.OnChange += StateHasChanged;
+        Console.WriteLine("---------------------------------------------------");
+        authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+        if (user.Identity.IsAuthenticated)
+        {
+            userName = user.Identity.Name; // This can be the username or email depending on the claim setup
+            userClaims = user.Claims.ToList();
+            isAuthenticated = true;
+
+            // Check if the newUser claim is present and true
+            var newUserClaim = userClaims.FirstOrDefault(c => c.Type == "newUser")?.Value;
+            bool isNewUser = !string.IsNullOrEmpty(newUserClaim) && bool.TryParse(newUserClaim, out var result) && result;
+
+            var personId = Guid.NewGuid();
+            var firstName = new UserNameValueObject(userClaims.FirstOrDefault(c => c.Type == "given_name")?.Value);
+            var middleName = new UserNameValueObject(userClaims.FirstOrDefault(c => c.Type == "given_name")?.Value); // Assuming middle name is not provided
+            var familyName = userClaims.FirstOrDefault(c => c.Type == "family_name")?.Value?.Split(' ');
+            var firstLastName = new UserNameValueObject(familyName != null && familyName.Length > 0 ? familyName[0] : null);
+            var secondLastName = new UserNameValueObject(familyName != null && familyName.Length > 1 ? familyName[1] : null);
+            var birthDate = new BirthDateValueObject(DateOnly.MinValue); // Birth date not provided
+            var phoneNumber = new PhoneValueObject("123456789"); // Phone number not provided
+            var emailJson = userClaims.FirstOrDefault(c => c.Type == "emails")?.Value;
+            var emails = JsonConvert.DeserializeObject<List<string>>(emailJson);
+            var email = new EmailValueObject(emails?.FirstOrDefault());
+
+            var person = new Persons(
+                personId,
+                firstName,
+                middleName,
+                firstLastName,
+                secondLastName,
+                birthDate,
+                phoneNumber,
+                email
+            );
+
+            // Create user here
+            var userNickName = new UserNameValueObject(userClaims.FirstOrDefault(c => c.Type == "name")?.Value);
+            var userIdClaim = userClaims.FirstOrDefault(c => c.Type == "sub")?.Value;
+            var userId = Guid.Parse(userIdClaim);
+            var userPasswordHash = new PasswordValueObject("dummyPasswordHash*"); // Placeholder password hash
+            var isActive = true;
+
+            var userEntitie = new User(
+                userId,
+                userNickName,
+                userPasswordHash,
+                isActive,
+                person.PersonId
+            );
+
+            person.User = userEntitie;
+
+
+            if (isNewUser)
+            {
+                await PersonService.CreatePersonAsync(person);
+                //I should handle this expection
+            }
+
+            allPersons = await PersonService.GetPersonAsync();
+            if (userName == "DavidUser")
+            {
+                userId = Guid.Parse("a26c5068-4617-4172-9f33-dd74d4144eac");
+            }
+            var selectedPerson = allPersons.FirstOrDefault(p => p.User != null && p.User.UserId == userId);
+            if (CurrentNavigationUser.CurrentUser != null)
+            {
+                var token = await UserService.GenerateUserToken(CurrentNavigationUser.CurrentUser);
+                Console.WriteLine(token);
+                CurrentNavigationUser.CurrentUser.Token = token;
+                selectedPerson.User.Token = token;
+            }
+            else
+            {
+                // Handle the case when the user is not found
+                Console.WriteLine("User not found");
+            }
+
+            await CurrentNavigationUser.SetUser(selectedPerson?.User);
+            CurrentNavigationUser.OnChange += StateHasChanged;
+            LayoutStateService.NotifyStateChanged();
+            //Now in theory im ready to star calling services from the API
+           // await JSRuntime.InvokeVoidAsync("window.refreshPage");
+        }
+        else
+        {
+            userName = "Anonymous";
+            userClaims = new List<Claim>();
+        }
+    }
+
+    public void Dispose()
+    {
+        CurrentNavigationUser.OnChange -= StateHasChanged;
+    }
+
+    private void NavigateToAuthorizationTest(Persons person)
+    {
+        NavigationManager.NavigateTo("/TestAuthorization");
+    }
+
+}

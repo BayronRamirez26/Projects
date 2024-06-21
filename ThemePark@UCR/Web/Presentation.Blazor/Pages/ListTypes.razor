@@ -1,0 +1,91 @@
+﻿@page "/list-types/{id}"
+@using System.Text.Json
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.LearningSpace.Services.Interfaces
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningSpace.Entities
+@using System
+@using MudBlazor
+@using System.Collections.Generic
+@using System.ComponentModel.DataAnnotations
+@using System.Linq
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningSpace.Entities.Wrappers
+@using UCR.ECCI.PI.ThemePark_UCR.Presentation.Blazor.Services;
+
+@inject ILearningSpaceService learningSpaceService
+@inject NavigationManager NavigationManager
+@inject CurrentNavigationUser currentNavigationUser;
+
+
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+<link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />
+<link href="css/createlearningspace.css" rel="stylesheet" />
+
+<h1 style="color:#0C344E">Espacios Asociados</h1>
+<div class="spacing"></div>
+
+@if (LearningSpaces == null || !LearningSpaces.Any())
+{
+    <p><em>No se encontraron LearningSpaces asociados al ID: @id</em></p>
+}
+else
+{
+    <MudTable Items="@LearningSpaces" Dense="true" Hover="true" Bordered="false" Striped="false" RowsPerPage="7" Filter="new Func<LearningSpaces,bool>(FilterFunc1)" Style="top:20rem;">
+    <ToolBarContent>
+            <MudText Typo="Typo.h6">Espacios de Aprendizaje</MudText>
+        <MudSpacer />
+        <MudTextField @bind-Value="searchString1" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="MudBlazor.Size.Medium" Class="mt-0"></MudTextField>
+    </ToolBarContent>
+    <HeaderContent>
+        <MudTh>Nombre</MudTh>
+        <MudTh>ID</MudTh>
+        <MudTh></MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Nombre">@context.LearningSpaceName.Value</MudTd>
+        <MudTd DataLabel="ID">@context.LearningSpaceId.Value</MudTd>
+        <MudTd DataLabel="">
+            @if(canModify)
+                {
+                    <MudIconButton Icon="@Icons.Material.Filled.Edit" Style="@($"color:{Colors.Grey.Darken2};")" @onclick="@(e => modifyLS(context) )"></MudIconButton>
+                }
+        </MudTd>
+    </RowTemplate>
+    <PagerContent>
+        <MudTablePager />
+    </PagerContent>
+</MudTable>
+}
+
+@code {
+    [Parameter]
+    public string id { get; set; }
+    private List<LearningSpaces> LearningSpaces { get; set; }
+    private string searchString1 = "";
+    private bool canModify;
+
+    protected override async Task OnInitializedAsync()
+    {
+        ValidationService service = new ValidationService();
+        canModify = await service.hasPermition(currentNavigationUser, "Update");
+        // Obtener los LearningSpaces por el ID del LSType
+        LearningSpaces = (await learningSpaceService.GetLearningSpacesByLSTypeIdAsync(new GuidWrapper(new Guid(id)))).ToList();
+    }
+
+    private void modifyLS(LearningSpaces learningSpace)
+    {
+        var jsonLearningSpace = JsonSerializer.Serialize(learningSpace);
+        NavigationManager.NavigateTo($"/modify-learning-space?learningSpace={Uri.EscapeDataString(jsonLearningSpace)}");
+    }
+
+    private bool FilterFunc1(LearningSpaces element) => FilterFunc(element, searchString1);
+
+    private bool FilterFunc(LearningSpaces element, string searchString)
+    {
+        if (string.IsNullOrWhiteSpace(searchString))
+            return true;
+        if (element.LearningSpaceName.Value.Contains(searchString, StringComparison.OrdinalIgnoreCase))
+            return true;
+        // if (element.Type.Value.Contains(searchString, StringComparison.OrdinalIgnoreCase))
+        //     return true;
+        return false;
+    }
+}

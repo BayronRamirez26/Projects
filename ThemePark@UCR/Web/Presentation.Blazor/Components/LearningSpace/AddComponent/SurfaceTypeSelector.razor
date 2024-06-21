@@ -1,0 +1,77 @@
+﻿@using static UCR.ECCI.PI.ThemePark_UCR.Presentation.Blazor.Pages.AddComponentsToLearningSpace
+@using BlazorStrap
+@using Microsoft.AspNetCore.Components
+@using MudBlazor
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningSpace.Entities
+
+@code {
+    [Parameter] public string Surface { get; set; }
+    [Parameter] public EventCallback<string> SurfaceChanged { get; set; }
+    [Parameter] public Templates Template { get; set; }  
+
+    private string userColor = "#0000FF";  
+    private string rectangleColor = "#0000FF";
+
+    private void OnSurfaceChanged(ChangeEventArgs e)
+    {
+        Surface = e.Value.ToString();
+        SurfaceChanged.InvokeAsync(Surface);
+    }
+
+    private async Task ShowModal()
+    {
+        await modalImage.ShowAsync();
+    }
+
+    private void ApplyColor()
+    {
+        rectangleColor = userColor;
+    }
+
+    private BSModal modalImage;
+}
+
+<BSCol Position="BlazorStrap.Position.Relative" Justify="Justify.Start">
+    <BSLabel style="font-size: 20px;">Tipo de Superficie</BSLabel>
+    <MudIconButton Icon="bx bx-info-circle" Color="Color.Info" aria-label="add to favorite" @onclick="ShowModal"></MudIconButton>
+    <div class="spacing">
+        <BSInput InputType="BlazorStrap.InputType.Select" @bind-Value="Surface" @onchange="OnSurfaceChanged" class="dropdown-CLS">
+            <option value="null">Tipo de Superficie</option>
+            <option value="cieling">Techo</option>
+            <option value="floor">Piso</option>
+            <option value="wall-n">Pared Norte</option>
+            <option value="wall-s">Pared Sur</option>
+            <option value="wall-e">Pared Este</option>
+            <option value="wall-w">Pared Oeste</option>
+        </BSInput>
+        <BSFeedback For="@(() => Surface)" />
+    </div>
+</BSCol>
+
+<BSModal DataId="modalImage" IsCentered="true" @ref="modalImage">
+    <Header>Tipos de Superficie</Header>
+    <Content>
+        <h3>Color Rectángulo</h3>
+        <input type="text" @bind="userColor" placeholder="#0000FF" />
+        <button @onclick="ApplyColor">Aplicar Color</button>
+        <div class="rectangle" style="background-color:@Template?.FloorColor.Value;">
+            <div class="label-t">Arriba</div>
+            <div class="labelR-b">Abajo</div>
+            <div class="labelR-l">Izquierda</div>
+            <div class="labelR-r">Derecha</div>
+        </div>
+    </Content>
+    <Footer Context="modal">
+        <BSButton MarginStart="Margins.Auto" Color="BSColor.Secondary" @onclick="modal.HideAsync">Close</BSButton>
+        <BSButton Color="BSColor.Primary">Save changes</BSButton>
+    </Footer>
+</BSModal>
+
+<style>
+    .rectangle {
+        width: 400px;
+        height: 400px;
+        margin-top: 10px;
+        margin-left: 40px;
+    }
+</style>

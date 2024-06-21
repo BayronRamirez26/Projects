@@ -1,0 +1,32 @@
+procedure run():
+  consumeForever()
+  for (pair : toQueues) do
+    push(pair.second, HttpSocketData())
+  end
+  return successOrFailure
+end procedure
+
+procedure extractKey(HttpSocketData& data):
+  string key = findKey(data.httpRequest->getURI())
+  declare itr = find(toQueues, key)
+  if (itr == end(toQueues)) do
+    data.serveNotFound = true
+    return begin(toQueues)->first
+  end
+  return key
+end procedure
+
+procedure findKey(string url):
+  if (compare(url, "/") == 0 || compare(url, "/favicon.ico") == 0) do
+    return begin(toQueues)->first;
+  end
+  declare pos1 = find(url, '/')
+  declare pos2 = 0
+  string sub2 = substr(url, pos1 + 1, url.length())
+  if (find(sub2, '/', 0) == string::npos) do
+    pos2 = find(sub2, '?');
+  end else do
+    pos2 = find(sub2, '/');
+  end
+  return substr(url, pos1, pos2 + 1)
+end procedure

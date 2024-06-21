@@ -1,0 +1,193 @@
+﻿@page "/create-accesspoint"
+@inject HttpClient Http
+@using BlazorStrap
+@using System.ComponentModel.DataAnnotations
+@using System.Text
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.LearningArea.Services
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningArea.Entities
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningSpace.Entities
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningSpace.Entities.Wrappers
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.Shared.ValueObjects
+@using Newtonsoft.Json
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.LearningSpace
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.LearningSpace.Services
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.LearningSpace.Services.Interfaces
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningSpace.Repositories
+
+@inject NavigationManager NavigationManager
+@inject ILearningSpaceService learningSpaceService
+@inject ILearningSpaceCascadeService _cascade
+@inject IAccessPointService accessPointService
+@inject ISiteService siteService
+@inject ILevelService levelService;
+@inject CurrentNavigationUser currentNavigationUser;
+
+
+@using System
+@using System.IO
+<link href="css/createlearningspace.css" rel="stylesheet" />
+<div class="spacing">
+    <h3 class="Title_CLS">Crear Punto de Acceso</h3>
+</div>
+
+<BSForm Model="accessPoint" IsRow="true" Gutters="Gutters.Medium" OnSubmit="OnSubmit" OnReset="OnReset">
+
+    <DataAnnotationsValidator />
+    <div class="spacing">
+        <div class="page-container" style=" align-content: center;">
+            <BSContainer Position="Position.Relative" Class="bordered-container">
+                <div class="spacing">
+                    <div class="spacing">
+                        <BSLabel><h3>Nombre del Espacio de Aprendizaje</h3></BSLabel>
+                        <BSInput InputType="InputType.Select" @bind-Value="LsGuid" class="dropdown-CLS">
+                            <option value="null">Nombre del espacio</option>
+                            @foreach (var name in Elements)
+                            {
+                                <option value="@name.LearningSpaceId.Value">@name.LearningSpaceName.Value</option>
+                            }
+                        </BSInput>
+                    </div>
+                    <BSLabel><h3>Ubicación física del Punto de Acceso</h3></BSLabel>
+                    <BSRow Position="Position.Relative" ColumnSmall="6">
+                        <div class="spacing">
+                            <BSInput InputType="InputType.Select" @bind-Value="University" class="dropdown-CLS">
+                                <option value="null">Universidad</option>
+                                <option value="Universidad de Costa Rica">Universidad de Costa Rica</option>
+                            </BSInput>
+                            <BSFeedback For="@(() => University)" />
+                        </div>
+                        <div class="spacing">
+                            @if (CampusList != null)
+                            {
+                                <div class="spacing">
+                                    <BSInput InputType="InputType.Select" @bind-Value="Campus" class="dropdown-CLS">
+                                        <option value="null">Campus</option>
+                                        @foreach (var campus in CampusList)
+                                        {
+                                            <option value="@campus">@campus</option>
+                                        }
+                                    </BSInput>
+                                    <BSFeedback For="@(() => Campus)" />
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="spacing">
+                                    <BSInput InputType="InputType.Select" @bind-Value="Campus" class="dropdown-CLS" IsDisabled='true'>
+                                        <option value="null">Campus</option>
+                                    </BSInput>
+                                </div>
+                            }
+
+                            @if (SiteList != null)
+                            {
+                                <div class="spacing">
+                                    <BSInput InputType="InputType.Select" @bind-Value="SiteName" class="dropdown-CLS">
+                                        <option value="null">Finca</option>
+                                        @foreach (var site in SiteList)
+                                        {
+                                            <option value="@site">@site</option>
+                                        }
+                                    </BSInput>
+                                    <BSFeedback For="@(() => SiteName)" />
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="spacing">
+                                    <BSInput InputType="InputType.Select" @bind-Value="SiteName" class="dropdown-CLS" IsDisabled='true'>
+                                        <option value="null">Finca</option>
+                                    </BSInput>
+                                    <BSFeedback For="@(() => SiteName)" />
+                                </div>
+                            }
+                            @if (BuildingList != null)
+                            {
+                                <div class="spacing">
+                                    <BSInput InputType="InputType.Select" @bind-Value="BuildingName" class="dropdown-CLS">
+                                        <option value="null">Edificio</option>
+                                        @foreach (var building in BuildingList)
+                                        {
+                                            <option value="@building">@building</option>
+                                        }
+                                    </BSInput>
+                                    <BSFeedback For="@(() => BuildingName)" />
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="spacing">
+                                    <BSInput InputType="InputType.Select" @bind-Value="BuildingName" class="dropdown-CLS" IsDisabled='true'>
+                                        <option value="null">Edificio</option>
+                                    </BSInput>
+                                </div>
+                            }
+                            @if (LevelList != null)
+                            {
+                                <div class="spacing">
+                                    <BSInput InputType="InputType.Select" @bind-Value="LevelNumber" class="dropdown-CLS">
+                                        <option value="null">Piso</option>
+                                        @foreach (var level in LevelList)
+                                        {
+                                            <option value="@level.LevelId.Value">@level.LevelNumber.Value</option>
+                                        }
+                                    </BSInput>
+                                    <BSFeedback For="@(() => LevelNumber)" />
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="spacing">
+                                    <BSInput InputType="InputType.Select" @bind-Value="LevelNumber" class="dropdown-CLS" IsDisabled='true'>
+                                        <option value="null">Piso</option>
+                                    </BSInput>
+                                </div>
+                            }
+                        </div>
+                    </BSRow>
+                </div>
+                <div class="spacing">
+
+                <BSRow Position="Position.Relative">
+                    <BSCol ColumnSmall="3">
+                        <h3 style="font-size: 20px">Posición <br></h3>
+                        <BSLabel><h3 style="font-size: 18px">X</h3> </BSLabel>
+                        <BSInput InputType="BlazorStrap.InputType.Number" step="any" @bind-Value="SizeX" />
+                        <BSLabel><h3 style="font-size: 18px">Y</h3> </BSLabel>
+                        <BSInput InputType="BlazorStrap.InputType.Number" step="any" @bind-Value="SizeY" />
+                        <BSLabel><h3 style="font-size: 18px">Z</h3> </BSLabel>
+                        <BSInput InputType="BlazorStrap.InputType.Number" step="any" ValidateOnInput="true" @bind-Value="SizeZ" />
+                    </BSCol>
+                </BSRow>
+
+                </div>
+                <div class="spacing">
+                    <BSRow Position="Position.Relative" Justify="Justify.Start">
+                        <BSCol>
+                            <BSButton Color="BSColor.Primary" IsSubmit="true" Target="modal2" IsDisabled="@_IsDisabled">Crear punto de acceso</BSButton>
+                            <BSButton style="margin-left: 2rem;" Color="BSColor.Secondary" IsSubmit="false" OnClick="GoToList">Cancelar</BSButton>
+                        </BSCol>
+                    </BSRow> 
+                </div>
+            </BSContainer>
+        </div>
+    </div>
+</BSForm>
+
+<BSModal IsStaticBackdrop="true" IsCentered="true" DataId="modal2" @ref="modal">
+    <Header>
+        <div style="color: @ColorStatus "><b>@ModalTitle</b></div>
+    </Header>
+    <Content>
+        @ModalContent
+        <BSValidationSummary />
+    </Content>
+
+    <Footer>
+        <div class="buttons_modal @(_IsDisabled ?  "" : "active")">
+            <BSButton Color="BSColor.Primary" @onclick="GoToCreateAnother">Sí</BSButton>
+            <BSButton MarginLeftAndRight="Margins.Auto" Color="BSColor.Secondary" @onclick="GoToList">No</BSButton>
+        </div>
+    </Footer>
+</BSModal>
+

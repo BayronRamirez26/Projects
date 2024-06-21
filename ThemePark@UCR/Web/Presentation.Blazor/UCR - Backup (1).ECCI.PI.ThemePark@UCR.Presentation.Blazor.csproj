@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\css\AddLevel.css" />
+    <Content Remove="wwwroot\css\CreateBuilding.css" />
+    <Content Remove="wwwroot\css\Homepage.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Pages\NewFile.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\css\AddLevel.css" />
+    <None Include="wwwroot\css\Homepage.css" />
+    <None Include="wwwroot\css\CreateBuilding.css" />
+    <None Include="wwwroot\css\CreateLearningSpace.css" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Blazored.Modal" Version="7.3.1" />
+		<PackageReference Include="BlazorStrap" Version="5.1.102.51923" />
+		<PackageReference Include="BlazorStrap.V5" Version="5.1.102.51723" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Authorization" Version="8.0.4" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.4" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.4" PrivateAssets="all" />
+		<PackageReference Include="Microsoft.Authentication.WebAssembly.Msal" Version="8.0.4" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.4" />
+		<PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Kiota.Abstractions" Version="1.9.0" />
+		<PackageReference Include="Microsoft.Kiota.Http.HttpClientLibrary" Version="1.4.0" />
+		<PackageReference Include="MudBlazor" Version="6.19.1" />
+	</ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ApplicationWeb\UCR.ECCI.PI.ThemePark@UCR.ApplicationWeb.csproj" />
+    <ProjectReference Include="..\DomainWeb\UCR.ECCI.PI.ThemePark@UCR.DomainWeb.csproj" />
+    <ProjectReference Include="..\FrontendDependencyInjection\UCR.ECCI.PI.ThemePark@UCR.FrontendDependencyInjection.csproj" />
+  </ItemGroup>
+
+</Project>

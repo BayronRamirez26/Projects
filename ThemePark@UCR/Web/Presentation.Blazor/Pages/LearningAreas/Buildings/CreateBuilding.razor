@@ -1,0 +1,172 @@
+﻿@page "/createBuilding"
+@inject HttpClient Http
+@inject HttpClient httpClient
+@inject NavigationManager NavigationManager
+@using BlazorStrap
+@using BlazorStrap.V5
+@using System.ComponentModel.DataAnnotations
+@using System.Text
+@using System.Web
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.LearningSpace.Services.Interfaces
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.LearningArea.Services
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningArea.Dtos;
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningArea.Entities;
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.Shared.ValueObjects;
+@using UCR.ECCI.PI.ThemePark_UCR.Presentation.Blazor.Components.LearningAreas.Buildings;
+@using System.Text.Json
+@inject ILearningSpaceCascadeService cascadeService
+@inject IBuildingService buildingService
+@inject CurrentNavigationUser currentNavigationUser
+
+<link href="css/createbuilding.css" rel="stylesheet" />
+
+@if (createPermission)
+{
+<div class="spacing">
+    <h3 class="Title">Crear Edificios</h3>
+</div>
+<BSForm Model="building" IsRow="true" Gutters="Gutters.Large" OnSubmit="OnSubmit" OnReset="OnReset">
+    <DataAnnotationsValidator />
+    <div class="spacing"></div>
+    <div class="page-container">
+        <BSContainer Position="Position.Relative" Class="bordered-container">
+            <BSLabel><h4>Información del edificio</h4></BSLabel>
+            <BSRow Position="Position.Relative" Justify="Justify.Start">
+                <BSCol Position="Position.Relative" ColumnSmall="6">
+                    <BSLabel>Universidad <span class="required">*</span></BSLabel>
+                    @* Onchange call the funcion GetCampuses and pass the selected value*@
+                    <BSInput 
+                        InputType="BlazorStrap.InputType.Select"
+                        @bind-Value="building.UniversityName"
+                        @onchange="@(async (e) => {
+                            building.UniversityName = e.Value.ToString();
+                            validateForm();
+                            await GetCampuses(e.Value.ToString());
+                    })"
+                    >
+                        <option value=""> Seleccione una Universidad</option>
+                        @* Insert here the list of colleges*@
+                        @foreach (var university in universityList)
+                        {
+                            <option value="@university">@university</option>
+                        }
+                    </BSInput>
+                    <BSFeedback For="@(() => building.UniversityName)" />
+                </BSCol>
+                <BSCol Position="Position.Relative" ColumnSmall="6">
+                    <BSLabel>Campus <span class="required">*</span></BSLabel>
+                    <BSInput 
+                        InputType="BlazorStrap.InputType.Select" 
+                        @bind-Value="building.CampusName" 
+                        @onchange="@(async (e) => {
+                            building.CampusName = e.Value.ToString();
+                            validateForm();
+                            await GetSites(e.Value.ToString());
+                        })"
+                        IsDisabled="@(campusList == null || campusList.Count() == 0)"
+                    >
+                        <option value=""> Seleccione el Campus</option>
+                        @* Insert here the list of campuses*@
+                        @if (campusList != null)
+                        {
+                            @foreach (var campus in campusList)
+                            {
+                                <option value="@campus">@campus</option>
+                            }
+                        }
+                    </BSInput>
+                    <BSFeedback For="@(() => building.CampusName)" />
+                </BSCol>
+            </BSRow>
+            @*Next line*@
+            <div class="spacing"></div>
+            <BSRow Position="Position.Relative" Justify="Justify.Start">
+                    <BSCol Position="Position.Relative" ColumnSmall="6">
+                    <BSLabel>Finca <span class="required">*</span></BSLabel>
+                    <BSInput 
+                        InputType="BlazorStrap.InputType.Select" 
+                        @bind-Value="building.SiteName"
+                        @onchange="(async (e) => {
+                            building.SiteName = e.Value.ToString();
+                            validateForm();
+                        })"
+                        IsDisabled="@(siteList == null || siteList.Count() == 0)"
+                    >
+                        <option value=""> Seleccione la finca</option>
+                        @* Insert here the list of sites*@
+                        @if (siteList != null)
+                        {
+                            @foreach (var site in siteList)
+                            {
+                                <option value="@site">@site</option>
+                            }
+                        }
+                    </BSInput>
+                    <BSFeedback For="@(() => building.SiteName)" />
+                </BSCol>
+            </BSRow>
+            @*Next line*@
+            <div class="spacing"></div>
+            <BSRow Position="Position.Relative">
+                <BSCol ColumnSmall="3">
+                    <BSLabel>Acrónimo <span class="required">*</span></BSLabel>
+                    <BSInput InputType="BlazorStrap.InputType.Text "
+                             @bind-Value="building.BuildingAcronym" 
+                             @onchange="(async (e) => {validateForm();})"
+                             ValidateOnInput="true" />
+                    <BSFeedback For="@(() => building.BuildingAcronym)" />
+                </BSCol>
+                <BSCol ColumnSmall="6">
+                    <BSLabel>Nombre <span class="required">*</span></BSLabel>
+                    <BSInput InputType="BlazorStrap.InputType.Text"
+                             @bind-Value="building.BuildingName"
+                             @onchange="(async (e) => {validateForm();})"
+                             ValidateOnInput="true" />
+                    <BSFeedback For="@(() => building.BuildingName)" />
+                </BSCol>
+            </BSRow>
+            @*Next line*@
+            <div class="spacing"></div>
+            <BuildingDimensionsComponent building="building" />
+            @*Next line*@
+            <div class="spacing"></div>
+            <BuildingColorsComponent building="building" />
+            <div class="spacing"></div>
+            @*Next line*@
+            <div class="spacing"></div>
+            <BSRow Position="Position.Relative" Justify="Justify.Start">
+                <div class="spacing"></div>
+                <BSCol>
+                    <BSButton Color="BSColor.Primary" IsDisabled="@IsDisabled" IsSubmit="true">Crear</BSButton>
+                    <BSButton style="margin-left: 2rem;" Color="BSColor.Secondary" IsSubmit="false" @onclick="GoToListBuildings">Cancelar</BSButton>
+                </BSCol>
+            </BSRow>
+        </BSContainer>
+    </div>
+
+    <BSModal IsStaticBackdrop="true" IsCentered="true" DataId="modal2" @ref="modal">
+        <Header>
+            <div style="color: @colorStatus "><b>@modalTitle</b></div>
+        </Header>
+        <Content>
+            @((MarkupString)modalContent)
+            <BSValidationSummary />
+        </Content>
+        <Footer Context="modal">
+            @if (success)
+            {
+                <BSButton Color="BSColor.Primary" @onclick="GoToCreateBuilding">@messageButton1</BSButton>
+                <BSButton Color="BSColor.Secondary" @onclick="GoToListBuildings">@messageButton2</BSButton>
+            }
+            else
+            {
+                <BSButton Color="BSColor.Primary" @onclick="modal.HideAsync">@messageButton1</BSButton>
+            }
+        </Footer>
+    </BSModal>
+</BSForm>
+}
+else if (initialized)
+{
+    <h3>No tiene permiso para acceder a esta página</h3>
+}

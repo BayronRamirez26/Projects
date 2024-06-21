@@ -1,0 +1,166 @@
+﻿@page "/TestAuthorization"
+@inject IRoleService RoleService
+@inject HttpClient Http
+@inject CurrentNavigationUser CurrentNavigationUser
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.Person.Services
+@using System.ComponentModel.DataAnnotations
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.Person.Entities
+@using System;
+@using System.IdentityModel.Tokens.Jwt;
+@using System.Security.Claims;
+@using System.Text;
+@using Microsoft.IdentityModel.Tokens;
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.Person.Services;
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.Person.Entities;
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.Person.ValueObjects;
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.Shared.ValueObjects;
+
+
+
+<button @onclick="TryAuthorization">Try authorization</button>
+<button @onclick="CreateRole">Try Create Role With Authorization</button>
+<p>@statusMessage</p>
+
+@code {
+    string statusMessage;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (CurrentNavigationUser == null)
+        {
+            statusMessage = "User is not authenticated.";
+            return;
+        }
+        if (string.IsNullOrEmpty(CurrentNavigationUser.CurrentUser.Token))
+        {
+            statusMessage = "Token inside user is null.";
+            return;
+        }
+    }
+
+    public string GenerateJwtToken()
+    {
+        var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("your_secret_key_here_must_be_this_large"));
+        var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+        var claims = new[]
+        {
+            new Claim(JwtRegisteredClaimNames.Sub, "your_user_id"),
+            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+            new Claim(ClaimTypes.Name, "YourName") // Ensure a name claim is included
+        };
+
+        var token = new JwtSecurityToken(
+            issuer: "your_issuer",
+            audience: "your_audience",
+            claims: claims,
+            expires: DateTime.Now.AddMinutes(30),
+            signingCredentials: credentials);
+
+        return new JwtSecurityTokenHandler().WriteToken(token);
+    }
+
+    private async Task TryAuthorization()
+    {
+        if (CurrentNavigationUser?.CurrentUser == null)
+        {
+            //statusMessage = "User is not authenticated.";
+            return;
+        }
+        if (string.IsNullOrEmpty(CurrentNavigationUser.CurrentUser.Token))
+        {
+            //statusMessage = "Token inside user is null.";
+            return;
+        }
+        //var token = GenerateJwtToken();
+        Http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", CurrentNavigationUser.CurrentUser.Token);
+
+        //CHECK THIS DIRECTION
+        var response = await Http.GetAsync("https://localhost:7168/authorization-test");
+        if (response.IsSuccessStatusCode)
+        {
+            var content = await response.Content.ReadAsStringAsync();
+            statusMessage = content; // Handle the content as needed
+        }
+        else
+        {
+            Console.WriteLine("Unauthorized");
+            statusMessage = "Failed.";
+        }
+    }
+    private List<Guid?> permissionsIds = new List<Guid?>
+    {
+        Guid.Parse("60b621bf-a23d-4e89-98ab-25771f88909f"),
+        Guid.Parse("434f7bfc-947a-414c-85cf-6d4fe9e98a7f"),
+        Guid.Parse("5ef25d03-e2c3-454b-b71f-bcfe0a271f5a"),
+        Guid.Parse("e5187d01-874e-4c9b-bd55-74a204fbbea2"),
+        Guid.Parse("76cbf19a-efec-42eb-81fc-b267af35db56")
+    };
+    private IEnumerable<Permission>? allPermissions;
+    Guid saveRoleId;
+    
+
+
+    //As an admin:
+    private async Task CreateRole()
+    {
+        try
+        {
+
+            //This should be a global variable??
+            //Or maybe a variable inside the user entitie -> most likely
+
+            //The flow should be as follows(for API):
+            //1.Create the token
+            //2.Enrich said token with all its permissions -> create a service(in frontend) that returns all the permissions
+            //3.Add token to the user entitie
+            //4.Call services and check if said token works
+
+
+            //The flow should be as follows(for BLAZOR):
+            //1.Nothing yet
+
+
+            //Now theres a bunch of questions
+            //1.What type of data is a token -> probably a string?
+            //2.On API how do i tell a service that it needs certain permission? -> POLICIES
+            //3.Probably not the best practice in the world to burn the jwt key on the presentation side
+            //4.Where should my 
+
+
+            var token = GenerateJwtToken();
+
+            //Should this go each time i call a new method or only once when the user logs in?
+            Http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", CurrentNavigationUser.CurrentUser.Token);
+
+            string randomName = GenerateRandomName(); // Generate a random name
+            MediumName mediumName = new MediumName(randomName);
+            saveRoleId = Guid.NewGuid();
+            var role = new Role(saveRoleId, mediumName); // Add other necessary properties
+
+            bool result = await RoleService.CreateRole(role);
+
+            string successMessage = $"Role {role.RoleName.Value} created successfully";
+            statusMessage = result ? successMessage : "Failed to create role.";
+        }
+        catch (Exception ex)
+        {
+            statusMessage = $"Error: {ex.Message}";
+        }
+    }
+
+    private string GenerateRandomName()
+    {
+        // Generate a random string of characters
+        var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        var random = new Random();
+        var randomName = new string(Enumerable.Repeat(chars, 10) // Generate a 10-character random string
+            .Select(s => s[random.Next(s.Length)]).ToArray());
+        return randomName;
+    }
+
+
+
+
+
+}

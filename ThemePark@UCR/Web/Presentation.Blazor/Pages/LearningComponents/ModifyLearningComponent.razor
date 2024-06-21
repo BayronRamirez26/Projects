@@ -1,0 +1,134 @@
+﻿@page "/modify-lcomponent/{componentJson}"
+
+
+@inject HttpClient Http
+@using BlazorStrap
+@using System.ComponentModel.DataAnnotations
+@using System.Text
+@using System.Text.Json
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.LearningComponents
+@using UCR.ECCI.PI.ThemePark_UCR.ApplicationWeb.LearningComponents.Services
+@using UCR.ECCI.PI.ThemePark_UCR.DomainWeb.LearningComponents.Entities
+@using UCR.ECCI.PI.ThemePark_UCR.Presentation.Blazor.Services;
+@inject CurrentNavigationUser currentNavigationUser;
+@inject NavigationManager NavigationManager
+@using System
+@using System.IO
+
+<link href="css/createlearningspace.css" rel="stylesheet" />
+<PageTitle>Modificar Componente de Aprendizaje</PageTitle>
+
+
+@if (learningComponent == null)
+{
+    <p><em>Cargando...</em></p>
+}
+else
+{
+    <h3 style="color:#0C344E">Modificar Componente: @learningComponent.LearningComponentName</h3>
+    <div class="spacing"></div>
+
+    <BSForm Model="learningComponent" IsRow="true" Gutters="Gutters.Medium" OnSubmit="OnSubmit" OnReset="OnReset">
+    <DataAnnotationsValidator />
+
+    <div class="spacing">
+        <div class="page-container">
+
+            <BSContainer Position="Position.Relative" Class="bordered-container">
+                <BSLabel><h3>Información del componente de aprendizaje</h3></BSLabel>
+                <BSRow Position="Position.Relative" ColumnSmall="6">
+                    <BSCol Position="Position.Relative" Justify="Justify.Start">
+                        <div class="spacing">
+                            <BSLabel style="font-size: 20px;">Nombre</BSLabel> 
+                            <BSInput InputType="InputType.Text" @bind-Value="learningComponent.LearningComponentName" />
+                            <BSFeedback For="@(() => learningComponent.LearningComponentName)" />
+                        </div>
+                    </BSCol>
+                </BSRow>
+
+
+                <div class="spacing">
+                    <BSCol Position="Position.Relative" Justify="Justify.Start">
+
+                        <BSLabel style="font-size: 20px;">Seleccionar Espacio</BSLabel>
+                            <BSInput InputType="InputType.Select" @bind-Value="learningComponent.learningSpaceId" class="form-control-lg form-control-primary" @onfocus="LoadLearningSpacesAsync">
+                            @foreach (var space in learningSpaces)
+                            {
+                                <option value="@space.LearningSpaceId.Value">@space.LearningSpaceName.Value</option>
+                            }
+                        </BSInput>
+                        <BSFeedback For="@(() => learningComponent.learningSpaceId)" />
+                    </BSCol>
+                    </div>
+
+
+                <div class="spacing">
+                 <BSRow Position="Position.Relative">
+
+                     <BSLabel><h3>Espacio Físico</h3></BSLabel>
+                        
+                        <BSCol ColumnSmall="3">
+                            <BSLabel><h3 style="font-size: 20px">Posición X</h3> </BSLabel>
+                            <BSInput InputType="BlazorStrap.InputType.Number" @bind-Value="learningComponent.centerX" />
+
+                            <BSLabel><h3 style="font-size: 20px">Posición Y</h3> </BSLabel>
+                            <BSInput InputType="BlazorStrap.InputType.Number" @bind-Value="learningComponent.centerY" />
+
+                            <BSLabel><h3 style="font-size: 20px">Posición Z</h3> </BSLabel>
+                            <BSInput InputType="BlazorStrap.InputType.Number" @bind-Value="learningComponent.centerZ" />
+ 
+                        </BSCol>
+
+                        <BSCol ColumnSmall="3">
+                            <BSLabel><h3 style="font-size: 20px">Anchura</h3> </BSLabel>
+                            <BSInput InputType="BlazorStrap.InputType.Number" @bind-Value="learningComponent.width" />
+
+                            <BSLabel><h3 style="font-size: 20px">Altura</h3> </BSLabel>
+                            <BSInput InputType="BlazorStrap.InputType.Number" @bind-Value="learningComponent.length" />
+
+                           
+                        </BSCol>
+                </BSRow>
+                </div>
+                    <div class="spacing">
+                        <BSRow Position="Position.Relative" Justify="Justify.Center">
+                            <BSCol>
+                            <BSButton Color="BSColor.Primary" IsSubmit="true" Target="modal2">Actualizar Componente</BSButton>
+                                
+                            </BSCol>
+                           <BSCol>
+                            <BSButton Color="BSColor.Secondary" @onclick=GoToListLearningComponent>Cancelar</BSButton>
+                            </BSCol>
+                        </BSRow>
+                    </div>
+                 @*Structure of bootstrap model component, composed of header, content and footer*@
+                <BSModal IsStaticBackdrop="true" IsCentered="true" DataId="modal2">
+                    <Header>
+                        <div style="color: @colorStatus "><b>@modalTitle</b></div>
+                    </Header>
+                    <Content>
+                        @modalContent
+                        <BSValidationSummary />
+                    </Content>
+
+                    <Footer Context="modal">
+                        <div class="buttons_modal @(_validateStatus ? "active" : "")">
+                            <BSButton Color="BSColor.Primary" @onclick="GoToListLearningComponent">Continuar</BSButton>
+                                
+                        </div>
+                        <div class="buttons_modal @(_validateStatus ?  "" : "active")">
+                            <BSButton MarginLeftAndRight="Margins.Auto" Color="BSColor.Primary" @onclick="modal.HideAsync">Cerrar</BSButton>
+                            <BSButton MarginLeftAndRight="Margins.Auto" Color="BSColor.Secondary" @onclick="GoToListLearningComponent">Cancelar actualización</BSButton>
+                        </div>
+                    </Footer>
+                </BSModal>
+            </BSContainer>
+            </div>
+   </div>
+</BSForm>
+}
+
+
+
+
+

@@ -1,0 +1,86 @@
+All of the above were modifications of HttpServer class previous procedures or new procedures
+involving the class HttpConnectionHandler
+
+procedure HttpConnectionHandler():
+  socketMutex := new mutex()
+end procedure
+
+procedure ~HttpConnectionHandler():
+  for index := 0 to size(httpResponses) do 
+    delete (httpResponses.at(index))
+  end for
+  delete(socketMutex)
+end procedure
+
+procedure HttpConnectionHandler(Queue<Socket>* consumingQueue):
+consumingQueue := consumingQueue
+end procedure
+
+procedure int run():
+consumeForever()
+produce(HttpSocketData())
+return EXIT_SUCCESS
+end procedure
+
+procedure consume(Socket workingSocket):
+  declare vector<HttpRequest*> httpRequests
+  while(true) do 
+    httpRequest := new HttpRequest(workingSocket)
+    push_back(httpRequests,httpRequest)
+    if (!parse(httpRequest)) do
+      break
+    end if
+    httpResponse := new httpResponse(workingSocket)
+    push_back(httpResponses,httpResponse)
+    declare handled := handleHttpRequest(httpRequest, httpResponse)
+    if (!handled || getHttpVersion(httpRequest) == "HTTP/1.0") do
+      close(workingSocket)
+      break
+    end if
+  end while
+  for index := 0 to size(httpRequests) do 
+    delete(httpRequests.at(index))
+  end
+end procedure
+
+procedure addWebApp(HttpApp* app):
+  append(aplications, app)
+end procedure
+
+procedure bool handleHttpRequest(HttpRequest& httpRequest,
+  HttpResponse& httpResponse):
+  declare address := getNetworkAddress(httpRequest)
+  print(INFO, "connection",
+    "connection established with client " + getIP(address)
+    + " port " + getPort(address))
+
+    print(INFO, "request", getMethod(httpRequest)
+    + ' ' + getURI(httpRequest)
+    + ' ' + getHttpVersion(httpRequest))
+
+    Declare httpSocketData
+    httpSocketData.socketMutex := socketMutex
+    httpSocketData.httpRequest := httpRequest
+    httpSocketData.httpResponse := httpResponse
+    produce(httpSocketData)
+    return true
+end procedure
+
+procedure serveNotFound(HttpRequest& httpRequest, HttpResponse& httpResponse): // Modifcation
+  setStatusCode(httpResponse, 404)
+  setHeader(httpResponse, "Server", "AttoServer v1.0")
+  setHeader(httpResponse, "Content-type", "text/html; charset=ascii")
+
+  declare title := "Not found"
+  body(httpResponse) << "<!DOCTYPE html>\n"
+    << "<html lang=\"en\">\n"
+    << "  <meta charset=\"ascii\"/>\n"
+    << "  <title>" << title << "</title>\n"
+    << "  <style>body {font-family: monospace} h1 {color: red}</style>\n"
+    << "  <h1>" << title << "</h1>\n"
+    << "  <p>The requested resouce was not found on this server.</p>\n"
+    << "  <hr><p><a href=\"/\">Homepage</a></p>\n"
+    << "</html>\n"
+
+  return send(httpResponse)
+end procedure

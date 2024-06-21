@@ -1,0 +1,8 @@
+﻿CREATE TABLE ThemePark.Student (
+	StudentId VARCHAR(255) NOT NULL PRIMARY KEY,
+	PersonId VARCHAR(255) NOT NULL,	
+	StudentCard VARCHAR(20) NOT NULL,	
+	[IsActive] BIT NOT NULL DEFAULT 1,
+	FOREIGN KEY (PersonId)
+		REFERENCES ThemePark.Person(PersonId) ON DELETE CASCADE
+)

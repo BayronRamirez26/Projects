@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="ca302a48-6c1f-4d4b-8551-d82dbde07ad7" ChangeDateTime="05/28/2024 19:47:39">
+    <Property Name="ElementName" Value="[ThemePark].[IAAssistant].[LearningSpaceId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[ThemePark].[IAAssistant]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="LearningSpace" />
+  </Operation>
+</Operations>

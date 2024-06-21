@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>DataBaseThemeParkUCR</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{49200353-63d2-4dbc-aa2c-428522b15650}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql150DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath />
+    <RootNamespace>DataBaseThemeParkUCR</RootNamespace>
+    <AssemblyName>DataBaseThemeParkUCR</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <GenerateCreateScript>False</GenerateCreateScript>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="Scripts" />
+    <Folder Include="StoreProcedures" />
+    <Folder Include="Tables" />
+    <Folder Include="Tables\LearningAreas" />
+    <Folder Include="Tables\LearningSpaces" />
+    <Folder Include="Tables\LearningComponents" />
+    <Folder Include="Tables\Interactivity" />
+    <Folder Include="Scripts\LearningAreas" />
+    <Folder Include="Scripts\LearningSpaces" />
+    <Folder Include="Scripts\LearningComponents" />
+    <Folder Include="Scripts\Interactivity" />
+    <Folder Include="StoreProcedures\LearningAreas" />
+    <Folder Include="Triggers\" />
+    <Folder Include="Triggers\LearningSpaces\" />
+    <Folder Include="StoreProcedures\LearningComponents" />
+    <Folder Include="Triggers\LearningComponents" />
+    <Folder Include="StoreProcedures\LearningComponents\Whiteboard" />
+    <Folder Include="StoreProcedures\LearningComponents\InteractiveScreen" />
+    <Folder Include="StoreProcedures\LearningComponents\Projectors" />
+    <Folder Include="StoreProcedures\LearningComponents\AIAssistant" />
+    <Folder Include="StoreProcedures\Interactivity" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Scripts\ThemeParkSchema.sql" />
+    <Build Include="Tables\Interactivity\Administrator.sql" />
+    <Build Include="Tables\LearningAreas\Building.sql" />
+    <Build Include="Tables\LearningAreas\Campus.sql" />
+    <Build Include="Tables\Interactivity\ExternalPerson.sql" />
+    <Build Include="Tables\LearningSpaces\LearningSpace.sql" />
+    <Build Include="Tables\LearningAreas\Level.sql" />
+    <Build Include="Tables\Interactivity\Permission.sql" />
+    <Build Include="Tables\Interactivity\Person.sql" />
+    <Build Include="Tables\Interactivity\Professor.sql" />
+    <Build Include="Tables\LearningComponents\Projector.sql" />
+    <Build Include="Tables\Interactivity\Researcher.sql" />
+    <Build Include="Tables\Interactivity\Role.sql" />
+    <Build Include="Tables\Interactivity\RolesHavePermissions.sql" />
+    <Build Include="Tables\LearningAreas\Site.sql" />
+    <Build Include="Tables\Interactivity\Student.sql" />
+    <Build Include="Tables\Interactivity\Users.sql" />
+    <Build Include="Tables\Interactivity\UsersHaveRoles.sql" />
+    <Build Include="Tables\LearningComponents\Whiteboard.sql" />
+    <Build Include="Tables\LearningAreas\University.sql" />
+    <None Include="Scripts\LearningAreas\Script.PostDeployment.Building.sql" />
+    <None Include="Scripts\LearningAreas\Script.PostDeployment.Campus.sql" />
+    <None Include="Scripts\LearningComponents\Script.PostDeployment.Whiteboard.sql" />
+    <None Include="Scripts\LearningSpaces\Script.PostDeployment.LearningSpace.sql" />
+    <None Include="Scripts\LearningAreas\Script.PostDeployment.Level.sql" />
+    <None Include="Scripts\LearningAreas\Script.PostDeployment.Site.sql" />
+    <None Include="Scripts\LearningAreas\Script.PostDeployment.University.sql" />
+    <None Include="Scripts\Interactivity\Script.PostDeployment.Users.sql" />
+    <Build Include="Tables\LearningSpaces\AccessPoint.sql" />
+    <Build Include="Tables\LearningSpaces\LearningSpaceType.sql" />
+    <Build Include="StoreProcedures\LearningAreas\Procedure.DeleteLevel.sql" />
+    <Build Include="Tables\LearningComponents\InteractiveScreen.sql" />
+    <Build Include="Tables\LearningComponents\IAAssistant.sql" />
+    <Build Include="Tables\LearningComponents\IAModel.sql" />
+    <None Include="Scripts\LearningComponents\Script.PostDeployment.Projector.sql" />
+    <None Include="Scripts\LearningComponents\Script.PostDeployment.IAModel.sql" />
+    <None Include="Scripts\LearningComponents\Script.PostDeployment.IAAssistant.sql" />
+    <Build Include="Tables\LearningComponents\IAAssistantHasIAModel.sql" />
+    <None Include="Scripts\LearningComponents\Script.PostDeployment.InteractiveScreen.sql" />
+    <Build Include="StoreProcedures\LearningAreas\Procedure.DeleteLevel.sql" />
+    <Build Include="Tables\LearningSpaces\LearningSpace_Templates.sql" />
+    <Build Include="Tables\LearningSpaces\Template_Has_Components.sql" />
+    <Build Include="StoreProcedures\LearningAreas\Procedure.UpdateBuilding.sql" />
+    <Build Include="Tables\LearningAreas\BuildingObjects.sql" />
+    <Build Include="Tables\LearningAreas\BOTemplates.sql" />
+    <Build Include="StoreProcedures\LearningAreas\Procedure.AddLevel.sql" />
+    <Build Include="Triggers\LearningSpaces\IncrementLearningSpaceCount.sql" />
+    <Build Include="StoreProcedures\LearningAreas\Procedure.DeleteBuilding.sql" />
+    <Build Include="StoreProcedures\LearningAreas\Procedure.UpdateLevel.sql" />
+    <Build Include="StoreProcedures\LearningAreas\Procedure.CreateBuilding.sql" />
+    <Build Include="StoreProcedures\LearningComponents\Whiteboard\Procedure.CreateWhiteboard.sql" />
+    <Build Include="StoreProcedures\LearningComponents\Whiteboard\Procedure.DeleteWhiteboard.sql" />
+    <Build Include="StoreProcedures\LearningComponents\Whiteboard\Procedure.UpdateWhiteboard.sql" />
+    <Build Include="StoreProcedures\LearningComponents\Whiteboard\Procedure.GetWhiteboards.sql" />
+    <Build Include="Triggers\LearningComponents\UpdateWhiteboardsID.sql" />
+    <Build Include="StoreProcedures\LearningComponents\Projectors\Procedure.CreateProjector.sql" />
+    <Build Include="StoreProcedures\LearningComponents\Projectors\Procedure.DeleteProjector.sql" />
+    <Build Include="StoreProcedures\LearningComponents\Projectors\Procedure.GetProjectors.sql" />
+    <Build Include="StoreProcedures\LearningComponents\Projectors\Procedure.UpdateProjector.sql" />
+    <Build Include="StoreProcedures\LearningComponents\InteractiveScreen\Procedure.CreateInteractiveScreen.sql" />
+    <Build Include="StoreProcedures\LearningComponents\InteractiveScreen\Procedure.DeleteInteractiveScreeen.sql" />
+    <Build Include="StoreProcedures\LearningComponents\InteractiveScreen\Procedure.GetInteractiveScreen.sql" />
+    <Build Include="StoreProcedures\LearningComponents\InteractiveScreen\Procedure.UpdateInteractiveScreen.sql" />
+    <Build Include="StoreProcedures\Interactivity\Procedure.AssignPersonToProfessor.sql" />
+    <Build Include="StoreProcedures\Interactivity\Procedure.AssignPersonToStudent.sql" />
+    <Build Include="StoreProcedures\Interactivity\Procedure.AssignRoleToUser.sql" />
+    <Build Include="StoreProcedures\Interactivity\Procedure.DeactivateProfessor.sql" />
+    <Build Include="StoreProcedures\Interactivity\Procedure.DeactivateStudent.sql" />
+    <Build Include="StoreProcedures\LearningComponents\AIAssistant\Procedure.CreateAIAssistant.sql" />
+    <Build Include="StoreProcedures\LearningComponents\AIAssistant\Procedure.DeleteAIAssistant.sql" />
+    <Build Include="StoreProcedures\LearningComponents\AIAssistant\Procedure.GetAIAssistants.sql" />
+    <Build Include="StoreProcedures\LearningComponents\AIAssistant\Procedure.UpdateAIAssistant.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Scripts\Script.PostDeployment.sql" />
+    <None Include="Scripts\LearningSpaces\Script.PostDeployment.LearningSpaceType.sql" />
+    <None Include="Scripts\Interactivity\Script.PostDeployment.UsersHaveRoles.sql" />
+    <None Include="Scripts\Interactivity\Script.PostDeployment.Role.sql" />
+    <None Include="Scripts\Interactivity\Script.PostDeployment.Person.sql" />
+    <None Include="Scripts\Interactivity\Script.PostDeployment.Permission.sql" />
+    <None Include="Scripts\Interactivity\Script.PostDeployment.RolesHavePermissions.sql" />
+    <None Include="Scripts\LearningSpaces\Script.PostDeployment.Template.sql" />
+    <None Include="Scripts\LearningSpaces\Script.PostDeployment.Templates_Has_Components.sql" />
+    <None Include="Scripts\LearningAreas\Script.PostDeployment.BOTemplates.sql" />
+    <None Include="Scripts\LearningAreas\Script.PostDeployment.BuildingObjects.sql" />
+    <None Include="Scripts\Interactivity\Script.PostDeployment.Student.sql" />
+    <None Include="Scripts\Interactivity\Script.PostDeployment.Professor.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\LearningSpaces\Script.PostDeployment.AccessPoint.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="DataBaseThemeParkUCR.refactorlog" />
+  </ItemGroup>
+</Project>

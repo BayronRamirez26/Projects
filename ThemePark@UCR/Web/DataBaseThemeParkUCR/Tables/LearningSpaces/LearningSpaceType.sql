@@ -1,0 +1,5 @@
+﻿CREATE TABLE [ThemePark].[LearningSpaceType]
+(
+	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
+	[Name] VARCHAR(127) NOT NULL
+)
