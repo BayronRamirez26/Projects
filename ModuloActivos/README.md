@@ -37,13 +37,7 @@ Permite llevar control de los activos por responsable, ubicación, estado y fech
 
 ---
 
-## 🚀 Instalación y configuración
 
-1. Clonar este repositorio:
-   ```bash
-   git clone https://github.com/tu_usuario/sistema-activos-ucr.git
-
----
 
 ## 🖼️ Imágenes de ejemplo
 
