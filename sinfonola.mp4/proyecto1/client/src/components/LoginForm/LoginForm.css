@@ -1,0 +1,97 @@
+.login-box {
+  width: 350px;
+  height: 400px;
+  padding: 1.5rem;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+  margin: 2rem auto;
+}
+
+.login-box-title {
+  margin-bottom: 1rem;
+  text-align: center;
+  font-size: clamp(1.1rem, 4vw, 1.25rem); 
+  color: #333;
+}
+
+.login-box-group {
+  margin-bottom: 1rem;
+}
+
+.login-box-group label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+  font-size: clamp(0.9rem, 3vw, 1rem); 
+}
+
+.login-box-group input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  font-size: clamp(0.9rem, 3vw, 1rem); 
+}
+
+.login-box-btn {
+  width: 100%;
+  padding: 0.6rem;
+  background-color: #7CA3C5;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: clamp(0.9rem, 3vw, 1rem); 
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.login-box-links {
+  display: flex;
+  flex-direction: column; 
+  gap: 0.5rem; 
+  margin-top: 0.75rem;
+}
+
+.login-box-links a {
+  font-size: 0.85rem;
+  color: #699dcb;
+  text-decoration: none;
+  text-align: center;
+}
+
+
+.login-box-link-register {
+  font-weight: 500;
+}
+
+.login-box-error {
+  border-color: #ff4d4f !important;
+}
+
+.login-box-error-text {
+  color: #ff4d4f;
+  font-size: clamp(0.7rem, 2.5vw, 0.8rem); 
+  margin-top: 0.3rem;
+  display: block;
+}
+
+@media (min-width: 480px) {
+  .login-box-links {
+    flex-direction: row; 
+    justify-content: space-between;
+    text-align: left; 
+  }
+}
+
+@media (max-width: 360px) {
+  .login-box {
+    padding: 1rem;
+    margin: 1rem auto;
+  }
+  
+  .login-box-group {
+    margin-bottom: 0.75rem;
+  }
+}

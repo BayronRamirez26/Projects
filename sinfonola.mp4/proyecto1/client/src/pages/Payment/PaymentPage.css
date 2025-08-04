@@ -1,0 +1,164 @@
+.payment-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+  
+  .form-group label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .form-group input[type="text"],
+  .form-group select {
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  .form-row {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .form-row .form-group {
+    min-width: 0;
+    flex: 1; /* Para que los campos MM, YYYY y CVV ocupen el mismo ancho */
+  }
+  
+  .payment-total {
+    margin-top: 2rem;
+    text-align: right;
+  }
+  
+  .payment-total h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .payment-total p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #7CA3C5; /* Un color azul primario */
+  }
+  
+  .payment-button {
+    width: 100%;
+    background-color: #7CA3C5; /* Un color azul primario */
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 1rem;
+  }
+  
+  .payment-button:hover {
+    background-color: #0056b3; /* Un tono más oscuro al pasar el ratón */
+  }
+  
+  .payment-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+  }
+  
+  .payment-container h1 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #7CA3C5; 
+  }
+  /* Estilos para los iconos personalizados */
+.payment-icon {
+    width: 60px;
+    height: 40px;
+    object-fit: contain;
+    margin-bottom: 0.5rem;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+  }
+  
+  .method-option.active .payment-icon {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.05);
+  }
+
+.payment-box-error {
+  border-color: #ff4d4f !important;
+}
+
+.payment-box-error-text {
+  color: #ff4d4f;
+  font-size: clamp(0.7rem, 2.5vw, 0.8rem); 
+  margin-top: 0.3rem;
+  display: block;
+}
+  
+/* Ajustes para móviles */
+@media (max-width: 768px) {
+    .payment-container {
+        padding: 1rem;
+        margin: 1rem;
+    }
+
+    .form-row {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .form-row .form-group {
+        flex: 1 1 calc(50% - 0.5rem); 
+    }
+}
+
+@media (max-width: 600px) {
+    .payment-icon {
+        width: 50px;
+        height: 30px;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .form-row .form-group {
+        flex: 1 1 100%; 
+    }
+
+    .form-group input[type="text"],
+    .form-group select {
+        padding: 0.6rem;
+        font-size: 0.9rem;
+    }
+
+    .payment-button {
+        padding: 0.8rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .payment-methods {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .method-option {
+        margin-bottom: 0.5rem;
+    }
+}

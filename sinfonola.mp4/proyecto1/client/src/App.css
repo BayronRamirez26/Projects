@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Nunito', sans-serif;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px; /* sets the base */
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 13px; /* sets the base font size for smaller screens */
+  }
+}

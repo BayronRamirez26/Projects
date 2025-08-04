@@ -1,0 +1,278 @@
+header {
+  position: sticky;
+  top: 0; 
+  z-index: 1000; /*always over*/
+  background-color: transparent;
+  
+  width: 100%;
+  width: 100%;
+  height: 120px;
+  background-color: #624E50;
+  opacity: 0.94;
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  flex-direction: row;
+  padding: 8px 0px;
+}
+
+.hamburger-menu {
+  display: none;
+}
+
+.icon-image {
+  width: 120px;
+  height: auto;
+  margin-left: 30px;
+  cursor: pointer;
+}
+
+.search-categories {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+  height: auto;
+  margin-top: 15px;
+  padding-bottom: 10px;
+}
+
+.search-input {
+  position: absolute;
+  width: 50%;
+  height: 40px;
+  color: gray;
+  border-radius: 20px;
+  border: solid 1px #BFB3A8;
+  padding-left: 20px;
+  font-size: 0.95rem;
+  margin-top: 25px;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.categories {
+  color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  border-top: solid 1px #E3DCD5;
+  margin-top: 75px;
+  padding-top: 10px;
+}
+
+.nav-button {
+  background-color: transparent;
+  border: none;
+  color: #ffffffef;
+  font-size: 0.85rem;
+  cursor: pointer;  
+}
+
+.search-login-cart {
+  width: 170px;
+  height: auto;
+  margin-right: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-button{
+  width: 40px;
+  height: auto;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+  border: none;
+  font-size: 1.3rem;
+}
+
+.login-button{
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+  border: none; 
+  font-size: 1.18rem;
+
+}
+
+.cart-button{
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+  border: none;
+  width: 40px;
+  height: auto;
+  font-size: 1.6rem;
+
+}
+
+.categories-item {
+  height: 35px;
+  position: relative;
+  display: inline-block;
+}
+
+.categories-submenu {
+  color: rgba(255, 255, 255, 0.9);
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: auto;
+  background-color: #624E50;
+  position: absolute;
+  margin-top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0px 0px;
+}
+
+.categories-submenu li{
+  font-size: 0.9rem;
+  text-align: center;
+  width: 100%;
+  height: auto;
+  padding: 15px 0;
+  border-top: 1px solid #E3DCD5;
+  cursor: pointer;
+}
+
+.categories-submenu li:hover {
+  opacity: 70%;
+}
+
+#formats-submenu {
+  width: 180px;
+}
+
+#music-genders-submenu{
+  width: 320px;
+  height: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 0px;
+  padding: 0px 10px;
+  text-align: left;
+  border-top: 1px solid #E3DCD5;
+}
+
+#music-genders-submenu li{
+  border: none;
+  text-align: center;
+}
+
+#players-submenu {
+  width: 200px;
+}
+
+#accesories-submenu {
+  width: 170px;
+}
+
+#hot-submenu {
+  width: 150px;
+}
+
+.submenu-visible {
+  display: flex;
+
+}
+
+.submenu-hidden {
+  display: none;
+}
+
+@media(max-width: 678px) {
+  .header {
+    height: 100px;
+    justify-content: space-between;
+  }
+  .search-categories {
+    display: none;
+  }
+
+  .hamburger-menu {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+    width: 80px;
+    margin-left: 20px;
+  }
+
+  #hamburger-icon {
+    border: none;
+    background: none;
+    width: auto;
+    height: auto;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+  }
+
+  .categories {
+    position: absolute;
+    text-align: center;
+    width: 120px;
+    margin: 0;
+    flex-wrap: wrap;
+    margin-top: 58px;
+    background-color: #624E50;
+    border: none;
+  }
+
+  .categories-item {
+    width: 100%;
+    margin-top: 0;
+  }
+
+  .icon-image {
+    width: 70px;
+    height: auto;
+  }
+
+  .search-login-cart {
+    justify-content: space-around;
+    align-items: center;
+    width: 100px;
+    margin-right: 10px;
+    padding: 0;
+  }
+
+  .categories-submenu {
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+    height: auto;
+    position: absolute;
+    left: 99%;
+    transform: translateY(-20%);
+  }
+
+  .search-input {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 90%);
+  }
+
+
+  #music-genders-submenu {
+    width: 200px;
+  }
+
+  #formats-submenu, #players-submenu, #accesories-submenu, #hot-submenu {
+    width: 150px;
+  }
+}

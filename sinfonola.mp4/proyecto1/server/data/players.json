@@ -1,0 +1,722 @@
+[
+  {
+    "id": "v1|364992706183|0",
+    "title": "Radio portátil AM/FM y grabadora de casetes",
+    "price": "22.99",
+    "cover_image": "https://i.ebayimg.com/images/g/1r0AAOSw2I5hd845/s-l225.jpg",
+    "year": "2020",
+    "description": "Dispositivo portátil con radio AM/FM y función de grabación y reproducción de casetes. Incluye altavoz integrado, controles sencillos y diseño compacto ideal para viajes o uso personal. Funciona con baterías.",
+    "type": "casete",
+    "category": "players"
+  },
+  {
+    "id": "v1|363144406610|0",
+    "title": "Walkman con Bluetooth para casetes",
+    "price": "34.99",
+    "cover_image": "https://i.ebayimg.com/images/g/RW8AAOSw8GNd246L/s-l225.jpg",
+    "year": "2020",
+    "description": "Reproductor de casetes tipo Walkman con conectividad Bluetooth para transferir música a otros dispositivos. Portátil, ligero, con salida para auriculares y controles de reproducción. Ideal para digitalizar tus cintas.",
+    "type": "casete",
+    "category": "players"
+  },
+  {
+    "id": "v1|404327312522|0",
+    "title": "Walkman Sony TCM-450 reproductor de casetes",
+    "price": "65.49",
+    "cover_image": "https://i.ebayimg.com/images/g/It8AAOSweLdoLHdd/s-l225.jpg",
+    "year": "2023",
+    "description": "Walkman Sony TCM-450, reproductor portátil de casetes con calidad de sonido estéreo, controles de avance y retroceso rápido, y funcionamiento a pilas. Perfecto para escuchar música en movimiento.",
+    "type": "casete",
+    "category": "players"
+  },
+  {
+    "id": "v1|134408485378|0",
+    "title": "Grabadora de casetes QFX RETRO-40 Shoebox",
+    "price": "37.90",
+    "cover_image": "https://i.ebayimg.com/images/g/PzwAAOSwRbxjvjj7/s-l225.jpg",
+    "year": "2023",
+    "description": "Grabadora de casetes QFX RETRO-40 estilo shoebox, con micrófono integrado, entrada AUX/USB y altavoz frontal. Permite grabar y reproducir cintas fácilmente. Diseño retro y resistente.",
+    "type": "casete",
+    "category": "players"
+  },
+  {
+    "id": "v1|167532462298|0",
+    "title": "Memorex MD2280 reproductor de casetes plateado",
+    "price": "24.99",
+    "cover_image": "https://i.ebayimg.com/images/g/x10AAeSwAsdoL3gc/s-l225.jpg",
+    "year": "2025",
+    "description": "Reproductor de casetes Memorex MD2280 en color plateado, con radio AM/FM, salida para auriculares y controles intuitivos. Incluye audífonos y funciona con pilas.",
+    "type": "casete",
+    "category": "players"
+  },
+  {
+    "id": "v1|127118513454|0",
+    "title": "Reproductor Durabrand AM/FM con casetes",
+    "price": "24.99",
+    "cover_image": "https://i.ebayimg.com/images/g/m1gAAeSwHh5oKNyJ/s-l225.jpg",
+    "year": "2025",
+    "description": "Reproductor de casetes Durabrand con radio AM/FM, audífonos incluidos y controles de fácil acceso. Ideal para escuchar música en cualquier lugar. Nuevo y sellado.",
+    "type": "casete",
+    "category": "players"
+  },
+  {
+    "id": "v1|286598761628|0",
+    "title": "Coby CX-49 reproductor estéreo de casetes",
+    "price": "28.96",
+    "cover_image": "https://i.ebayimg.com/images/g/~~MAAeSwbetoM1Nm/s-l225.jpg",
+    "year": "2025",
+    "description": "Reproductor estéreo de casetes Coby CX-49 con radio AM/FM, diseño compacto y controles sencillos. Incluye audífonos y funciona con baterías.",
+    "type": "casete",
+    "category": "players"
+  },
+  {
+    "id": "v1|205284289838|0",
+    "title": "Aiwa HS-TA30 reproductor de casetes vintage",
+    "price": "48.00",
+    "cover_image": "https://i.ebayimg.com/images/g/WJwAAOSw1i5nq950/s-l225.jpg",
+    "year": "2025",
+    "description": "Reproductor de casetes vintage Aiwa HS-TA30, incluye audífonos, función bass boost y controles de reproducción. Diseño clásico y resistente.",
+    "type": "casete",
+    "category": "players"
+  },
+  {
+    "id": "v1|405759757239|0",
+    "title": "Reproductor RCA de casetes y radio estéreo",
+    "price": "17.99",
+    "cover_image": "https://i.ebayimg.com/images/g/qPgAAOSwCeNmMsmG/s-l225.jpg",
+    "year": "2024",
+    "description": "Reproductor de casetes RCA con radio estéreo AM/FM, ecualizador de tres bandas y salida para auriculares. Compacto y fácil de transportar.",
+    "type": "casete",
+    "category": "players"
+  },
+  {
+    "id": "v1|256948318954|0",
+    "title": "Sony Walkman WM-FX195 con Mega Bass y radio AM/FM",
+    "price": "129.00",
+    "cover_image": "https://i.ebayimg.com/images/g/RVkAAOSww~loNRIX/s-l225.jpg",
+    "year": "2025",
+    "description": "Walkman Sony WM-FX195, reproductor de casetes estéreo con función Mega Bass para graves potentes, radio AM/FM, diseño portátil y nuevo en su empaque original. Ideal para coleccionistas y amantes del sonido clásico.",
+    "type": "casete",
+    "category": "players"
+  },
+  {
+    "id": "v1|267258084251|0",
+    "title": "Panasonic RQ-J52 reproductor estéreo vintage",
+    "price": "39.95",
+    "cover_image": "https://i.ebayimg.com/images/g/4OMAAeSw3S1oLghA/s-l225.jpg",
+    "year": "2025",
+    "description": "Reproductor de casetes Panasonic RQ-J52, modelo vintage estéreo, probado y funcionando. Incluye controles de volumen, salida para auriculares y diseño resistente.",
+    "type": "casete",
+    "category": "players"
+  },
+  {
+    "id": "v1|365629656569|0",
+    "title": "Memorex MB1055 grabadora y reproductor vintage",
+    "price": "22.00",
+    "cover_image": "https://i.ebayimg.com/images/g/v7cAAeSw9LdoNShY/s-l225.jpg",
+    "year": "2025",
+    "description": "Grabadora y reproductor de casetes Memorex MB1055, diseño vintage, probado y funcionando. Permite grabar y reproducir cintas, ideal para coleccionistas.",
+    "type": "casete",
+    "category": "players"
+  },
+  {
+    "id": "v1|355421769691|0",
+    "title": "Sony TCM-450 Walkman grabadora portátil",
+    "price": "66.15",
+    "cover_image": "https://i.ebayimg.com/images/g/JXsAAOSw2E5lt7Mo/s-l225.jpg",
+    "year": "2024",
+    "description": "Walkman Sony TCM-450, grabadora de casetes portátil, controles de grabación y reproducción, funcionamiento a pilas y diseño compacto.",
+    "type": "casete",
+    "category": "players"
+  },
+  {
+    "id": "v1|226691207488|0",
+    "title": "Sony TCS-600 grabadora estéreo portátil",
+    "price": "75.00",
+    "cover_image": "https://i.ebayimg.com/images/g/g~YAAOSw535n9l6I/s-l225.jpg",
+    "year": "2025",
+    "description": "Grabadora de casetes Sony TCS-600, estéreo, portátil, controles de grabación y reproducción, salida para auriculares.",
+    "type": "casete",
+    "category": "players"
+  },
+  {
+    "id": "v1|205502851789|0",
+    "title": "Sanyo M-G30 reproductor metálico vintage",
+    "price": "54.99",
+    "cover_image": "https://i.ebayimg.com/images/g/hewAAeSwFkVoB97N/s-l225.jpg",
+    "year": "2025",
+    "description": "Reproductor de casetes Sanyo M-G30, metálico, diseño vintage, probado y funcionando. Incluye controles de volumen y salida para auriculares.",
+    "type": "casete",
+    "category": "players"
+  },
+  {
+    "id": "v1|166963705741|0",
+    "title": "FiiO CP13 reproductor portátil de casetes",
+    "price": "99.99",
+    "cover_image": "https://i.ebayimg.com/images/g/k~EAAOSw5Yhm37bw/s-l225.jpg",
+    "year": "2024",
+    "description": "Reproductor de casetes FiiO CP13, portátil, con jack para auriculares de 3.5mm, diseño moderno y sonido de alta fidelidad.",
+    "type": "casete",
+    "category": "players"
+  },
+  {
+    "id": "v1|177104069050|0",
+    "title": "Sony TCM-7 grabadora vintage de los 80",
+    "price": "75.00",
+    "cover_image": "https://i.ebayimg.com/images/g/JGAAAOSwKYpoKe~g/s-l225.jpg",
+    "year": "2025",
+    "description": "Grabadora de casetes Sony TCM-7, vintage de los 80, incluye estuche, controles de grabación y reproducción. Probada y funcionando.",
+    "type": "casete",
+    "category": "players"
+  },
+  {
+    "id": "v1|146603696553|0",
+    "title": "Sanyo M 1950F reproductor vintage de los 70",
+    "price": "80.11",
+    "cover_image": "https://i.ebayimg.com/images/g/WZEAAeSwW6toMlC3/s-l225.jpg",
+    "year": "2025",
+    "description": "Reproductor de casetes Sanyo M 1950F, vintage de los 70, probado y funcionando. Diseño robusto y sonido clásico.",
+    "type": "casete",
+    "category": "players"
+  },
+  {
+    "id": "v1|226775338646|0",
+    "title": "SANYO M-G25A estéreo con radio AM/FM",
+    "price": "75.95",
+    "cover_image": "https://i.ebayimg.com/images/g/igAAAeSwr21oM2G9/s-l225.jpg",
+    "year": "2025",
+    "description": "Reproductor de casetes SANYO Model M-G25A, estéreo, radio AM/FM, controles sencillos y diseño vintage. Probado y funcionando.",
+    "type": "casete",
+    "category": "players"
+  },
+  {
+    "id": "v1|187049420258|0",
+    "title": "QFX RETRO-40 Shoebox grabadora plateada",
+    "price": "29.99",
+    "cover_image": "https://i.ebayimg.com/images/g/~TQAAeSwyENn1gA-/s-l225.jpg",
+    "year": "2025",
+    "description": "Grabadora de casetes QFX RETRO-40, color plateado, con micrófono integrado, entrada AUX/USB y altavoz frontal. Diseño retro y resistente.",
+    "type": "casete",
+    "category": "players"
+  },
+  {
+    "id": "v1|326555728350|0",
+    "title": "Memorex MD2280 reproductor plateado AM/FM",
+    "price": "34.99",
+    "cover_image": "https://i.ebayimg.com/images/g/ZJAAAeSwYVRoEF1Q/s-l225.jpg",
+    "year": "2025",
+    "description": "Reproductor de casetes Memorex MD2280, radio AM/FM, color plateado, controles sencillos y audífonos incluidos. Nuevo.",
+    "type": "casete",
+    "category": "players"
+  },
+  {
+    "id": "v1|146606253034|0",
+    "title": "Panasonic Walkman RQ-V75 plateado AM/FM",
+    "price": "24.99",
+    "cover_image": "https://i.ebayimg.com/images/g/GTQAAeSwy7NoM-vR/s-l225.jpg",
+    "year": "2025",
+    "description": "Walkman Panasonic RQ-V75, reproductor de casetes y radio AM/FM, diseño compacto y probado.",
+    "type": "casete",
+    "category": "players"
+  },
+  {
+    "id": "v1|405366865251|0",
+    "title": "Sony TCM-450 Walkman grabadora portátil",
+    "price": "69.84",
+    "cover_image": "https://i.ebayimg.com/images/g/yk8AAOSwRaloLcl3/s-l225.jpg",
+    "year": "2024",
+    "description": "Walkman Sony TCM-450, grabadora de casetes portátil, controles de grabación y reproducción, funcionamiento a pilas y diseño compacto.",
+    "type": "casete",
+    "category": "players"
+  },
+  {
+    "id": "v1|197355176742|0",
+    "title": "Sony Pressman TCM-455V grabadora nueva",
+    "price": "189.99",
+    "cover_image": "https://i.ebayimg.com/images/g/onAAAOSwtVJnVmi0/s-l225.jpg",
+    "year": "2025",
+    "description": "Grabadora de casetes Sony Pressman TCM-455V, nueva, con altavoz incorporado, controles sencillos y diseño portátil.",
+    "type": "casete",
+    "category": "players"
+  },
+  {
+    "id": "v1|205507209842|0",
+    "title": "Panasonic RQ-356 grabadora portátil vintage",
+    "price": "39.99",
+    "cover_image": "https://i.ebayimg.com/images/g/btEAAeSwoOxoMbbp/s-l225.jpg",
+    "year": "2025",
+    "description": "Grabadora de casetes Panasonic RQ-356, portátil, vintage, controles de grabación y reproducción, probada y funcionando.",
+    "type": "casete",
+    "category": "players"
+  },
+  {
+    "id": "v1|405659728632|0",
+    "title": "Sony TCM-500 Walkman grabadora portátil",
+    "price": "61.44",
+    "cover_image": "https://i.ebayimg.com/images/g/mTwAAOSwskRoF~x6/s-l225.jpg",
+    "year": "2025",
+    "description": "Walkman Sony TCM-500, grabadora de casetes portátil, controles de grabación y reproducción, funcionamiento a pilas y diseño compacto.",
+    "type": "casete",
+    "category": "players"
+  },
+  {
+    "id": "v1|306320728369|0",
+    "title": "SoundDesign 4210 estéreo personal nuevo",
+    "price": "27.99",
+    "cover_image": "https://i.ebayimg.com/images/g/gLkAAeSwfT9oM8-R/s-l225.jpg",
+    "year": "2025",
+    "description": "Reproductor de casetes estéreo SoundDesign 4210, nuevo en paquete, diseño compacto y sonido claro.",
+    "type": "casete",
+    "category": "players"
+  },
+  {
+    "id": "v1|297313254038|0",
+    "title": "RCA estéreo AM/FM con casetes y audífonos",
+    "price": "21.50",
+    "cover_image": "https://i.ebayimg.com/images/g/WOIAAeSwBFVoJYHE/s-l225.jpg",
+    "year": "2025",
+    "description": "Reproductor de casetes RCA con radio estéreo AM/FM, incluye audífonos, controles sencillos y diseño portátil. Nuevo en caja.",
+    "type": "casete",
+    "category": "players"
+  },
+  {
+    "id": "v1|205484692820|0",
+    "title": "Realistic Minisette-16 radio AM/FM y casetes",
+    "price": "32.00",
+    "cover_image": "https://i.ebayimg.com/images/g/zPsAAeSw0c5oI7B~/s-l225.jpg",
+    "year": "2025",
+    "description": "Minisette-16 de Realistic, radio AM/FM y reproductor de casetes, controles sencillos y diseño compacto. Probado y funcionando.",
+    "type": "casete",
+    "category": "players"
+  },
+  {
+    "id": "v1|177106971232|0",
+    "title": "Reshow reproductor portátil y digitalizador MP3",
+    "price": "17.54",
+    "cover_image": "https://i.ebayimg.com/images/g/Tc4AAeSwKVFoK007/s-l225.jpg",
+    "year": "2025",
+    "description": "Reproductor de casetes Reshow, portátil, permite digitalizar audio a MP3 vía USB, ideal para convertir tus cintas antiguas.",
+    "type": "casete",
+    "category": "players"
+  },
+  {
+    "id": "v1|126990528186|0",
+    "title": "Sony TCM-150 grabadora de voz con cinta",
+    "price": "89.99",
+    "cover_image": "https://i.ebayimg.com/images/g/JZcAAOSwt~pn0iqD/s-l225.jpg",
+    "year": "2025",
+    "description": "Grabadora de voz Sony TCM-150, incluye cinta, controles sencillos y funcionamiento comprobado.",
+    "type": "casete",
+    "category": "players"
+  },
+  {
+    "id": "v1|146524606910|0",
+    "title": "Sony WM-EX651 Walkman reproductor de casetes",
+    "price": "249.99",
+    "cover_image": "https://i.ebayimg.com/images/g/oxYAAOSwx2VoNGtU/s-l225.jpg",
+    "year": "2025",
+    "description": "Walkman Sony WM-EX651, reproductor de casetes, funcionamiento confirmado, diseño compacto y sonido estéreo.",
+    "type": "casete",
+    "category": "players"
+  },
+  {
+    "id": "v1|405900153648|0",
+    "title": "Sony WM-EX921 Walkman plateado",
+    "price": "200.00",
+    "cover_image": "https://i.ebayimg.com/images/g/sb4AAeSwhjVoNI2U/s-l225.jpg",
+    "year": "2025",
+    "description": "Walkman Sony WM-EX921, reproductor de casetes plateado, funcionamiento comprobado, ideal para coleccionistas.",
+    "type": "casete",
+    "category": "players"
+  },
+  {
+    "id": "v1|276168774289|0",
+    "title": "Jensen estéreo portátil con radio y casetes",
+    "price": "22.04",
+    "cover_image": "https://i.ebayimg.com/images/g/wy0AAOSwanZmOVlf/s-l225.jpg",
+    "year": "2023",
+    "description": "Reproductor de casetes estéreo portátil Jensen, con radio AM/FM, auriculares deportivos y diseño compacto.",
+    "type": "casete",
+    "category": "players"
+  },
+  {
+    "id": "v1|316789417181|0",
+    "title": "Coby CX-C21 estéreo compacto con audífonos",
+    "price": "19.99",
+    "cover_image": "https://i.ebayimg.com/images/g/nikAAOSwrZpm7DYo/s-l225.jpg",
+    "year": "2025",
+    "description": "Reproductor de casetes estéreo Coby CX-C21, ultra compacto, incluye audífonos y controles sencillos. Nuevo.",
+    "type": "casete",
+    "category": "players"
+  },
+  {
+    "id": "v1|388470857450|0",
+    "title": "Sony WM-EX655 Walkman vintage plateado",
+    "price": "99.99",
+    "cover_image": "https://i.ebayimg.com/images/g/1ocAAOSwLUJoM~Ut/s-l225.jpg",
+    "year": "2025",
+    "description": "Walkman Sony WM-EX655, reproductor de casetes plateado, vintage, funcionamiento comprobado y sonido estéreo.",
+    "type": "casete",
+    "category": "players"
+  },
+  {
+    "id": "v1|277100863935|0",
+    "title": "Sony WM-FX494 Walkman con radio FM/AM/TV",
+    "price": "79.99",
+    "cover_image": "https://i.ebayimg.com/images/g/dzYAAeSwuO5oH4eQ/s-l225.jpg",
+    "year": "2025",
+    "description": "Walkman Sony WM-FX494, reproductor de casetes con radio FM/AM/TV y clima, controles sencillos y diseño portátil. Probado y funcionando.",
+    "type": "casete",
+    "category": "players"
+  },
+  {
+    "id": "v1|388459174713|0",
+    "title": "Panasonic RQ-CR18V radio estéreo y casetes",
+    "price": "79.99",
+    "cover_image": "https://i.ebayimg.com/images/g/pr0AAeSwprhn2EuS/s-l225.jpg",
+    "year": "2025",
+    "description": "Reproductor de casetes Panasonic RQ-CR18V, radio estéreo AM/FM, nuevo y sellado, sonido claro y diseño compacto.",
+    "type": "casete",
+    "category": "players"
+  },
+  {
+    "id": "v1|226140513755|0",
+    "title": "Sony MP4/MP3 128GB Bluetooth Running",
+    "description": "Disfruta de tu música favorita con este reproductor MP4/MP3 portátil que soporta hasta 128GB de almacenamiento. Incluye Bluetooth para conexión inalámbrica, radio FM, grabadora de voz y diseño deportivo ideal para actividades al aire libre. Perfecto para quienes buscan calidad de sonido sin pérdidas y versatilidad en un solo dispositivo.",
+    "price": "22.98",
+    "cover_image": "https://i.ebayimg.com/images/g/CLoAAOSwngpmPw-j/s-l225.jpg",
+    "year": "2024",
+    "type": "mp3_mp4",
+    "category": "players"
+  },
+  {
+    "id": "v1|335771373590|0",
+    "title": "MP4/MP3 128GB Bluetooth Compacto",
+    "description": "Reproductor portátil con soporte para 128GB, Bluetooth integrado, radio FM y grabadora de voz. Ideal para deportes y uso diario, ofrece sonido de alta fidelidad y múltiples funciones en un diseño compacto.",
+    "price": "22.98",
+    "cover_image": "https://i.ebayimg.com/images/g/o4IAAOSwqUhnh4cy/s-l225.jpg",
+    "year": "2025",
+    "type": "mp3_mp4",
+    "category": "players"
+  },
+  {
+    "id": "v1|376027984258|0",
+    "title": "MP4/MP3 256GB LED 4'' Bluetooth",
+    "description": "Experimenta la mejor calidad de audio con este reproductor MP4/MP3 de 256GB, pantalla LED de 4 pulgadas y Bluetooth. Incluye radio FM, grabadora y diseño moderno, perfecto para quienes buscan almacenamiento amplio y conectividad avanzada.",
+    "price": "39.99",
+    "cover_image": "https://i.ebayimg.com/images/g/KmUAAOSwjThnwBUW/s-l225.jpg",
+    "year": "2025",
+    "type": "mp3_mp4",
+    "category": "players"
+  },
+  {
+    "id": "v1|176639939815|0",
+    "title": "Philips MP4/MP3 Deportivo 128GB Fitness",
+    "description": "Lleva tu música a todas partes con este reproductor deportivo que soporta hasta 128GB, Bluetooth, radio FM y grabadora de voz. Perfecto para actividades físicas y uso diario, con sonido de alta calidad.",
+    "price": "13.99",
+    "cover_image": "https://i.ebayimg.com/images/g/gXkAAOSwFWxnFhti/s-l225.jpg",
+    "year": "2024",
+    "type": "mp3_mp4",
+    "category": "players"
+  },
+  {
+    "id": "v1|135669970274|435018158876",
+    "title": "MP4/MP3 128GB Bluetooth Grabadora",
+    "description": "Dispositivo portátil con soporte para 128GB, Bluetooth, radio FM y grabadora. Ideal para deportistas y amantes de la música que buscan calidad y funcionalidad en un solo equipo.",
+    "price": "20.99",
+    "cover_image": "https://i.ebayimg.com/images/g/Pw8AAOSwfQtn7kHO/s-l225.jpg",
+    "year": "2025",
+    "type": "mp3_mp4",
+    "category": "players"
+  },
+  {
+    "id": "v1|395539668735|0",
+    "title": "MP4/MP3 128GB Bluetooth",
+    "description": "Reproductor compacto con soporte para 128GB, Bluetooth, radio FM y grabadora de voz. Diseño deportivo y sonido de alta fidelidad, ideal para quienes buscan portabilidad y calidad.",
+    "price": "11.99",
+    "cover_image": "https://i.ebayimg.com/images/g/cIkAAOSwiSFmmOF8/s-l225.jpg",
+    "year": "2024",
+    "type": "mp3_mp4",
+    "category": "players"
+  },
+  {
+    "id": "v1|177110012519|476798768122",
+    "title": "JBL MP4/MP3 128GB Bluetooth Outdoor",
+    "description": "Reproductor portátil con soporte para 128GB, Bluetooth, radio FM y grabadora. Perfecto para actividades deportivas y uso diario, con sonido de alta calidad y diseño resistente.",
+    "price": "8.49",
+    "cover_image": "https://i.ebayimg.com/images/g/jYEAAOSw525oLECz/s-l225.jpg",
+    "year": "2025",
+    "type": "mp3_mp4",
+    "category": "players"
+  },
+  {
+    "id": "v1|405745242584|0",
+    "title": "Pioneer MP4/MP3 Deportivo 128GB Gym",
+    "description": "Lleva tu música a todas partes con este reproductor deportivo que soporta hasta 128GB, Bluetooth, radio FM y grabadora de voz. Sonido de alta fidelidad y diseño compacto para acompañarte en cualquier actividad.",
+    "price": "13.99",
+    "cover_image": "https://i.ebayimg.com/images/g/0FUAAOSwuhdn9n2I/s-l225.jpg",
+    "year": "2025",
+    "type": "mp3_mp4",
+    "category": "players"
+  },
+  {
+    "id": "v1|176544415616|476159069964",
+    "title": "LG MP4/MP3 128GB Bluetooth Entrenamiento",
+    "description": "Reproductor de música con soporte para 128GB, Bluetooth, radio FM y grabadora. Perfecto para quienes buscan portabilidad, calidad de sonido y múltiples funciones en un solo dispositivo.",
+    "price": "20.99",
+    "cover_image": "https://i.ebayimg.com/images/g/nxgAAOSw9E9mzBu9/s-l225.jpg",
+    "year": "2024",
+    "type": "mp3_mp4",
+    "category": "players"
+  },
+  {
+    "id": "v1|388375562141|0",
+    "title": "MP3 Android Bluetooth WiFi Táctil",
+    "description": "Reproductor MP3 con sistema Android, Bluetooth, WiFi y pantalla táctil. Permite reproducir música y videos en alta calidad, ideal para quienes buscan conectividad avanzada y entretenimiento portátil.",
+    "price": "26.88",
+    "cover_image": "https://i.ebayimg.com/images/g/D6cAAOSwgTxoGeVr/s-l225.jpg",
+    "year": "2025",
+    "type": "mp3_mp4",
+    "category": "players"
+  },
+  {
+    "id": "v1|226140520491|0",
+    "title": "Panasonic MP4/MP3 128GB Bluetooth Running Pro",
+    "description": "Disfruta de la mejor música con este reproductor compatible con 128GB, Bluetooth, radio FM y grabadora. Ideal para actividades deportivas y uso diario, con sonido de alta fidelidad.",
+    "price": "22.98",
+    "cover_image": "https://i.ebayimg.com/images/g/PNoAAOSwOc9mPw5K/s-l225.jpg",
+    "year": "2024",
+    "type": "mp3_mp4",
+    "category": "players"
+  },
+  {
+    "id": "v1|396480461017|0",
+    "title": "Philips MP4/MP3 128GB Bluetooth Compact Sport",
+    "description": "Reproductor compacto compatible con 128GB, Bluetooth, radio FM y grabadora. Perfecto para quienes buscan portabilidad, calidad y funcionalidad en un solo equipo.",
+    "price": "19.99",
+    "cover_image": "https://i.ebayimg.com/images/g/gzQAAOSw9z1n~1Ks/s-l225.jpg",
+    "year": "2025",
+    "type": "mp3_mp4",
+    "category": "players"
+  },
+  {
+    "id": "v1|146193088147|445090822860",
+    "title": "JBL MP4/MP3 128GB Bluetooth Outdoor Pro",
+    "description": "Disfruta de tu música favorita con este reproductor portátil compatible con 128GB, Bluetooth, radio FM y grabadora de voz. Ideal para deportes y actividades al aire libre, con sonido de alta fidelidad y diseño resistente.",
+    "price": "8.49",
+    "cover_image": "https://i.ebayimg.com/images/g/C5cAAOSwPSlnNbSO/s-l225.jpg",
+    "year": "2024",
+    "type": "mp3_mp4",
+    "category": "players"
+  },
+  {
+    "id": "v1|395973618056|0",
+    "title": "Pioneer MP4/MP3 128GB Bluetooth Fitness",
+    "description": "Reproductor portátil con soporte para 128GB, Bluetooth, radio FM y grabadora. Perfecto para actividades deportivas y uso diario, con sonido de alta calidad y diseño resistente.",
+    "price": "16.99",
+    "cover_image": "https://i.ebayimg.com/images/g/jdkAAOSweIlmg2Qt/s-l225.jpg",
+    "year": "2024",
+    "type": "mp3_mp4",
+    "category": "players"
+  },
+  {
+    "id": "v1|127056571106|0",
+    "title": "Samsung MP4/MP3 128GB Bluetooth Sport Plus",
+    "description": "Reproductor portátil con soporte para 128GB, Bluetooth, radio FM y grabadora de voz. Sonido de alta fidelidad y diseño compacto, ideal para acompañarte en cualquier actividad.",
+    "price": "18.99",
+    "cover_image": "https://i.ebayimg.com/images/g/z5sAAOSw8MFn~1LO/s-l225.jpg",
+    "year": "2025",
+    "type": "mp3_mp4",
+    "category": "players"
+  },
+  {
+    "id": "v1|235907815067|536338413871",
+    "title": "LG MP4/MP3 128GB Bluetooth Gym",
+    "description": "Disfruta de tu música favorita con este reproductor portátil compatible con 128GB, Bluetooth, radio FM y grabadora de voz. Ideal para deportes y actividades al aire libre, con sonido de alta fidelidad y diseño resistente.",
+    "price": "20.99",
+    "cover_image": "https://i.ebayimg.com/images/g/C54AAOSwNDFngNXo/s-l225.jpg",
+    "year": "2025",
+    "type": "mp3_mp4",
+    "category": "players"
+  },
+  {
+    "id": "v1|316866896173|0",
+    "title": "MP3 256GB Digital Bluetooth Táctil",
+    "description": "Reproductor digital MP3 con 256GB de almacenamiento, Bluetooth y pantalla táctil completa. Ideal para quienes buscan gran capacidad y facilidad de uso en un solo dispositivo.",
+    "price": "25.00",
+    "cover_image": "https://i.ebayimg.com/images/g/bM0AAeSwnnZoNJgD/s-l225.jpg",
+    "year": "2025",
+    "type": "mp3_mp4",
+    "category": "players"
+  },
+  {
+    "id": "v1|235990428595|0",
+    "title": "MP4/MP3 Bluetooth HiFi 64GB Deportivo",
+    "description": "Reproductor portátil compatible con 64GB, Bluetooth, sonido HiFi, radio FM y grabadora. Perfecto para deportistas y amantes de la música que buscan calidad y funcionalidad.",
+    "price": "13.99",
+    "cover_image": "https://i.ebayimg.com/images/g/7xoAAOSw1dtnDM30/s-l225.jpg",
+    "year": "2025",
+    "type": "mp3_mp4",
+    "category": "players"
+  },
+  {
+    "id": "v1|156933573133|0",
+    "title": "TIMMKOO MP3/MP4 Bluetooth 4.0 Táctil",
+    "description": "Reproductor TIMMKOO con Bluetooth 4.0, pantalla táctil completa y sonido HiFi. Ideal para quienes buscan una experiencia musical avanzada y moderna en un solo dispositivo portátil.",
+    "price": "58.99",
+    "cover_image": "https://i.ebayimg.com/images/g/3VkAAOSwYHFoDljJ/s-l225.jpg",
+    "year": "2025",
+    "type": "mp3_mp4",
+    "category": "players"
+  },
+  {
+    "id": "v1|167362322668|0",
+    "title": "SanDisk Clip Jam MP3 8GB Rojo",
+    "description": "Reproductor MP3 SanDisk Clip Jam de 8GB en color rojo, modelo SDMX26-008G-G46R. Compacto, ligero y fácil de usar, ideal para escuchar música en movimiento.",
+    "price": "39.99",
+    "cover_image": "https://i.ebayimg.com/images/g/fTMAAeSwkHhny4p3/s-l225.jpg",
+    "year": "2025",
+    "type": "mp3_mp4",
+    "category": "players"
+  },
+  {
+    "id": "v1|266965030982|566703452618",
+    "title": "MP3 Android Bluetooth WiFi Táctil",
+    "description": "Reproductor MP3 con sistema Android, Bluetooth, WiFi y pantalla táctil. Permite reproducir música y videos en alta calidad, ideal para quienes buscan conectividad avanzada y entretenimiento portátil.",
+    "price": "61.37",
+    "cover_image": "https://i.ebayimg.com/images/g/wN8AAOSwDolmNIN-/s-l225.jpg",
+    "year": "2024",
+    "type": "mp3_mp4",
+    "category": "players"
+  },
+  {
+    "id": "v1|376059723701|0",
+    "title": "MP4/MP3 256GB Bluetooth 4'' Deportivo",
+    "description": "Reproductor portátil con soporte para 256GB, Bluetooth, radio FM, grabadora y pantalla de 4 pulgadas. Sonido de alta fidelidad y diseño moderno para acompañarte en cualquier actividad.",
+    "price": "39.99",
+    "cover_image": "https://i.ebayimg.com/images/g/3s4AAOSwlHlnz62v/s-l225.jpg",
+    "year": "2025",
+    "type": "mp3_mp4",
+    "category": "players"
+  },
+  {
+    "id": "v1|376012420903|644820017130",
+    "title": "MP4/MP3 256GB Bluetooth Deportivo",
+    "description": "Reproductor portátil con soporte para 256GB, Bluetooth, radio FM y grabadora de voz. Sonido de alta fidelidad y diseño compacto, ideal para acompañarte en cualquier actividad.",
+    "price": "27.99",
+    "cover_image": "https://i.ebayimg.com/images/g/EZcAAOSwitdnuEbX/s-l225.jpg",
+    "year": "2025",
+    "type": "mp3_mp4",
+    "category": "players"
+  },
+  {
+    "id": "v1|405102770148|675187830543",
+    "title": "MP4/MP3 32GB Bluetooth Deportivo",
+    "description": "Reproductor portátil con soporte para 32GB, Bluetooth, radio FM y grabadora de voz. Sonido de alta fidelidad y diseño compacto, ideal para acompañarte en cualquier actividad.",
+    "price": "15.99",
+    "cover_image": "https://i.ebayimg.com/images/g/gRoAAOSwbzNmlNhE/s-l225.jpg",
+    "year": "2024",
+    "type": "mp3_mp4",
+    "category": "players"
+  },
+  {
+    "id": "v1|127044674838|0",
+    "title": "Samsung MP4/MP3 128GB Bluetooth Sport",
+    "description": "Disfruta de tu música favorita con este reproductor portátil compatible con 128GB, Bluetooth, radio FM y grabadora de voz. Ideal para deportes y actividades al aire libre, con sonido de alta fidelidad y diseño resistente.",
+    "price": "7.99",
+    "cover_image": "https://i.ebayimg.com/images/g/84IAAOSwBIhm7S9Q/s-l225.jpg",
+    "year": "2024",
+    "type": "mp3_mp4",
+    "category": "players"
+  },
+  {
+    "id": "v1|404667107502|0",
+    "title": "Philips MP4/MP3 128GB Bluetooth Sport Max",
+    "description": "Reproductor portátil con soporte para 128GB, Bluetooth, radio FM y grabadora de voz. Sonido de alta fidelidad y diseño compacto, ideal para acompañarte en cualquier actividad deportiva.",
+    "price": "11.99",
+    "cover_image": "https://i.ebayimg.com/images/g/Mf4AAOSwozNmD7Zc/s-l225.jpg",
+    "year": "2023",
+    "type": "mp3_mp4",
+    "category": "players"
+  },
+  {
+    "id": "v1|176967653613|476691864872",
+    "title": "Reproductor MP3/MP4 HiFi Bluetooth, DSD 256",
+    "description": "Reproductor MP3/MP4 HiFi con Bluetooth, soporte para DSD 256 y altavoces de alta resolución. Ideal para audiófilos que buscan la mejor calidad de sonido portátil.",
+    "price": "49.99",
+    "cover_image": "https://i.ebayimg.com/images/g/zWMAAOSwYzdn5mQc/s-l225.jpg",
+    "year": "2025",
+    "type": "mp3_mp4",
+    "category": "players"
+  },
+  {
+    "id": "v1|196939189102|496550106438",
+    "title": "JBL MP4/MP3 128GB Bluetooth Outdoor Max",
+    "description": "Reproductor portátil con soporte para 128GB, Bluetooth, radio FM y grabadora de voz. Sonido de alta fidelidad y diseño compacto, ideal para acompañarte en cualquier actividad deportiva.",
+    "price": "20.99",
+    "cover_image": "https://i.ebayimg.com/images/g/vWAAAOSwJvlnf4qd/s-l225.jpg",
+    "year": "2025",
+    "type": "mp3_mp4",
+    "category": "players"
+  },
+  {
+    "id": "v1|405824634371|676130219391",
+    "title": "MP4 Bluetooth 5.2 Pantalla LCD",
+    "description": "Reproductor MP4 con Bluetooth 5.2, pantalla LCD, compatible con MP3, música HiFi y grabadora de voz. Ideal para deportistas y amantes de la música de alta calidad.",
+    "price": "10.22",
+    "cover_image": "https://i.ebayimg.com/images/g/TGkAAOSwGjtoEZRM/s-l225.jpg",
+    "year": "2025",
+    "type": "mp3_mp4",
+    "category": "players"
+  },
+  {
+    "id": "v1|167530189154|0",
+    "title": "Ematic EM208VIDPR 8GB Reproductor MP3/MP4",
+    "description": "Reproductor Ematic EM208VIDPR de 8GB, compatible con MP3/MP4, radio FM y pantalla de 1.5 pulgadas. Color púrpura, nuevo, ideal para quienes buscan portabilidad y estilo.",
+    "price": "12.69",
+    "cover_image": "https://i.ebayimg.com/images/g/lNMAAOSw0RZoLmzL/s-l225.jpg",
+    "year": "2025",
+    "type": "mp3_mp4",
+    "category": "players"
+  },
+  {
+    "id": "v1|315825848062|614282453923",
+    "title": "MP3/MP4 2'' Táctil Deportivo 128GB",
+    "description": "Reproductor portátil con pantalla táctil de 2 pulgadas, sonido HiFi, radio FM y soporte para 128GB. Ideal para deportistas y amantes de la música de alta calidad.",
+    "price": "15.88",
+    "cover_image": "https://i.ebayimg.com/images/g/Vf8AAOSwKihnBO0t/s-l225.jpg",
+    "year": "2024",
+    "type": "mp3_mp4",
+    "category": "players"
+  },
+  {
+    "id": "v1|255887280550|555824935967",
+    "title": "MP3 Bluetooth HiFi Altavoces Portátil",
+    "description": "Reproductor MP3 Bluetooth HiFi con altavoces integrados, compatible con MP4, radio FM y grabadora. Portátil y versátil, ideal para disfrutar música en cualquier lugar.",
+    "price": "18.99",
+    "cover_image": "https://i.ebayimg.com/images/g/YpwAAOSwRBZjoRxN/s-l225.jpg",
+    "year": "2022",
+    "type": "mp3_mp4",
+    "category": "players"
+  },
+  {
+    "id": "v1|225443830617|524432773975",
+    "title": "MP3/MP4 Bluetooth HiFi Radio FM",
+    "description": "Reproductor portátil compatible con MP3/MP4, Bluetooth HiFi, radio FM y grabadora. Ideal para quienes buscan calidad de sonido y portabilidad en un solo dispositivo.",
+    "price": "24.98",
+    "cover_image": "https://i.ebayimg.com/images/g/otAAAOSwlT1j-EqH/s-l225.jpg",
+    "year": "2023",
+    "type": "mp3_mp4",
+    "category": "players"
+  },
+  {
+    "id": "v1|405632313429|675925662458",
+    "title": "Panasonic MP4/MP3 128GB Bluetooth Sport Fit",
+    "description": "Reproductor portátil con soporte para 128GB, Bluetooth, radio FM y grabadora de voz. Sonido de alta fidelidad y diseño compacto, ideal para acompañarte en cualquier actividad.",
+    "price": "7.99",
+    "cover_image": "https://i.ebayimg.com/images/g/pPUAAOSws21nzrV6/s-l225.jpg",
+    "year": "2025",
+    "type": "mp3_mp4",
+    "category": "players"
+  }
+]

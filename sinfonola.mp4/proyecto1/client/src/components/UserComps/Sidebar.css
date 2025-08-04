@@ -1,0 +1,38 @@
+.sidebar {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  background: #f8f8f8;
+  border-right: 1px solid #e0e0e0;
+}
+
+.sidebar-button {
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.25rem;
+  font-size: 1rem;
+  color: #333;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.sidebar-button:hover,
+.sidebar-button:focus {
+  color: #ffffff;
+  background-color: #7CA3C5;
+}
+
+.sidebar-button:active {
+  color: #ffffff;
+  background-color: #7CA3C5;
+}
+
+.log-out-button {
+  color: red;
+  border-top: 1px solid #e0e0e0;
+  margin-top: 5px;
+}

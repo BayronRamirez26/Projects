@@ -1,0 +1,127 @@
+.footer-container {
+  height: 40vh;
+  background-color: #BFB3A8;
+}
+
+#rights-disclaimer {
+  font-size: 1rem;
+  text-align: center;
+  color: #624E50;
+}
+
+.main-content {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: start;
+  text-align: left;
+  padding: 50px 100px;
+}
+
+.main-content h2{
+  width: 100%;
+  font-size: 1.2rem;
+  font-weight: 900;
+  margin-bottom: 15px;
+  color: #624E50;
+}
+
+.main-content p{
+  font-size: 1rem;
+  margin-bottom: 25px;
+  color: #624E50;
+}
+
+.main-content a{
+  width: 100%;
+  font-size: 1rem;
+  margin-bottom: 13px;
+  text-decoration: none;
+  color: #624E50;
+}
+
+.main-content a:hover{
+  text-decoration: underline;
+}
+
+.icons-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 80%;   
+}
+.icons-container a {
+  font-size: 1.2rem;
+}
+
+.icons-container a:hover {
+  opacity: 70%;
+}
+
+.more-info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.payment-methods-container {
+  width: auto;
+}
+
+.payment-methods-icons{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 120%;
+}
+
+.payment-methods-icons img{
+  width: 60px;
+  height: auto;
+}
+
+#mastercard-icon {
+  width: 40px;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    height: 40%;
+  }
+  .main-content {
+    padding: 30px 30px;
+    justify-content: space-around;
+    text-align: center;
+  }
+  .main-content h2{
+    font-size: 1.3rem;
+  }
+  .main-content p{
+    font-size: 1rem;
+  }
+  .main-content a{
+      font-size: 1rem;
+  }
+  .contact-info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px 0px 20px 0px;
+  }
+  .more-info-container {
+    margin: 0px 30px 20px 30px;
+
+  }
+  .payment-methods-icons {
+    width: 100%;
+  }
+  .payment-methods-icons img{
+    width: 40px;
+    height: auto;
+  }
+
+  #rights-disclaimer {
+    padding-bottom: 10px;
+  }
+}

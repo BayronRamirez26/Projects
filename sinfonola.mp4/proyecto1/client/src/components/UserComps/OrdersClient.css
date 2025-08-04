@@ -1,0 +1,90 @@
+@media (max-width: 600px) {
+  .orders-container,
+  .order,
+  .order-header,
+  .products {
+    max-width: 100%; /* Hacer que usen todo el ancho disponible */
+    flex-direction: column; /* Para que los productos se apilen */
+  }
+}
+
+.orders-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 50rem;
+}
+
+.order {
+  border: 1px solid #ccc;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  max-width: 50rem;
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  max-width: 50rem;
+}
+
+.status-shipped {
+  font-weight: 600;
+  color: #16a34a; /* Tailwind green */
+}
+
+.status-other {
+  font-weight: 600;
+  color: #374151; /* Tailwind dark gray */
+}
+
+.products {
+  display: flex;
+  overflow-x: auto;
+  gap: 16px;
+  max-width: 50rem;
+  padding-bottom: 8px;
+}
+
+.products::-webkit-scrollbar {
+  height: 8px;
+}
+
+.products::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+.product-image {
+  width: 128px;
+  height: 128px;
+}
+
+.products .product-container {
+  height: 18rem;
+  display: flex;
+  min-width: 12rem;
+  max-width: 12rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.055);
+  padding: 0.5rem 0.7rem;
+  border-radius: 0.5rem;
+  margin-right: 1rem;
+}
+
+
+.products .product-container img {
+  margin-bottom: 2rem;
+  width: 8rem;
+  height: auto;
+  object-fit: contain;
+  padding: 0.5rem;
+  border-radius: 0.1rem;
+}
+

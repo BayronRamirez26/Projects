@@ -1,0 +1,98 @@
+.profile-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.UpText{
+  color: rgba(0, 0, 0, 0.9);
+  font-weight: 400;
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  width: 100%;
+  height: auto;
+  margin-top: 0.5rem;
+}
+
+.profile-card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  width: 100%;
+  max-width: 60rem;
+}
+
+.photo-upload {
+  margin-left: 20rem;
+  margin-bottom: 1rem;
+  max-width: 16rem;
+  align-items: center;
+  border-radius: 20rem;
+}
+
+.photo-preview, .photo-preview-placeholder {
+  width: 18rem;
+  height: 18rem;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 0.5rem;
+}
+
+.edit-input * {
+  margin-bottom: 0.5rem;
+}
+
+.edit-input > div {
+  flex: 1 1 45%; /* Los inputs ocupan un 45% del ancho disponible */
+  min-width: 200px; /* Impide que los inputs se encojan demasiado */
+}
+
+.edit-input input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.save-button {
+  padding: 0.6rem 1.2rem;
+  background-color: #7CA3C5;
+  border: none;
+  color: #ffffff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.save-button:hover {
+  background-color: #ffffff;
+  color: #7CA3C5;
+  border: 1px solid #7CA3C5;
+  border-radius: 4px;
+}
+
+.edit-input-error {
+  border-color: #ff4d4f !important;
+}
+
+.edit-input-error-text {
+  color: #ff4d4f;
+  font-size: clamp(0.7rem, 2.5vw, 0.8rem); 
+  margin-top: 0.3rem;
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .edit-input > div {
+    flex: 1 1 100%; /* En pantallas pequeñas, los inputs se apilan y ocupan el 100% del ancho */
+  }
+  .photo-upload {
+    margin-left: 0;
+    margin-bottom: 1rem;
+  }
+}

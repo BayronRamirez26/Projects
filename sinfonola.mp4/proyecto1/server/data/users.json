@@ -1,0 +1,73 @@
+[
+  {
+    "name": "Brayan Rivera",
+    "email": "brayan@gmail.com",
+    "password": "hola123!",
+    "phone": "99999999",
+    "cart": [
+      {
+        "id": "v1|362319904774|0",
+        "name": "50 fundas interiores LP antiestáticas fondo redondo",
+        "price": "13.99",
+        "image": "https://i.ebayimg.com/images/g/4xcAAOSwUyBbPpbE/s-l225.jpg",
+        "quantity": 2
+      },
+      {
+        "id": "v1|404327312522|0",
+        "name": "Walkman Sony TCM-450 reproductor de casetes",
+        "price": "65.49",
+        "image": "https://i.ebayimg.com/images/g/It8AAOSweLdoLHdd/s-l225.jpg",
+        "quantity": 1
+      },
+      {
+        "id": "748056",
+        "name": "Maxipad Detention",
+        "price": "77.04",
+        "image": "https://i.discogs.com/1bBonoBiEA9_ISSrjrvDD2IPFLrVOePlKSClNQzvQcI/rs:fit/g:sm/q:90/h:500/w:500/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTc0ODA1/Ni0xMTU4NTUzNDAw/LmpwZWc.jpeg",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "email": "Brayanrive04@gmail.com",
+    "name": "Alonso",
+    "phone": "99999999",
+    "password": "Hoal123!@",
+    "cart": []
+  },
+  {
+    "email": "nathalia@gmail.com",
+    "name": "Nathalia",
+    "phone": "88888888",
+    "password": "Adios1234!",
+    "cart": []
+  },
+  {
+    "email": "ander@gmail.com",
+    "name": "Ander",
+    "phone": "77777777",
+    "password": "Ander123!",
+    "cart": []
+  },
+  {
+    "email": "bayron@gmail.com",
+    "name": "Bayron",
+    "phone": "22222222",
+    "password": "Bayron123!",
+    "cart": []
+  },
+  {
+    "email": "sharon@gmail.com",
+    "name": "Sharon Jiménez",
+    "phone": "11111111",
+    "password": "Sharon123!",
+    "cart": []
+  },
+  {
+    "email": "yoyoyo@gmail.com",
+    "name": "yo",
+    "phone": "21124124",
+    "password": "Bay.1234",
+    "cart": []
+  }
+]
