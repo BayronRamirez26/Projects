@@ -1,0 +1,238 @@
+﻿@model IntranetFM.Modelos.Activo
+@{
+    ViewData["Title"] = "Registrar Nuevo Activo";
+    var marcas = ViewBag.Marcas as List<SelectListItem> ?? new List<SelectListItem>();
+    var ubicaciones = ViewBag.Ubicaciones as List<SelectListItem> ?? new List<SelectListItem>();
+    var responsables = ViewBag.Responsables as List<SelectListItem> ?? new List<SelectListItem>();
+    var estados = ViewBag.Estados as List<SelectListItem> ?? new List<SelectListItem>();
+}
+
+<div class="container mt-4">
+    <h2>@ViewData["Title"]</h2>
+    <hr />
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+
+    <form asp-action="Create" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+        @Html.AntiForgeryToken()
+
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <h4><i class="bi bi-box-seam"></i> Información Básica</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">Placa*</label>
+                            <input type="text" name="_placa" class="form-control" required />
+                            <span asp-validation-for="_placa" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Número de serie*</label>
+                            <input type="text" name="_serie" class="form-control" required />
+                            <span asp-validation-for="_serie" class="text-danger"></span>
+                        </div>
+                  
+                                <div class="mb-3">
+                                    <label class="form-label">Marca*</label>
+                            <select name="_marca._rowid" class="form-select" required>
+                                        <option value="">Seleccione una marca</option>
+                                        @foreach (var marca in marcas)
+                                        {
+                                            <option value="@marca.Value">@marca.Text</option>
+                                        }
+                                    </select>
+                                </div>
+             
+
+                        <div class="mb-3">
+                            <label class="form-label">Modelo*</label>
+                            <input type="text" name="_modelo" class="form-control" required />
+                            <span asp-validation-for="_modelo" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">Tipo de Activo*</label><!-- Esto se debe cambiar para que se traiga de la base de datos -->
+                            <select name ="_idtipoactivo" class="form-select" required>
+                                <option value="">Seleccione un tipo</option>
+                                <option value="1">Equipo de cómputo</option>
+                                <option value="2">Doméstico</option>
+                                <option value="3">Multimedia</option>
+                            </select>
+                            <span asp-validation-for="_idtipoactivo" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Ubicación*</label>
+                            <select name="_ubicacion._rowid" class="form-select" required>
+                                <option value="">Seleccione una ubicación</option>
+                                @foreach (var ubicacion in ubicaciones)
+                                {
+                                    <option value="@ubicacion.Value">@ubicacion.Text</option>
+                                }
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Fecha de Compra*</label>
+                            <input type="date" name="_fechacompra" class="form-control" required />
+                            <span asp-validation-for="_fechacompra" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Meses de Garantía</label>
+                                <input type="number" name="_garantia" class="form-control" min="0" max="120" />
+                                <span asp-validation-for="_garantia" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">Responsable</label>
+                            <select name="_responsable._rowid" class="form-select">
+                                <option value= "0">-- Sin asignar --</option>
+                                @foreach (var responsable in responsables)
+                                {
+                                    <option value="@responsable.Value">@responsable.Text</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">Estado*</label>
+                            <select name="_estado" class="form-select" required>
+                                <option value="">Seleccione un estado</option>
+                                @foreach (var estado in estados)
+                                {
+                                    <option value="@estado.Value">@estado.Text</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Descripción</label>
+                    <textarea typeo="text" name="_descripcion" class="form-control" rows="3"></textarea>
+                    <span asp-validation-for="_descripcion" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Observaciones</label>
+                    <textarea typeo="text" name="_observaciones" class="form-control" rows="3"></textarea>
+                    <span asp-validation-for="_observaciones" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Imagen del Activo</label>
+                    <input type="file" name="imagenArchivo" class="form-control" accept="image/*" />
+                    <small class="text-muted">Formatos aceptados: .jpg, .jpeg, .png (2MB)</small>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <h4><i class="bi bi-file-earmark-text"></i> Documentación</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">Número de Documento de Entrada</label>
+                            <input type="text" name="_numerodocumento" class="form-control" />
+                            <span asp-validation-for="_numerodocumento" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Documento (PDF)</label>
+                            <input type="file" name="documentoArchivo" class="form-control" accept=".pdf" />
+                            <small class="text-muted">Tamaño máximo: 5MB</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-between">
+            <a href="/Activos/Listar" class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left"></i> Volver al listado
+            </a>
+            <button type="submit" class="btn btn-primary">
+                <i class="bi bi-save"></i> Guardar Activo
+            </button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        // Validación de tamaño para archivos PDF
+        document.querySelector('input[name="documentoArchivo"]').addEventListener('change', function (e) {
+            if (this.files && this.files[0].size > 5 * 1024 * 1024) { // 5MB
+                alert('El documento no puede exceder los 5MB');
+                this.value = '';
+            }
+        });
+
+        // Validación de meses de garantía
+        document.querySelector('input[name="_garantia"]').addEventListener('change', function (e) {
+            if (this.value < 0) this.value = 0;
+            if (this.value > 120) this.value = 120;
+        });
+        // Validación del lado del cliente
+        (function () {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+
+        // Mostrar vista previa de la imagen
+        document.querySelector('input[name="imagenArchivo"]').addEventListener('change', function (e) {
+            if (this.files && this.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    // Crear elemento de vista previa si no existe
+                    if (!document.getElementById('imagePreview')) {
+                        const previewDiv = document.createElement('div');
+                        previewDiv.className = 'mt-3';
+                        previewDiv.innerHTML = '<h6>Vista previa:</h6><img id="imagePreview" class="img-thumbnail" style="max-height: 200px;">';
+                        e.target.closest('.mb-3').appendChild(previewDiv);
+                    }
+
+                    document.getElementById('imagePreview').src = e.target.result;
+                }
+
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+    </script>
+}

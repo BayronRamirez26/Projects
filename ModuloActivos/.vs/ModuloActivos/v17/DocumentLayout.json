@@ -1,0 +1,431 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/SistemaActivos/True/SqlTable/dbo.Personas.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/SistemaActivos/True/SqlTable/dbo.Usuarios.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F94ED41-0C48-4EAC-9336-82F8F2299F6C}|..\\..\\..\\Desktop\\IntranetFM\\IntranetFM\\IntranetFM.csproj|c:\\users\\bayro\\desktop\\intranetfm\\intranetfm\\modelos\\movimientosdeactivo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F94ED41-0C48-4EAC-9336-82F8F2299F6C}|..\\..\\..\\Desktop\\IntranetFM\\IntranetFM\\IntranetFM.csproj|c:\\users\\bayro\\desktop\\intranetfm\\intranetfm\\modelos\\activos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7805448D-8B84-4103-8AD1-29F718915905}|ModuloActivos.csproj|c:\\users\\bayro\\source\\repos\\moduloactivos\\controllers\\activocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7805448D-8B84-4103-8AD1-29F718915905}|ModuloActivos.csproj|solutionrelative:controllers\\activocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7805448D-8B84-4103-8AD1-29F718915905}|ModuloActivos.csproj|c:\\users\\bayro\\source\\repos\\moduloactivos\\views\\activos\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7805448D-8B84-4103-8AD1-29F718915905}|ModuloActivos.csproj|solutionrelative:views\\activos\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7805448D-8B84-4103-8AD1-29F718915905}|ModuloActivos.csproj|c:\\users\\bayro\\source\\repos\\moduloactivos\\views\\activos\\listarmovimientos.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7805448D-8B84-4103-8AD1-29F718915905}|ModuloActivos.csproj|solutionrelative:views\\activos\\listarmovimientos.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F94ED41-0C48-4EAC-9336-82F8F2299F6C}|..\\..\\..\\Desktop\\IntranetFM\\IntranetFM\\IntranetFM.csproj|c:\\users\\bayro\\desktop\\intranetfm\\intranetfm\\class\\movimientosdeactivo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F94ED41-0C48-4EAC-9336-82F8F2299F6C}|..\\..\\..\\Desktop\\IntranetFM\\IntranetFM\\IntranetFM.csproj|c:\\users\\bayro\\desktop\\intranetfm\\intranetfm\\class\\activos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7805448D-8B84-4103-8AD1-29F718915905}|ModuloActivos.csproj|c:\\users\\bayro\\source\\repos\\moduloactivos\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7805448D-8B84-4103-8AD1-29F718915905}|ModuloActivos.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7805448D-8B84-4103-8AD1-29F718915905}|ModuloActivos.csproj|c:\\users\\bayro\\source\\repos\\moduloactivos\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7805448D-8B84-4103-8AD1-29F718915905}|ModuloActivos.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7805448D-8B84-4103-8AD1-29F718915905}|ModuloActivos.csproj|c:\\users\\bayro\\source\\repos\\moduloactivos\\views\\activos\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7805448D-8B84-4103-8AD1-29F718915905}|ModuloActivos.csproj|solutionrelative:views\\activos\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F94ED41-0C48-4EAC-9336-82F8F2299F6C}|..\\..\\..\\Desktop\\IntranetFM\\IntranetFM\\IntranetFM.csproj|c:\\users\\bayro\\desktop\\intranetfm\\intranetfm\\class\\db\\activosdb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7805448D-8B84-4103-8AD1-29F718915905}|ModuloActivos.csproj|c:\\users\\bayro\\source\\repos\\moduloactivos\\views\\activos\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7805448D-8B84-4103-8AD1-29F718915905}|ModuloActivos.csproj|solutionrelative:views\\activos\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F94ED41-0C48-4EAC-9336-82F8F2299F6C}|..\\..\\..\\Desktop\\IntranetFM\\IntranetFM\\IntranetFM.csproj|c:\\users\\bayro\\desktop\\intranetfm\\intranetfm\\config\\model.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7805448D-8B84-4103-8AD1-29F718915905}|ModuloActivos.csproj|c:\\users\\bayro\\source\\repos\\moduloactivos\\wwwroot\\config\\app.config||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{7805448D-8B84-4103-8AD1-29F718915905}|ModuloActivos.csproj|solutionrelative:wwwroot\\config\\app.config||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F94ED41-0C48-4EAC-9336-82F8F2299F6C}|..\\..\\..\\Desktop\\IntranetFM\\IntranetFM\\IntranetFM.csproj|c:\\users\\bayro\\desktop\\intranetfm\\intranetfm\\dbconnector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7805448D-8B84-4103-8AD1-29F718915905}|ModuloActivos.csproj|c:\\users\\bayro\\source\\repos\\moduloactivos\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{7805448D-8B84-4103-8AD1-29F718915905}|ModuloActivos.csproj|solutionrelative:wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7805448D-8B84-4103-8AD1-29F718915905}|ModuloActivos.csproj|c:\\users\\bayro\\source\\repos\\moduloactivos\\class\\filefontresolver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7805448D-8B84-4103-8AD1-29F718915905}|ModuloActivos.csproj|solutionrelative:class\\filefontresolver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F94ED41-0C48-4EAC-9336-82F8F2299F6C}|..\\..\\..\\Desktop\\IntranetFM\\IntranetFM\\IntranetFM.csproj|c:\\users\\bayro\\desktop\\intranetfm\\intranetfm\\utilitarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7805448D-8B84-4103-8AD1-29F718915905}|ModuloActivos.csproj|c:\\users\\bayro\\source\\repos\\moduloactivos\\class\\utilitarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7805448D-8B84-4103-8AD1-29F718915905}|ModuloActivos.csproj|solutionrelative:class\\utilitarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7805448D-8B84-4103-8AD1-29F718915905}|ModuloActivos.csproj|c:\\users\\bayro\\source\\repos\\moduloactivos\\moduloactivos.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{7805448D-8B84-4103-8AD1-29F718915905}|ModuloActivos.csproj|solutionrelative:moduloactivos.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7805448D-8B84-4103-8AD1-29F718915905}|ModuloActivos.csproj|c:\\users\\bayro\\source\\repos\\moduloactivos\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{7805448D-8B84-4103-8AD1-29F718915905}|ModuloActivos.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7805448D-8B84-4103-8AD1-29F718915905}|ModuloActivos.csproj|c:\\users\\bayro\\source\\repos\\moduloactivos\\views\\activos\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7805448D-8B84-4103-8AD1-29F718915905}|ModuloActivos.csproj|solutionrelative:views\\activos\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/SistemaActivos/True/SqlTable/dbo.Activos.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7805448D-8B84-4103-8AD1-29F718915905}|ModuloActivos.csproj|c:\\users\\bayro\\source\\repos\\moduloactivos\\pages\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7805448D-8B84-4103-8AD1-29F718915905}|ModuloActivos.csproj|solutionrelative:pages\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "dbo.Personas [Datos]",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/SistemaActivos/True/SqlTable/dbo.Personas.sql",
+              "ToolTip": "dbo.Personas [Datos]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-07-30T05:51:39.355Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Activos.cs",
+              "DocumentMoniker": "C:\\Users\\bayro\\Desktop\\IntranetFM\\IntranetFM\\Class\\Activos.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\Desktop\\IntranetFM\\IntranetFM\\Class\\Activos.cs",
+              "ToolTip": "C:\\Users\\bayro\\Desktop\\IntranetFM\\IntranetFM\\Class\\Activos.cs",
+              "RelativeToolTip": "..\\..\\..\\Desktop\\IntranetFM\\IntranetFM\\Class\\Activos.cs",
+              "ViewState": "AQIAAG0AAAAAAAAAAAAkwHsAAABCAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-31T20:00:30.833Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-15T16:36:50.58Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Controllers\\HomeController.cs",
+              "ViewState": "AQIAAHQAAAAAAAAAAAAgwBkAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-15T16:05:17.219Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ActivoController.cs",
+              "DocumentMoniker": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\Controllers\\ActivoController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ActivoController.cs",
+              "ToolTip": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\Controllers\\ActivoController.cs",
+              "RelativeToolTip": "Controllers\\ActivoController.cs",
+              "ViewState": "AQIAAEEAAAAAAAAAAAAIwGEAAABBAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-31T19:00:01.289Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\Views\\Activos\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Activos\\Index.cshtml",
+              "ToolTip": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\Views\\Activos\\Index.cshtml",
+              "RelativeToolTip": "Views\\Activos\\Index.cshtml",
+              "ViewState": "AQIAACMBAAAAAAAAAAAAACcBAABEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-25T01:23:47.911Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MovimientosdeActivo.cs",
+              "DocumentMoniker": "C:\\Users\\bayro\\Desktop\\IntranetFM\\IntranetFM\\Modelos\\MovimientosdeActivo.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\Desktop\\IntranetFM\\IntranetFM\\Modelos\\MovimientosdeActivo.cs",
+              "ToolTip": "C:\\Users\\bayro\\Desktop\\IntranetFM\\IntranetFM\\Modelos\\MovimientosdeActivo.cs",
+              "RelativeToolTip": "..\\..\\..\\Desktop\\IntranetFM\\IntranetFM\\Modelos\\MovimientosdeActivo.cs",
+              "ViewState": "AQIAABYAAAAAAAAAAAAgwC8AAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-24T03:16:43.027Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MovimientosdeActivo.cs",
+              "DocumentMoniker": "C:\\Users\\bayro\\Desktop\\IntranetFM\\IntranetFM\\Class\\MovimientosdeActivo.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\Desktop\\IntranetFM\\IntranetFM\\Class\\MovimientosdeActivo.cs",
+              "ToolTip": "C:\\Users\\bayro\\Desktop\\IntranetFM\\IntranetFM\\Class\\MovimientosdeActivo.cs",
+              "RelativeToolTip": "..\\..\\..\\Desktop\\IntranetFM\\IntranetFM\\Class\\MovimientosdeActivo.cs",
+              "ViewState": "AQIAAEQAAAAAAAAAAAAtwFYAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-24T02:39:11.975Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\Views\\Activos\\Details.cshtml",
+              "RelativeDocumentMoniker": "Views\\Activos\\Details.cshtml",
+              "ToolTip": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\Views\\Activos\\Details.cshtml",
+              "RelativeToolTip": "Views\\Activos\\Details.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAH8AAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-02T03:59:50.813Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Activos.cs",
+              "DocumentMoniker": "C:\\Users\\bayro\\Desktop\\IntranetFM\\IntranetFM\\Modelos\\Activos.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\Desktop\\IntranetFM\\IntranetFM\\Modelos\\Activos.cs",
+              "ToolTip": "C:\\Users\\bayro\\Desktop\\IntranetFM\\IntranetFM\\Modelos\\Activos.cs",
+              "RelativeToolTip": "..\\..\\..\\Desktop\\IntranetFM\\IntranetFM\\Modelos\\Activos.cs",
+              "ViewState": "AQIAACkAAAAAAAAAAAAowHoAAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-31T20:08:10.966Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "dbo.Usuarios [Datos]",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/SistemaActivos/True/SqlTable/dbo.Usuarios.sql",
+              "ToolTip": "dbo.Usuarios [Datos]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-07-15T15:09:22.448Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ListarMovimientos.cshtml",
+              "DocumentMoniker": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\Views\\Activos\\ListarMovimientos.cshtml",
+              "RelativeDocumentMoniker": "Views\\Activos\\ListarMovimientos.cshtml",
+              "ToolTip": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\Views\\Activos\\ListarMovimientos.cshtml",
+              "RelativeToolTip": "Views\\Activos\\ListarMovimientos.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEgAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-24T04:01:05.418Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Utilitarios.cs",
+              "DocumentMoniker": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\Class\\Utilitarios.cs",
+              "RelativeDocumentMoniker": "Class\\Utilitarios.cs",
+              "ToolTip": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\Class\\Utilitarios.cs",
+              "RelativeToolTip": "Class\\Utilitarios.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-15T05:39:47.659Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Utilitarios.cs",
+              "DocumentMoniker": "C:\\Users\\bayro\\Desktop\\IntranetFM\\IntranetFM\\Utilitarios.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\Desktop\\IntranetFM\\IntranetFM\\Utilitarios.cs",
+              "ToolTip": "C:\\Users\\bayro\\Desktop\\IntranetFM\\IntranetFM\\Utilitarios.cs",
+              "RelativeToolTip": "..\\..\\..\\Desktop\\IntranetFM\\IntranetFM\\Utilitarios.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAiwCEAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-15T05:45:48.608Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\Views\\Activos\\Create.cshtml",
+              "RelativeDocumentMoniker": "Views\\Activos\\Create.cshtml",
+              "ToolTip": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\Views\\Activos\\Create.cshtml",
+              "RelativeToolTip": "Views\\Activos\\Create.cshtml",
+              "ViewState": "AQIAAJkAAAAAAAAAAAAAAKwAAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-25T02:22:31.603Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Model.cs",
+              "DocumentMoniker": "C:\\Users\\bayro\\Desktop\\IntranetFM\\IntranetFM\\Config\\Model.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\Desktop\\IntranetFM\\IntranetFM\\Config\\Model.cs",
+              "ToolTip": "C:\\Users\\bayro\\Desktop\\IntranetFM\\IntranetFM\\Config\\Model.cs",
+              "RelativeToolTip": "..\\..\\..\\Desktop\\IntranetFM\\IntranetFM\\Config\\Model.cs",
+              "ViewState": "AQIAAJwAAAAAAAAAAAAqwJoAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-15T15:43:20.751Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "DbConnector.cs",
+              "DocumentMoniker": "C:\\Users\\bayro\\Desktop\\IntranetFM\\IntranetFM\\DbConnector.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\Desktop\\IntranetFM\\IntranetFM\\DbConnector.cs",
+              "ToolTip": "C:\\Users\\bayro\\Desktop\\IntranetFM\\IntranetFM\\DbConnector.cs",
+              "RelativeToolTip": "..\\..\\..\\Desktop\\IntranetFM\\IntranetFM\\DbConnector.cs",
+              "ViewState": "AQIAACwAAAAAAAAAAAAUwDoAAAALAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-15T15:53:03.773Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ActivosDB.cs",
+              "DocumentMoniker": "C:\\Users\\bayro\\Desktop\\IntranetFM\\IntranetFM\\Class\\DB\\ActivosDB.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\Desktop\\IntranetFM\\IntranetFM\\Class\\DB\\ActivosDB.cs",
+              "ToolTip": "C:\\Users\\bayro\\Desktop\\IntranetFM\\IntranetFM\\Class\\DB\\ActivosDB.cs",
+              "RelativeToolTip": "..\\..\\..\\Desktop\\IntranetFM\\IntranetFM\\Class\\DB\\ActivosDB.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAA1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-15T17:16:49.1Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "app.config",
+              "DocumentMoniker": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\Config\\app.config",
+              "RelativeDocumentMoniker": "wwwroot\\Config\\app.config",
+              "ToolTip": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\Config\\app.config",
+              "RelativeToolTip": "wwwroot\\Config\\app.config",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-07-15T15:37:44.637Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "site.js",
+              "DocumentMoniker": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\js\\site.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\site.js",
+              "ToolTip": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\js\\site.js",
+              "RelativeToolTip": "wwwroot\\js\\site.js",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACIAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-07-15T05:27:41.531Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "FileFontResolver.cs",
+              "DocumentMoniker": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\Class\\FileFontResolver.cs",
+              "RelativeDocumentMoniker": "Class\\FileFontResolver.cs",
+              "ToolTip": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\Class\\FileFontResolver.cs",
+              "RelativeToolTip": "Class\\FileFontResolver.cs",
+              "ViewState": "AQIAABIAAAAAAAAAAAAowAIAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-15T05:35:29.02Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "ModuloActivos.csproj",
+              "DocumentMoniker": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\ModuloActivos.csproj",
+              "RelativeDocumentMoniker": "ModuloActivos.csproj",
+              "ToolTip": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\ModuloActivos.csproj",
+              "RelativeToolTip": "ModuloActivos.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-07-15T05:39:01.136Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-07-15T05:33:58.37Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\Views\\Activos\\Edit.cshtml",
+              "RelativeDocumentMoniker": "Views\\Activos\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\Views\\Activos\\Edit.cshtml",
+              "RelativeToolTip": "Views\\Activos\\Edit.cshtml",
+              "ViewState": "AQIAAO0AAAAAAAAAAAAAAP4AAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-02T04:42:41.67Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "dbo.Activos [Datos]",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/SistemaActivos/True/SqlTable/dbo.Activos.sql",
+              "ToolTip": "dbo.Activos [Datos]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-06-02T01:26:08.998Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\Pages\\Index.cshtml",
+              "RelativeDocumentMoniker": "Pages\\Index.cshtml",
+              "ToolTip": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\Pages\\Index.cshtml",
+              "RelativeToolTip": "Pages\\Index.cshtml",
+              "ViewState": "AQIAAAIAAAAAAAAAAAAowBcAAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-01T20:48:06.906Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,353 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\ModuloActivos.bundle.scp.css",
+      "PackagePath": "staticwebassets\\ModuloActivos.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\Config\\Log_07.log",
+      "PackagePath": "staticwebassets\\Config\\Log_07.log"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\Config\\Log_08.log",
+      "PackagePath": "staticwebassets\\Config\\Log_08.log"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\Config\\app.config",
+      "PackagePath": "staticwebassets\\Config\\app.config"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\imagenes\\acronimo_FMedicina.svg",
+      "PackagePath": "staticwebassets\\imagenes\\acronimo_FMedicina.svg"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\imagenes\\imgInventarios.png",
+      "PackagePath": "staticwebassets\\imagenes\\imgInventarios.png"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\imagenes\\logo-facultad-medicina.png",
+      "PackagePath": "staticwebassets\\imagenes\\logo-facultad-medicina.png"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\imagenes\\logo-ucr.png",
+      "PackagePath": "staticwebassets\\imagenes\\logo-ucr.png"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\uploads\\activos\\12652564-00be-4058-a8b8-dd30701a454f.png",
+      "PackagePath": "staticwebassets\\uploads\\activos\\12652564-00be-4058-a8b8-dd30701a454f.png"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\uploads\\activos\\506a6fce-2300-43e1-b5ff-4b9335d4625a.png",
+      "PackagePath": "staticwebassets\\uploads\\activos\\506a6fce-2300-43e1-b5ff-4b9335d4625a.png"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\uploads\\activos\\6580d482-cd2d-4514-8c8c-531d100b0005.png",
+      "PackagePath": "staticwebassets\\uploads\\activos\\6580d482-cd2d-4514-8c8c-531d100b0005.png"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\uploads\\activos\\81b3a2d5-3637-4491-a277-decd6fc72a3c.png",
+      "PackagePath": "staticwebassets\\uploads\\activos\\81b3a2d5-3637-4491-a277-decd6fc72a3c.png"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\uploads\\activos\\9b2684a3-3a08-49b1-b9a9-06beb90e8e74.png",
+      "PackagePath": "staticwebassets\\uploads\\activos\\9b2684a3-3a08-49b1-b9a9-06beb90e8e74.png"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\uploads\\activos\\be0189d9-2658-4c85-969d-6f57b6ef4f70.png",
+      "PackagePath": "staticwebassets\\uploads\\activos\\be0189d9-2658-4c85-969d-6f57b6ef4f70.png"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\uploads\\documentos\\1100ef23-1ae7-4357-9d62-8ce9ab06074e.pdf",
+      "PackagePath": "staticwebassets\\uploads\\documentos\\1100ef23-1ae7-4357-9d62-8ce9ab06074e.pdf"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\uploads\\documentos\\147d11c5-13ed-41bd-b8e9-72fbb1c0e27a.pdf",
+      "PackagePath": "staticwebassets\\uploads\\documentos\\147d11c5-13ed-41bd-b8e9-72fbb1c0e27a.pdf"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\uploads\\documentos\\67418395-a2c6-47da-b157-9057380b5a39.pdf",
+      "PackagePath": "staticwebassets\\uploads\\documentos\\67418395-a2c6-47da-b157-9057380b5a39.pdf"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\uploads\\documentos\\9a113c5c-efbd-466c-9ae9-ad7e29b3b747.pdf",
+      "PackagePath": "staticwebassets\\uploads\\documentos\\9a113c5c-efbd-466c-9ae9-ad7e29b3b747.pdf"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\uploads\\documentos\\a872bfd5-b3f0-4b6e-9ff3-041fbf9d8399.pdf",
+      "PackagePath": "staticwebassets\\uploads\\documentos\\a872bfd5-b3f0-4b6e-9ff3-041fbf9d8399.pdf"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\uploads\\documentos\\a87d1d63-2ed9-44f3-95ee-a35019a0dd7a.pdf",
+      "PackagePath": "staticwebassets\\uploads\\documentos\\a87d1d63-2ed9-44f3-95ee-a35019a0dd7a.pdf"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\uploads\\documentos\\eb41f703-6a51-4b31-81f1-877f36a8c51b.pdf",
+      "PackagePath": "staticwebassets\\uploads\\documentos\\eb41f703-6a51-4b31-81f1-877f36a8c51b.pdf"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\uploads\\documentos\\f58df039-f1b8-4d17-b887-1cf58ebe88b3.pdf",
+      "PackagePath": "staticwebassets\\uploads\\documentos\\f58df039-f1b8-4d17-b887-1cf58ebe88b3.pdf"
+    },
+    {
+      "Id": "C:\\Users\\bayro\\source\\repos\\ModuloActivos\\wwwroot\\uploads\\documentos\\fc664b77-837e-4a64-b6e5-71235fac3d90.pdf",
+      "PackagePath": "staticwebassets\\uploads\\documentos\\fc664b77-837e-4a64-b6e5-71235fac3d90.pdf"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.ModuloActivos.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.ModuloActivos.props",
+      "PackagePath": "build\\ModuloActivos.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.ModuloActivos.props",
+      "PackagePath": "buildMultiTargeting\\ModuloActivos.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.ModuloActivos.props",
+      "PackagePath": "buildTransitive\\ModuloActivos.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

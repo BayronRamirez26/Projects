@@ -1,0 +1,254 @@
+﻿@model IntranetFM.Modelos.Activo
+@{
+    ViewData["Title"] = "Editar Activo";
+    var marcas = ViewBag.Marcas as List<SelectListItem> ?? new List<SelectListItem>();
+    var ubicaciones = ViewBag.Ubicaciones as List<SelectListItem> ?? new List<SelectListItem>();
+    var responsables = ViewBag.Responsables as List<SelectListItem> ?? new List<SelectListItem>();
+    var estados = ViewBag.Estados as List<SelectListItem> ?? new List<SelectListItem>();
+}
+
+<div class="container mt-4">
+    <h2>@ViewData["Title"]</h2>
+    <hr />
+
+    <form asp-action="Edit" method="post" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+        <input type="hidden" asp-for="_id" />
+
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <h4><i class="bi bi-box-seam"></i> Información del Activo</h4>
+            </div>
+            <div class="card-body">
+                <!-- Sección 1: Información Básica -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">Placa*</label>
+                            <input type="text" name="_placa" class="form-control" value="@Model._placa" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Número de serie*</label>
+                            <input type="text" name="_serie" class="form-control" value="@Model._serie" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Marca*</label>
+                            <select name="_marca._rowid" class="form-select" required>
+                                <option value="">Seleccione una marca</option>
+                                @foreach (var marca in marcas)
+                                {
+                                    <option value="@marca.Value"
+                                            selected="@(marca.Value == Model._marca._rowid.ToString() ? "selected" : null)">
+                                        @marca.Text
+                                    </option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">Modelo*</label>
+                            <input type="text" name="_modelo" class="form-control" value="@Model._modelo" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Tipo de Activo*</label>
+                            <select name="_idtipoactivo" class="form-select" required>
+                                <option value="">Seleccione un tipo</option>
+                                <option value="1" selected="@(Model._idtipoactivo == 1 ? "selected" : null)">Equipo de cómputo</option>
+                                <option value="2" selected="@(Model._idtipoactivo == 2 ? "selected" : null)">Doméstico</option>
+                                <option value="3" selected="@(Model._idtipoactivo == 3 ? "selected" : null)">Multimedia</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Fecha de Compra*</label>
+                            <input type="date" name="_fechacompra"
+                                   value="@Model._fechacompra.ToString("yyyy-MM-dd")"
+                                   class="form-control" required />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sección 2: Documentación -->
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">Número de Documento*</label>
+                            <input type="text" name="_numerodocumento" class="form-control"
+                                   value="@Model._numerodocumento" required />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">Meses de Garantía*</label>
+                            <input type="number" name="_garantia" class="form-control"
+                                   value="@Model._garantia" min="0" max="120" required />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sección 3: Documento PDF -->
+                <div class="mb-3">
+                    <label class="form-label">Documento Actual</label>
+                    @if (!string.IsNullOrEmpty(Model._documento))
+                    {
+                        <div class="mt-2">
+                            <a href="@(Url.Content("~/") + Model._documento.Substring(1))" target="_blank" class="btn btn-outline-primary">
+                                <i class="bi bi-file-earmark-pdf"></i> Ver Documento Actual
+                            </a>
+                            <div class="form-check mt-2">
+                                <input class="form-check-input" type="checkbox" name="eliminarDocumento" id="eliminarDocumento" value="true">
+                                <label class="form-check-label" for="eliminarDocumento">
+                                    Eliminar documento actual
+                                </label>
+                            </div>
+                            <input type="hidden" name="_archivoDocumentoPath" value="@Model._documento" />
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="text-muted">No hay documento cargado</p>
+                    }
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Nuevo Documento (PDF)</label>
+                    <input type="file" name="documentoArchivo" class="form-control" accept=".pdf" />
+                    <small class="text-muted">Tamaño máximo: 5MB. Dejar en blanco para mantener el documento actual.</small>
+                </div>
+
+                <!-- Sección 4: Ubicación y Responsable -->
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">Ubicación*</label>
+                            <select name="_ubicacion._rowid" class="form-select" required>
+                                <option value="">Seleccione una ubicación</option>
+                                @foreach (var ubicacion in ubicaciones)
+                                {
+                                    <option value="@ubicacion.Value"
+                                            selected="@(ubicacion.Value == Model._ubicacion._rowid.ToString() ? "selected" : null)">
+                                        @ubicacion.Text
+                                    </option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">Responsable*</label>
+                            <select name="_responsable._rowid" class="form-select" required>
+                                <option value="">Seleccione un responsable</option>
+                                @foreach (var responsable in responsables)
+                                {
+                                    <option value="@responsable.Value"
+                                            selected="@(responsable.Value == Model._responsable._rowid.ToString() ? "selected" : null)">
+                                        @responsable.Text
+                                    </option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sección 5: Estado y Descripción -->
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">Estado*</label>
+                            <select name="_estado" class="form-select" required>
+                                <option value="">Seleccione un estado</option>
+                                @foreach (var estado in estados)
+                                {
+                                    <option value="@estado.Value"
+                                            selected="@(estado.Value == Model._estado ? "selected" : null)">
+                                        @estado.Text
+                                    </option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3 mt-3">
+                    <label class="form-label">Descripción</label>
+                    <textarea name="_descripcion" class="form-control" rows="3">@Model._descripcion</textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Observaciones</label>
+                    <textarea name="_observaciones" class="form-control" rows="3">@Model._observaciones</textarea>
+                </div>
+
+                <!-- Sección 6: Imagen -->
+                <div class="mb-3">
+                    <label class="form-label">Imagen Actual</label>
+                    @if (!string.IsNullOrEmpty(Model._imagen))
+                    {
+                        <div class="mt-2">
+                            <img src="@(Url.Content("~/") + Model._imagen.Substring(1))" alt="Imagen del activo" class="img-thumbnail" style="max-height: 200px;">
+                            <div class="form-check mt-2">
+                                <input class="form-check-input" type="checkbox" name="eliminarImagen" id="eliminarImagen" value="true">
+                                <label class="form-check-label" for="eliminarImagen">
+                                    Eliminar imagen actual
+                                </label>
+                            </div>
+                        </div>
+                        <input type="hidden" name="_imagen" value="@Model._imagen" />
+                    }
+                    else
+                    {
+                        <p class="text-muted">No hay imagen cargada</p>
+                    }
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Nueva Imagen</label>
+                    <input type="file" name="imagenArchivo" class="form-control" accept="image/*">
+                    <small class="text-muted">Dejar en blanco para mantener la imagen actual</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between mt-4">
+            <a href="/Activos/Details/@Model._id" class="btn btn-outline-secondary">
+                <i class="bi bi-x-circle"></i> Cancelar
+            </a>
+            <button type="submit" class="btn btn-primary">
+                <i class="bi bi-save"></i> Guardar Cambios
+            </button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <script>
+        // Validación del lado del cliente
+        (function () {
+            'use strict'
+            var forms = document.querySelectorAll('form')
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+
+        // Validar tamaño de archivo PDF
+        document.querySelector('input[name="documentoArchivo"]').addEventListener('change', function (e) {
+            if (this.files[0] && this.files[0].size > 5 * 1024 * 1024) {
+                alert('El documento no puede exceder los 5MB');
+                this.value = '';
+            }
+        });
+    </script>
+}

@@ -1,0 +1,1485 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IntranetFM</name>
+    </assembly>
+    <members>
+        <member name="M:IntranetFM.Class.Activos.Update(IntranetFM.Modelos.Activo)">
+            <summary>
+            Actualiza el registro según los valores enviados en el objeto
+            </summary>
+            <param name="pActivo">Objeto con los valores que se deben actualizar</param>
+            <returns>Retorna OK si la actualización fue exitosa o el texto del error</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Activos.GetById(System.Int32)">
+            <summary>
+            Consulta el registro con el id especificado
+            </summary>
+            <param name="pid">Id del registro que se desea buscar</param>
+            <returns>Retorna un objeto tipo Activo</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Activos.Query(IntranetFM.Modelos.Activo)">
+            <summary>
+            Consulta en la base de datos cuales registros concuerdan con los criterios de búsqueda 
+            </summary>
+            <param name="pActivo">Objeto con los valores de búsqueda</param>
+            <returns>Retorna una lista de objetos de tipo Activo</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Activos.DeleteByRowId(IntranetFM.Modelos.Activo)">
+            <summary>
+            Elimina de la base de datos el registro con el Id indicado
+            </summary>
+            <param name="pActivo">Objeto con el id a eliminar</param>
+            <returns>Retorna OK si fue exitoso o el mensaje de error</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Activosfuncionario.Update(IntranetFM.Modelos.AcitovFuncionario)">
+            <summary>
+            Actualiza el registro según los valores enviados en el objeto
+            </summary>
+            <param name="pAcitovFuncionario">Objeto con los valores que se deben actualizar</param>
+            <returns>Retorna OK si la actualización fue exitosa o el texto del error</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Activosfuncionario.GetById(System.Int32)">
+            <summary>
+            Consulta el registro con el id especificado
+            </summary>
+            <param name="prowid">Id del registro que se desea buscar</param>
+            <returns>Retorna un objeto tipo AcitovFuncionario</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Activosfuncionario.Query(IntranetFM.Modelos.AcitovFuncionario)">
+            <summary>
+            Consulta en la base de datos cuales registros concuerdan con los criterios de búsqueda 
+            </summary>
+            <param name="pAcitovFuncionario">Objeto con los valores de búsqueda</param>
+            <returns>Retorna una lista de objetos de tipo AcitovFuncionario</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Activosfuncionario.DeleteByRowId(IntranetFM.Modelos.AcitovFuncionario)">
+            <summary>
+            Elimina de la base de datos el registro con el Id indicado
+            </summary>
+            <param name="pAcitovFuncionario">Objeto con el id a eliminar</param>
+            <returns>Retorna OK si fue exitoso o el mensaje de error</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Aplicaciones.Update(IntranetFM.Modelos.Aplicacion)">
+            <summary>
+            Actualiza el registro según los valores enviados en el objeto
+            </summary>
+            <param name="pAplicacion">Objeto con los valores que se deben actualizar</param>
+            <returns>Retorna OK si la actualización fue exitosa o el texto del error</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Aplicaciones.GetById(System.Int32)">
+            <summary>
+            Consulta el registro con el id especificado
+            </summary>
+            <param name="prowid">Id del registro que se desea buscar</param>
+            <returns>Retorna un objeto tipo Aplicacion</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Aplicaciones.Query(IntranetFM.Modelos.Aplicacion)">
+            <summary>
+            Consulta en la base de datos cuales registros concuerdan con los criterios de búsqueda 
+            </summary>
+            <param name="pAplicacion">Objeto con los valores de búsqueda</param>
+            <returns>Retorna una lista de objetos de tipo Aplicacion</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Aplicaciones.DeleteByRowId(IntranetFM.Modelos.Aplicacion)">
+            <summary>
+            Elimina de la base de datos el registro con el Id indicado
+            </summary>
+            <param name="pAplicacion">Objeto con el id a eliminar</param>
+            <returns>Retorna OK si fue exitoso o el mensaje de error</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Aplicacionsecciones.Update(IntranetFM.Modelos.Secciondeaplicacion)">
+            <summary>
+            Actualiza el registro según los valores enviados en el objeto
+            </summary>
+            <param name="pSecciondeaplicacion">Objeto con los valores que se deben actualizar</param>
+            <returns>Retorna OK si la actualización fue exitosa o el texto del error</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Aplicacionsecciones.GetById(System.Int32)">
+            <summary>
+            Consulta el registro con el id especificado
+            </summary>
+            <param name="prowid">Id del registro que se desea buscar</param>
+            <returns>Retorna un objeto tipo Secciondeaplicacion</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Aplicacionsecciones.Query(IntranetFM.Modelos.Secciondeaplicacion)">
+            <summary>
+            Consulta en la base de datos cuales registros concuerdan con los criterios de búsqueda 
+            </summary>
+            <param name="pSecciondeaplicacion">Objeto con los valores de búsqueda</param>
+            <returns>Retorna una lista de objetos de tipo Secciondeaplicacion</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Aplicacionsecciones.DeleteByRowId(IntranetFM.Modelos.Secciondeaplicacion)">
+            <summary>
+            Elimina de la base de datos el registro con el Id indicado
+            </summary>
+            <param name="pSecciondeaplicacion">Objeto con el id a eliminar</param>
+            <returns>Retorna OK si fue exitoso o el mensaje de error</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Detallesentrada.Update(IntranetFM.Modelos.DetalleEntrada)">
+            <summary>
+            Actualiza el registro según los valores enviados en el objeto
+            </summary>
+            <param name="pDetalleEntrada">Objeto con los valores que se deben actualizar</param>
+            <returns>Retorna OK si la actualización fue exitosa o el texto del error</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Detallesentrada.GetById(System.Int32)">
+            <summary>
+            Consulta el registro con el id especificado
+            </summary>
+            <param name="prowid">Id del registro que se desea buscar</param>
+            <returns>Retorna un objeto tipo DetalleEntrada</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Detallesentrada.Query(IntranetFM.Modelos.DetalleEntrada)">
+            <summary>
+            Consulta en la base de datos cuales registros concuerdan con los criterios de búsqueda 
+            </summary>
+            <param name="pDetalleEntrada">Objeto con los valores de búsqueda</param>
+            <returns>Retorna una lista de objetos de tipo DetalleEntrada</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Detallesentrada.DeleteByRowId(IntranetFM.Modelos.DetalleEntrada)">
+            <summary>
+            Elimina de la base de datos el registro con el Id indicado
+            </summary>
+            <param name="pDetalleEntrada">Objeto con el id a eliminar</param>
+            <returns>Retorna OK si fue exitoso o el mensaje de error</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Detallessalida.Update(IntranetFM.Modelos.DetalleSalida)">
+            <summary>
+            Actualiza el registro según los valores enviados en el objeto
+            </summary>
+            <param name="pDetalleSalida">Objeto con los valores que se deben actualizar</param>
+            <returns>Retorna OK si la actualización fue exitosa o el texto del error</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Detallessalida.GetById(System.Int32)">
+            <summary>
+            Consulta el registro con el id especificado
+            </summary>
+            <param name="prowid">Id del registro que se desea buscar</param>
+            <returns>Retorna un objeto tipo DetalleSalida</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Detallessalida.Query(IntranetFM.Modelos.DetalleSalida)">
+            <summary>
+            Consulta en la base de datos cuales registros concuerdan con los criterios de búsqueda 
+            </summary>
+            <param name="pDetalleSalida">Objeto con los valores de búsqueda</param>
+            <returns>Retorna una lista de objetos de tipo DetalleSalida</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Detallessalida.DeleteByRowId(IntranetFM.Modelos.DetalleSalida)">
+            <summary>
+            Elimina de la base de datos el registro con el Id indicado
+            </summary>
+            <param name="pDetalleSalida">Objeto con el id a eliminar</param>
+            <returns>Retorna OK si fue exitoso o el mensaje de error</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Entradas.Update(IntranetFM.Modelos.Entrada)">
+            <summary>
+            Actualiza el registro según los valores enviados en el objeto
+            </summary>
+            <param name="pEntrada">Objeto con los valores que se deben actualizar</param>
+            <returns>Retorna OK si la actualización fue exitosa o el texto del error</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Entradas.GetById(System.Int32)">
+            <summary>
+            Consulta el registro con el id especificado
+            </summary>
+            <param name="prowid">Id del registro que se desea buscar</param>
+            <returns>Retorna un objeto tipo Entrada</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Entradas.Query(IntranetFM.Modelos.Entrada)">
+            <summary>
+            Consulta en la base de datos cuales registros concuerdan con los criterios de búsqueda 
+            </summary>
+            <param name="pEntrada">Objeto con los valores de búsqueda</param>
+            <returns>Retorna una lista de objetos de tipo Entrada</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Entradas.DeleteByRowId(IntranetFM.Modelos.Entrada)">
+            <summary>
+            Elimina de la base de datos el registro con el Id indicado
+            </summary>
+            <param name="pEntrada">Objeto con el id a eliminar</param>
+            <returns>Retorna OK si fue exitoso o el mensaje de error</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Inventario.Update(IntranetFM.Modelos.Inventario)">
+            <summary>
+            Actualiza el registro según los valores enviados en el objeto
+            </summary>
+            <param name="pInventario">Objeto con los valores que se deben actualizar</param>
+            <returns>Retorna OK si la actualización fue exitosa o el texto del error</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Inventario.GetById(System.Int32)">
+            <summary>
+            Consulta el registro con el id especificado
+            </summary>
+            <param name="prowid">Id del registro que se desea buscar</param>
+            <returns>Retorna un objeto tipo Inventario</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Inventario.Query(IntranetFM.Modelos.Inventario)">
+            <summary>
+            Consulta en la base de datos cuales registros concuerdan con los criterios de búsqueda 
+            </summary>
+            <param name="pInventario">Objeto con los valores de búsqueda</param>
+            <returns>Retorna una lista de objetos de tipo Inventario</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Inventario.DeleteByRowId(IntranetFM.Modelos.Inventario)">
+            <summary>
+            Elimina de la base de datos el registro con el Id indicado
+            </summary>
+            <param name="pInventario">Objeto con el id a eliminar</param>
+            <returns>Retorna OK si fue exitoso o el mensaje de error</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Marcas.Update(IntranetFM.Modelos.Marca)">
+            <summary>
+            Actualiza el registro según los valores enviados en el objeto
+            </summary>
+            <param name="pMarca">Objeto con los valores que se deben actualizar</param>
+            <returns>Retorna OK si la actualización fue exitosa o el texto del error</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Marcas.GetById(System.Int32)">
+            <summary>
+            Consulta el registro con el id especificado
+            </summary>
+            <param name="prowid">Id del registro que se desea buscar</param>
+            <returns>Retorna un objeto tipo Marca</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Marcas.Query(IntranetFM.Modelos.Marca)">
+            <summary>
+            Consulta en la base de datos cuales registros concuerdan con los criterios de búsqueda 
+            </summary>
+            <param name="pMarca">Objeto con los valores de búsqueda</param>
+            <returns>Retorna una lista de objetos de tipo Marca</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Marcas.DeleteByRowId(IntranetFM.Modelos.Marca)">
+            <summary>
+            Elimina de la base de datos el registro con el Id indicado
+            </summary>
+            <param name="pMarca">Objeto con el id a eliminar</param>
+            <returns>Retorna OK si fue exitoso o el mensaje de error</returns>
+        </member>
+        <member name="M:IntranetFM.Class.medios.Update(IntranetFM.Modelos.Medio)">
+            <summary>
+            Actualiza el registro según los valores enviados en el objeto
+            </summary>
+            <param name="pMedio">Objeto con los valores que se deben actualizar</param>
+            <returns>Retorna OK si la actualización fue exitosa o el texto del error</returns>
+        </member>
+        <member name="M:IntranetFM.Class.medios.GetById(System.Int32)">
+            <summary>
+            Consulta el registro con el id especificado
+            </summary>
+            <param name="prowid">Id del registro que se desea buscar</param>
+            <returns>Retorna un objeto tipo Medio</returns>
+        </member>
+        <member name="M:IntranetFM.Class.medios.Query(IntranetFM.Modelos.Medio)">
+            <summary>
+            Consulta en la base de datos cuales registros concuerdan con los criterios de búsqueda 
+            </summary>
+            <param name="pMedio">Objeto con los valores de búsqueda</param>
+            <returns>Retorna una lista de objetos de tipo Medio</returns>
+        </member>
+        <member name="M:IntranetFM.Class.medios.DeleteByRowId(IntranetFM.Modelos.Medio)">
+            <summary>
+            Elimina de la base de datos el registro con el Id indicado
+            </summary>
+            <param name="pMedio">Objeto con el id a eliminar</param>
+            <returns>Retorna OK si fue exitoso o el mensaje de error</returns>
+        </member>
+        <member name="M:IntranetFM.Class.MovimientosdeActivo.Update(IntranetFM.Modelos.MovimientodeActivo)">
+            <summary>
+            Actualiza el registro según los valores enviados en el objeto
+            </summary>
+            <param name="pMovimientodeActivo">Objeto con los valores que se deben actualizar</param>
+            <returns>Retorna OK si la actualización fue exitosa o el texto del error</returns>
+        </member>
+        <member name="M:IntranetFM.Class.MovimientosdeActivo.GetById(System.Int32)">
+            <summary>
+            Consulta el registro con el id especificado
+            </summary>
+            <param name="prowid">Id del registro que se desea buscar</param>
+            <returns>Retorna un objeto tipo MovimientodeActivo</returns>
+        </member>
+        <member name="M:IntranetFM.Class.MovimientosdeActivo.Query(IntranetFM.Modelos.MovimientodeActivo)">
+            <summary>
+            Consulta en la base de datos cuales registros concuerdan con los criterios de búsqueda 
+            </summary>
+            <param name="pMovimientodeActivo">Objeto con los valores de búsqueda</param>
+            <returns>Retorna una lista de objetos de tipo MovimientodeActivo</returns>
+        </member>
+        <member name="M:IntranetFM.Class.MovimientosdeActivo.DeleteByRowId(IntranetFM.Modelos.MovimientodeActivo)">
+            <summary>
+            Elimina de la base de datos el registro con el Id indicado
+            </summary>
+            <param name="pMovimientodeActivo">Objeto con el id a eliminar</param>
+            <returns>Retorna OK si fue exitoso o el mensaje de error</returns>
+        </member>
+        <member name="M:IntranetFM.Class.pantallamedio.Update(IntranetFM.Modelos.PantallaMedio)">
+            <summary>
+            Actualiza el registro según los valores enviados en el objeto
+            </summary>
+            <param name="pPantallaMedio">Objeto con los valores que se deben actualizar</param>
+            <returns>Retorna OK si la actualización fue exitosa o el texto del error</returns>
+        </member>
+        <member name="M:IntranetFM.Class.pantallamedio.GetById(System.Int32)">
+            <summary>
+            Consulta el registro con el id especificado
+            </summary>
+            <param name="prowid">Id del registro que se desea buscar</param>
+            <returns>Retorna un objeto tipo PantallaMedio</returns>
+        </member>
+        <member name="M:IntranetFM.Class.pantallamedio.Query(IntranetFM.Modelos.PantallaMedio)">
+            <summary>
+            Consulta en la base de datos cuales registros concuerdan con los criterios de búsqueda 
+            </summary>
+            <param name="pPantallaMedio">Objeto con los valores de búsqueda</param>
+            <returns>Retorna una lista de objetos de tipo PantallaMedio</returns>
+        </member>
+        <member name="M:IntranetFM.Class.pantallamedio.DeleteByRowId(IntranetFM.Modelos.PantallaMedio)">
+            <summary>
+            Elimina de la base de datos el registro con el Id indicado
+            </summary>
+            <param name="pPantallaMedio">Objeto con el id a eliminar</param>
+            <returns>Retorna OK si fue exitoso o el mensaje de error</returns>
+        </member>
+        <member name="M:IntranetFM.Class.pantallas.Update(IntranetFM.Modelos.Pantalla)">
+            <summary>
+            Actualiza el registro según los valores enviados en el objeto
+            </summary>
+            <param name="pPantalla">Objeto con los valores que se deben actualizar</param>
+            <returns>Retorna OK si la actualización fue exitosa o el texto del error</returns>
+        </member>
+        <member name="M:IntranetFM.Class.pantallas.GetById(System.Int32)">
+            <summary>
+            Consulta el registro con el id especificado
+            </summary>
+            <param name="prowid">Id del registro que se desea buscar</param>
+            <returns>Retorna un objeto tipo Pantalla</returns>
+        </member>
+        <member name="M:IntranetFM.Class.pantallas.Query(IntranetFM.Modelos.Pantalla)">
+            <summary>
+            Consulta en la base de datos cuales registros concuerdan con los criterios de búsqueda 
+            </summary>
+            <param name="pPantalla">Objeto con los valores de búsqueda</param>
+            <returns>Retorna una lista de objetos de tipo Pantalla</returns>
+        </member>
+        <member name="M:IntranetFM.Class.pantallas.DeleteByRowId(IntranetFM.Modelos.Pantalla)">
+            <summary>
+            Elimina de la base de datos el registro con el Id indicado
+            </summary>
+            <param name="pPantalla">Objeto con el id a eliminar</param>
+            <returns>Retorna OK si fue exitoso o el mensaje de error</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Personas.Update(IntranetFM.Modelos.Persona)">
+            <summary>
+            Actualiza el registro según los valores enviados en el objeto
+            </summary>
+            <param name="pPersona">Objeto con los valores que se deben actualizar</param>
+            <returns>Retorna OK si la actualización fue exitosa o el texto del error</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Personas.GetById(System.Int32)">
+            <summary>
+            Consulta el registro con el id especificado
+            </summary>
+            <param name="prowid">Id del registro que se desea buscar</param>
+            <returns>Retorna un objeto tipo Persona</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Personas.Query(IntranetFM.Modelos.Persona)">
+            <summary>
+            Consulta en la base de datos cuales registros concuerdan con los criterios de búsqueda 
+            </summary>
+            <param name="pPersona">Objeto con los valores de búsqueda</param>
+            <returns>Retorna una lista de objetos de tipo Persona</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Personas.DeleteByRowId(IntranetFM.Modelos.Persona)">
+            <summary>
+            Elimina de la base de datos el registro con el Id indicado
+            </summary>
+            <param name="pPersona">Objeto con el id a eliminar</param>
+            <returns>Retorna OK si fue exitoso o el mensaje de error</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Productos.ListaProductosbajoInventario">
+            <summary>
+            Consulta en la base de datos cuales registros concuerdan con los criterios de búsqueda 
+            </summary>
+            <param name="pProducto">Objeto con los valores de búsqueda</param>
+            <returns>Retorna una lista de objetos de tipo Producto</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Productos.Update(IntranetFM.Modelos.Producto)">
+            <summary>
+            Actualiza el registro según los valores enviados en el objeto
+            </summary>
+            <param name="pProducto">Objeto con los valores que se deben actualizar</param>
+            <returns>Retorna OK si la actualización fue exitosa o el texto del error</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Productos.GetById(System.Int32)">
+            <summary>
+            Consulta el registro con el id especificado
+            </summary>
+            <param name="prowid">Id del registro que se desea buscar</param>
+            <returns>Retorna un objeto tipo Producto</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Productos.Query(IntranetFM.Modelos.Producto)">
+            <summary>
+            Consulta en la base de datos cuales registros concuerdan con los criterios de búsqueda 
+            </summary>
+            <param name="pProducto">Objeto con los valores de búsqueda</param>
+            <returns>Retorna una lista de objetos de tipo Producto</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Productos.DeleteByRowId(IntranetFM.Modelos.Producto)">
+            <summary>
+            Elimina de la base de datos el registro con el Id indicado
+            </summary>
+            <param name="pProducto">Objeto con el id a eliminar</param>
+            <returns>Retorna OK si fue exitoso o el mensaje de error</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Proveedores.Update(IntranetFM.Modelos.Proveedor)">
+            <summary>
+            Actualiza el registro según los valores enviados en el objeto
+            </summary>
+            <param name="pProveedor">Objeto con los valores que se deben actualizar</param>
+            <returns>Retorna OK si la actualización fue exitosa o el texto del error</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Proveedores.GetById(System.Int32)">
+            <summary>
+            Consulta el registro con el id especificado
+            </summary>
+            <param name="prowid">Id del registro que se desea buscar</param>
+            <returns>Retorna un objeto tipo Proveedor</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Proveedores.Query(IntranetFM.Modelos.Proveedor)">
+            <summary>
+            Consulta en la base de datos cuales registros concuerdan con los criterios de búsqueda 
+            </summary>
+            <param name="pProveedor">Objeto con los valores de búsqueda</param>
+            <returns>Retorna una lista de objetos de tipo Proveedor</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Proveedores.DeleteByRowId(IntranetFM.Modelos.Proveedor)">
+            <summary>
+            Elimina de la base de datos el registro con el Id indicado
+            </summary>
+            <param name="pProveedor">Objeto con el id a eliminar</param>
+            <returns>Retorna OK si fue exitoso o el mensaje de error</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Salidas.Update(IntranetFM.Modelos.Salida)">
+            <summary>
+            Actualiza el registro según los valores enviados en el objeto
+            </summary>
+            <param name="pSalida">Objeto con los valores que se deben actualizar</param>
+            <returns>Retorna OK si la actualización fue exitosa o el texto del error</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Salidas.GetById(System.Int32)">
+            <summary>
+            Consulta el registro con el id especificado
+            </summary>
+            <param name="prowid">Id del registro que se desea buscar</param>
+            <returns>Retorna un objeto tipo Salida</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Salidas.Query(IntranetFM.Modelos.Salida)">
+            <summary>
+            Consulta en la base de datos cuales registros concuerdan con los criterios de búsqueda 
+            </summary>
+            <param name="pSalida">Objeto con los valores de búsqueda</param>
+            <returns>Retorna una lista de objetos de tipo Salida</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Salidas.DeleteByRowId(IntranetFM.Modelos.Salida)">
+            <summary>
+            Elimina de la base de datos el registro con el Id indicado
+            </summary>
+            <param name="pSalida">Objeto con el id a eliminar</param>
+            <returns>Retorna OK si fue exitoso o el mensaje de error</returns>
+        </member>
+        <member name="M:IntranetFM.Class.TipoDocumento.Update(IntranetFM.Modelos.TipoDocumento)">
+            <summary>
+            Actualiza el registro según los valores enviados en el objeto
+            </summary>
+            <param name="pTipoDocumento">Objeto con los valores que se deben actualizar</param>
+            <returns>Retorna OK si la actualización fue exitosa o el texto del error</returns>
+        </member>
+        <member name="M:IntranetFM.Class.TipoDocumento.GetById(System.Int32)">
+            <summary>
+            Consulta el registro con el id especificado
+            </summary>
+            <param name="prowid">Id del registro que se desea buscar</param>
+            <returns>Retorna un objeto tipo TipoDocumento</returns>
+        </member>
+        <member name="M:IntranetFM.Class.TipoDocumento.Query(IntranetFM.Modelos.TipoDocumento)">
+            <summary>
+            Consulta en la base de datos cuales registros concuerdan con los criterios de búsqueda 
+            </summary>
+            <param name="pTipoDocumento">Objeto con los valores de búsqueda</param>
+            <returns>Retorna una lista de objetos de tipo TipoDocumento</returns>
+        </member>
+        <member name="M:IntranetFM.Class.TipoDocumento.DeleteByRowId(IntranetFM.Modelos.TipoDocumento)">
+            <summary>
+            Elimina de la base de datos el registro con el Id indicado
+            </summary>
+            <param name="pTipoDocumento">Objeto con el id a eliminar</param>
+            <returns>Retorna OK si fue exitoso o el mensaje de error</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Ubicaciones.Update(IntranetFM.Modelos.Ubicacion)">
+            <summary>
+            Actualiza el registro según los valores enviados en el objeto
+            </summary>
+            <param name="pUbicacion">Objeto con los valores que se deben actualizar</param>
+            <returns>Retorna OK si la actualización fue exitosa o el texto del error</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Ubicaciones.GetById(System.Int32)">
+            <summary>
+            Consulta el registro con el id especificado
+            </summary>
+            <param name="prowid">Id del registro que se desea buscar</param>
+            <returns>Retorna un objeto tipo Ubicacion</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Ubicaciones.Query(IntranetFM.Modelos.Ubicacion)">
+            <summary>
+            Consulta en la base de datos cuales registros concuerdan con los criterios de búsqueda 
+            </summary>
+            <param name="pUbicacion">Objeto con los valores de búsqueda</param>
+            <returns>Retorna una lista de objetos de tipo Ubicacion</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Ubicaciones.DeleteByRowId(IntranetFM.Modelos.Ubicacion)">
+            <summary>
+            Elimina de la base de datos el registro con el Id indicado
+            </summary>
+            <param name="pUbicacion">Objeto con el id a eliminar</param>
+            <returns>Retorna OK si fue exitoso o el mensaje de error</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Unidadalmacenamiento.Update(IntranetFM.Modelos.UnidadDeAlmacenamiento)">
+            <summary>
+            Actualiza el registro según los valores enviados en el objeto
+            </summary>
+            <param name="pUnidadDeAlmacenamiento">Objeto con los valores que se deben actualizar</param>
+            <returns>Retorna OK si la actualización fue exitosa o el texto del error</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Unidadalmacenamiento.GetById(System.Int32)">
+            <summary>
+            Consulta el registro con el id especificado
+            </summary>
+            <param name="prowid">Id del registro que se desea buscar</param>
+            <returns>Retorna un objeto tipo UnidadDeAlmacenamiento</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Unidadalmacenamiento.Query(IntranetFM.Modelos.UnidadDeAlmacenamiento)">
+            <summary>
+            Consulta en la base de datos cuales registros concuerdan con los criterios de búsqueda 
+            </summary>
+            <param name="pUnidadDeAlmacenamiento">Objeto con los valores de búsqueda</param>
+            <returns>Retorna una lista de objetos de tipo UnidadDeAlmacenamiento</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Unidadalmacenamiento.DeleteByRowId(IntranetFM.Modelos.UnidadDeAlmacenamiento)">
+            <summary>
+            Elimina de la base de datos el registro con el Id indicado
+            </summary>
+            <param name="pUnidadDeAlmacenamiento">Objeto con el id a eliminar</param>
+            <returns>Retorna OK si fue exitoso o el mensaje de error</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Usuarioacceso.Listarmenu(IntranetFM.Modelos.Usuario,IntranetFM.Modelos.Aplicacion)">
+            <summary>
+            Retorna el menu del Usuario
+            </summary>
+            <param name="puser"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IntranetFM.Class.Usuarioacceso.ListarAplicaciones(IntranetFM.Modelos.Usuario)">
+            <summary>
+            Lista las aplicaciones a las que el usuario tiene acceso
+            </summary>
+            <param name="puser"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IntranetFM.Class.Usuarioacceso.Update(IntranetFM.Modelos.AccesoUsuario)">
+            <summary>
+            Actualiza el registro según los valores enviados en el objeto
+            </summary>
+            <param name="pAccesoUsuario">Objeto con los valores que se deben actualizar</param>
+            <returns>Retorna OK si la actualización fue exitosa o el texto del error</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Usuarioacceso.GetById(System.Int32)">
+            <summary>
+            Consulta el registro con el id especificado
+            </summary>
+            <param name="prowid">Id del registro que se desea buscar</param>
+            <returns>Retorna un objeto tipo AccesoUsuario</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Usuarioacceso.Query(IntranetFM.Modelos.AccesoUsuario)">
+            <summary>
+            Consulta en la base de datos cuales registros concuerdan con los criterios de búsqueda 
+            </summary>
+            <param name="pAccesoUsuario">Objeto con los valores de búsqueda</param>
+            <returns>Retorna una lista de objetos de tipo AccesoUsuario</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Usuarioacceso.DeleteByRowId(IntranetFM.Modelos.AccesoUsuario)">
+            <summary>
+            Elimina de la base de datos el registro con el Id indicado
+            </summary>
+            <param name="pAccesoUsuario">Objeto con el id a eliminar</param>
+            <returns>Retorna OK si fue exitoso o el mensaje de error</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Usuarios.AutenticarUsuario(IntranetFM.Modelos.Login)">
+            <summary>
+            Valida las credenciales del usuario
+            </summary>
+            <param name="plogin">Datos de autenticación delusuario</param>
+            <returns>Retorna un objeto del tipo Usuario si el usuario existe o null si no existe</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Usuarios.Update(IntranetFM.Modelos.Usuario)">
+            <summary>
+            Actualiza el registro según los valores enviados en el objeto
+            </summary>
+            <param name="pUsuario">Objeto con los valores que se deben actualizar</param>
+            <returns>Retorna OK si la actualización fue exitosa o el texto del error</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Usuarios.GetById(System.Int32)">
+            <summary>
+            Consulta el registro con el id especificado
+            </summary>
+            <param name="prowid">Id del registro que se desea buscar</param>
+            <returns>Retorna un objeto tipo Usuario</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Usuarios.Query(IntranetFM.Modelos.Usuario)">
+            <summary>
+            Consulta en la base de datos cuales registros concuerdan con los criterios de búsqueda 
+            </summary>
+            <param name="pUsuario">Objeto con los valores de búsqueda</param>
+            <returns>Retorna una lista de objetos de tipo Usuario</returns>
+        </member>
+        <member name="M:IntranetFM.Class.Usuarios.DeleteByRowId(IntranetFM.Modelos.Usuario)">
+            <summary>
+            Elimina de la base de datos el registro con el Id indicado
+            </summary>
+            <param name="pUsuario">Objeto con el id a eliminar</param>
+            <returns>Retorna OK si fue exitoso o el mensaje de error</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Activos_db_base.GetAllRows">
+             <summary>
+            Realiza una consulta de todos los registros de la base de datos
+             </summary>
+             <returns>Retorna un DataTable con los campos: fechacompra;id;idunidad;idmarca;idtipoactivo;idresponsable;idubicacion;garantia;fecharegistro;placa;serie;modelo;descripcion;observaciones;estado;imagen;documento;numerodocumento</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Activos_db_base.DeletebyId(System.String)">
+             <summary>
+            Elimina un registro de la base de datos según el id recibido
+             </summary>
+             <param name="pid">Valor del id que se desea eliminar</param>
+             <returns>Retorna true si el registro fue eliminado exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Activos_db_base.Update(System.DateTime,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.DateTime,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+             <summary>
+            Actualiza el registro en la base de datos
+             </summary>
+             <param name="pfechacompra"></param>
+             <param name="pid"></param>
+             <param name="pidunidad"></param>
+             <param name="pidmarca"></param>
+             <param name="pidtipoactivo"></param>
+             <param name="pidresponsable"></param>
+             <param name="pidubicacion"></param>
+             <param name="pgarantia"></param>
+             <param name="pfecharegistro"></param>
+             <param name="pplaca"></param>
+             <param name="pserie"></param>
+             <param name="pmodelo"></param>
+             <param name="pdescripcion"></param>
+             <param name="pobservaciones"></param>
+             <param name="pestado"></param>
+             <param name="pimagen"></param>
+             <param name="pdocumento"></param>
+             <param name="pnumerodocumento"></param>
+             <returns>Retorna un valor de true si la base de datos se actualizó exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Activos_db_base.QueryRows(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+             <summary>
+            Realiza una consulta a la base de datos según los valores de parámetros que se hayan indicado. Los campos tipo fecha no se toman en cuenta
+             </summary>
+             <param name="pid"></param>
+             <param name="pidunidad"></param>
+             <param name="pidmarca"></param>
+             <param name="pidtipoactivo"></param>
+             <param name="pidresponsable"></param>
+             <param name="pidubicacion"></param>
+             <param name="pgarantia"></param>
+             <param name="pplaca"></param>
+             <param name="pserie"></param>
+             <param name="pmodelo"></param>
+             <param name="pdescripcion"></param>
+             <param name="pobservaciones"></param>
+             <param name="pestado"></param>
+             <param name="pimagen"></param>
+             <param name="pdocumento"></param>
+             <param name="pnumerodocumento"></param>
+             <returns>Retorna un DataTable con los registros que coinciden con la búsqueda indicada.</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Activosfuncionario_db_base.GetAllRows">
+             <summary>
+            Realiza una consulta de todos los registros de la base de datos
+             </summary>
+             <returns>Retorna un DataTable con los campos: rowid;idactivo;idfuncionario;idubicacion;activo;idlugar;fecha</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Activosfuncionario_db_base.DeletebyId(System.String)">
+             <summary>
+            Elimina un registro de la base de datos según el id recibido
+             </summary>
+             <param name="pid">Valor del id que se desea eliminar</param>
+             <returns>Retorna true si el registro fue eliminado exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Activosfuncionario_db_base.Update(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.DateTime)">
+             <summary>
+            Actualiza el registro en la base de datos
+             </summary>
+             <param name="prowid"></param>
+             <param name="pidactivo"></param>
+             <param name="pidfuncionario"></param>
+             <param name="pidubicacion"></param>
+             <param name="pactivo"></param>
+             <param name="pidlugar"></param>
+             <param name="pfecha"></param>
+             <returns>Retorna un valor de true si la base de datos se actualizó exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Activosfuncionario_db_base.QueryRows(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+             <summary>
+            Realiza una consulta a la base de datos según los valores de parámetros que se hayan indicado. Los campos tipo fecha no se toman en cuenta
+             </summary>
+             <param name="prowid"></param>
+             <param name="pidactivo"></param>
+             <param name="pidfuncionario"></param>
+             <param name="pidubicacion"></param>
+             <param name="pactivo"></param>
+             <param name="pidlugar"></param>
+             <returns>Retorna un DataTable con los registros que coinciden con la búsqueda indicada.</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Aplicaciones_db_base.GetAllRows">
+             <summary>
+            Realiza una consulta de todos los registros de la base de datos
+             </summary>
+             <returns>Retorna un DataTable con los campos: rowid;aplicacion;url</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Aplicaciones_db_base.DeletebyId(System.String)">
+             <summary>
+            Elimina un registro de la base de datos según el id recibido
+             </summary>
+             <param name="pid">Valor del id que se desea eliminar</param>
+             <returns>Retorna true si el registro fue eliminado exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Aplicaciones_db_base.Update(System.Int32,System.String,System.String,System.String)">
+             <summary>
+            Actualiza el registro en la base de datos
+             </summary>
+             <param name="prowid"></param>
+             <param name="paplicacion"></param>
+             <param name="purl"></param>
+             <returns>Retorna un valor de true si la base de datos se actualizó exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Aplicaciones_db_base.QueryRows(System.Int32,System.String,System.String,System.String)">
+             <summary>
+            Realiza una consulta a la base de datos según los valores de parámetros que se hayan indicado. Los campos tipo fecha no se toman en cuenta
+             </summary>
+             <param name="prowid"></param>
+             <param name="paplicacion"></param>
+             <param name="purl"></param>
+             <returns>Retorna un DataTable con los registros que coinciden con la búsqueda indicada.</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Aplicacionsecciones_db_base.GetAllRows">
+             <summary>
+            Realiza una consulta de todos los registros de la base de datos
+             </summary>
+             <returns>Retorna un DataTable con los campos: rowid;idaplicacion;idseccionpadre;seccion;direccion</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Aplicacionsecciones_db_base.DeletebyId(System.String)">
+             <summary>
+            Elimina un registro de la base de datos según el id recibido
+             </summary>
+             <param name="pid">Valor del id que se desea eliminar</param>
+             <returns>Retorna true si el registro fue eliminado exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Aplicacionsecciones_db_base.Update(System.Int32,System.Int32,System.Int32,System.String,System.String)">
+             <summary>
+            Actualiza el registro en la base de datos
+             </summary>
+             <param name="prowid"></param>
+             <param name="pidaplicacion"></param>
+             <param name="pidseccionpadre"></param>
+             <param name="pseccion"></param>
+             <param name="pdireccion"></param>
+             <returns>Retorna un valor de true si la base de datos se actualizó exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Aplicacionsecciones_db_base.QueryRows(System.Int32,System.Int32,System.Int32,System.String,System.String)">
+             <summary>
+            Realiza una consulta a la base de datos según los valores de parámetros que se hayan indicado. Los campos tipo fecha no se toman en cuenta
+             </summary>
+             <param name="prowid"></param>
+             <param name="pidaplicacion"></param>
+             <param name="pidseccionpadre"></param>
+             <param name="pseccion"></param>
+             <param name="pdireccion"></param>
+             <returns>Retorna un DataTable con los registros que coinciden con la búsqueda indicada.</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Detallesentrada_db_base.GetAllRows">
+             <summary>
+            Realiza una consulta de todos los registros de la base de datos
+             </summary>
+             <returns>Retorna un DataTable con los campos: rowid;identrada;idmaterial;idunidadalmacena;costounitario;cantidad</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Detallesentrada_db_base.DeletebyId(System.String)">
+             <summary>
+            Elimina un registro de la base de datos según el id recibido
+             </summary>
+             <param name="pid">Valor del id que se desea eliminar</param>
+             <returns>Retorna true si el registro fue eliminado exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Detallesentrada_db_base.Update(System.Int32,System.Int32,System.Int32,System.Int32,System.Single,System.Single)">
+             <summary>
+            Actualiza el registro en la base de datos
+             </summary>
+             <param name="prowid"></param>
+             <param name="pidentrada"></param>
+             <param name="pidmaterial"></param>
+             <param name="pidunidadalmacena"></param>
+             <param name="pcostounitario"></param>
+             <param name="pcantidad"></param>
+             <returns>Retorna un valor de true si la base de datos se actualizó exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Detallesentrada_db_base.QueryRows(System.Int32,System.Int32,System.Int32,System.Int32,System.Single,System.Single)">
+             <summary>
+            Realiza una consulta a la base de datos según los valores de parámetros que se hayan indicado. Los campos tipo fecha no se toman en cuenta
+             </summary>
+             <param name="prowid"></param>
+             <param name="pidentrada"></param>
+             <param name="pidmaterial"></param>
+             <param name="pidunidadalmacena"></param>
+             <param name="pcostounitario"></param>
+             <param name="pcantidad"></param>
+             <returns>Retorna un DataTable con los registros que coinciden con la búsqueda indicada.</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Detallessalida_db_base.GetAllRows">
+             <summary>
+            Realiza una consulta de todos los registros de la base de datos
+             </summary>
+             <returns>Retorna un DataTable con los campos: rowid;idsalida;idmaterial;cantidadsolicita;cantidadaprobada;cantidaddespachada</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Detallessalida_db_base.DeletebyId(System.String)">
+             <summary>
+            Elimina un registro de la base de datos según el id recibido
+             </summary>
+             <param name="pid">Valor del id que se desea eliminar</param>
+             <returns>Retorna true si el registro fue eliminado exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Detallessalida_db_base.Update(System.Int32,System.Int32,System.Int32,System.Int32,System.Single,System.Single)">
+             <summary>
+            Actualiza el registro en la base de datos
+             </summary>
+             <param name="prowid"></param>
+             <param name="pidsalida"></param>
+             <param name="pidmaterial"></param>
+             <param name="pcantidadsolicita"></param>
+             <param name="pcantidadaprobada"></param>
+             <param name="pcantidaddespachada"></param>
+             <returns>Retorna un valor de true si la base de datos se actualizó exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Detallessalida_db_base.QueryRows(System.Int32,System.Int32,System.Int32,System.Int32,System.Single,System.Single)">
+             <summary>
+            Realiza una consulta a la base de datos según los valores de parámetros que se hayan indicado. Los campos tipo fecha no se toman en cuenta
+             </summary>
+             <param name="prowid"></param>
+             <param name="pidsalida"></param>
+             <param name="pidmaterial"></param>
+             <param name="pcantidadsolicita"></param>
+             <param name="pcantidadaprobada"></param>
+             <param name="pcantidaddespachada"></param>
+             <returns>Retorna un DataTable con los registros que coinciden con la búsqueda indicada.</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Entradas_db_base.GetAllRows">
+             <summary>
+            Realiza una consulta de todos los registros de la base de datos
+             </summary>
+             <returns>Retorna un DataTable con los campos: fecha;rowid;idproveedor;idtipodocumento;fecharegistro;documento;archivo</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Entradas_db_base.DeletebyId(System.String)">
+             <summary>
+            Elimina un registro de la base de datos según el id recibido
+             </summary>
+             <param name="pid">Valor del id que se desea eliminar</param>
+             <returns>Retorna true si el registro fue eliminado exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Entradas_db_base.Update(System.DateTime,System.Int32,System.Int32,System.Int32,System.DateTime,System.String,System.String)">
+             <summary>
+            Actualiza el registro en la base de datos
+             </summary>
+             <param name="pfecha"></param>
+             <param name="prowid"></param>
+             <param name="pidproveedor"></param>
+             <param name="pidtipodocumento"></param>
+             <param name="pfecharegistro"></param>
+             <param name="pdocumento"></param>
+             <param name="parchivo"></param>
+             <returns>Retorna un valor de true si la base de datos se actualizó exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Entradas_db_base.QueryRows(System.Int32,System.Int32,System.Int32,System.String,System.String)">
+             <summary>
+            Realiza una consulta a la base de datos según los valores de parámetros que se hayan indicado. Los campos tipo fecha no se toman en cuenta
+             </summary>
+             <param name="prowid"></param>
+             <param name="pidproveedor"></param>
+             <param name="pidtipodocumento"></param>
+             <param name="pdocumento"></param>
+             <param name="parchivo"></param>
+             <returns>Retorna un DataTable con los registros que coinciden con la búsqueda indicada.</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Inventario_db_base.GetAllRows">
+             <summary>
+            Realiza una consulta de todos los registros de la base de datos
+             </summary>
+             <returns>Retorna un DataTable con los campos: rowid;idproducto;existencia</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Inventario_db_base.DeletebyId(System.String)">
+             <summary>
+            Elimina un registro de la base de datos según el id recibido
+             </summary>
+             <param name="pid">Valor del id que se desea eliminar</param>
+             <returns>Retorna true si el registro fue eliminado exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Inventario_db_base.Update(System.Int32,System.Int32,System.Single)">
+             <summary>
+            Actualiza el registro en la base de datos
+             </summary>
+             <param name="prowid"></param>
+             <param name="pidproducto"></param>
+             <param name="pexistencia"></param>
+             <returns>Retorna un valor de true si la base de datos se actualizó exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Inventario_db_base.QueryRows(System.Int32,System.Int32,System.Single)">
+             <summary>
+            Realiza una consulta a la base de datos según los valores de parámetros que se hayan indicado. Los campos tipo fecha no se toman en cuenta
+             </summary>
+             <param name="prowid"></param>
+             <param name="pidproducto"></param>
+             <param name="pexistencia"></param>
+             <returns>Retorna un DataTable con los registros que coinciden con la búsqueda indicada.</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Marcas_db_base.GetAllRows">
+             <summary>
+            Realiza una consulta de todos los registros de la base de datos
+             </summary>
+             <returns>Retorna un DataTable con los campos: rowid;marca</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Marcas_db_base.DeletebyId(System.String)">
+             <summary>
+            Elimina un registro de la base de datos según el id recibido
+             </summary>
+             <param name="pid">Valor del id que se desea eliminar</param>
+             <returns>Retorna true si el registro fue eliminado exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Marcas_db_base.Update(System.Int32,System.String)">
+             <summary>
+            Actualiza el registro en la base de datos
+             </summary>
+             <param name="prowid"></param>
+             <param name="pmarca"></param>
+             <returns>Retorna un valor de true si la base de datos se actualizó exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Marcas_db_base.QueryRows(System.Int32,System.String)">
+             <summary>
+            Realiza una consulta a la base de datos según los valores de parámetros que se hayan indicado. Los campos tipo fecha no se toman en cuenta
+             </summary>
+             <param name="prowid"></param>
+             <param name="pmarca"></param>
+             <returns>Retorna un DataTable con los registros que coinciden con la búsqueda indicada.</returns>
+        </member>
+        <member name="M:IntranetFM.DB.medios_db_base.GetAllRows">
+             <summary>
+            Realiza una consulta de todos los registros de la base de datos
+             </summary>
+             <returns>Retorna un DataTable con los campos: rowid;tiempo;idusuario;efecto;fechaini;fechafin;fecharegistro;fname;estado;descripcion</returns>
+        </member>
+        <member name="M:IntranetFM.DB.medios_db_base.DeletebyId(System.String)">
+             <summary>
+            Elimina un registro de la base de datos según el id recibido
+             </summary>
+             <param name="pid">Valor del id que se desea eliminar</param>
+             <returns>Retorna true si el registro fue eliminado exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.medios_db_base.Update(System.Int32,System.Int32,System.Int32,System.Int32,System.DateTime,System.DateTime,System.DateTime,System.String,System.String,System.String)">
+             <summary>
+            Actualiza el registro en la base de datos
+             </summary>
+             <param name="prowid"></param>
+             <param name="ptiempo"></param>
+             <param name="pidusuario"></param>
+             <param name="pefecto"></param>
+             <param name="pfechaini"></param>
+             <param name="pfechafin"></param>
+             <param name="pfecharegistro"></param>
+             <param name="pfname"></param>
+             <param name="pestado"></param>
+             <param name="pdescripcion"></param>
+             <returns>Retorna un valor de true si la base de datos se actualizó exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.medios_db_base.QueryRows(System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.String,System.String)">
+             <summary>
+            Realiza una consulta a la base de datos según los valores de parámetros que se hayan indicado. Los campos tipo fecha no se toman en cuenta
+             </summary>
+             <param name="prowid"></param>
+             <param name="ptiempo"></param>
+             <param name="pidusuario"></param>
+             <param name="pefecto"></param>
+             <param name="pfname"></param>
+             <param name="pestado"></param>
+             <param name="pdescripcion"></param>
+             <returns>Retorna un DataTable con los registros que coinciden con la búsqueda indicada.</returns>
+        </member>
+        <member name="M:IntranetFM.DB.MovimientosdeActivo_db_base.GetAllRows">
+             <summary>
+            Realiza una consulta de todos los registros de la base de datos
+             </summary>
+             <returns>Retorna un DataTable con los campos: idusuario;idUnidaddestino;idActivo;rowid;idtipomovimiento;numerodocumento;documento;observaciones</returns>
+        </member>
+        <member name="M:IntranetFM.DB.MovimientosdeActivo_db_base.DeletebyId(System.String)">
+             <summary>
+            Elimina un registro de la base de datos según el id recibido
+             </summary>
+             <param name="pid">Valor del id que se desea eliminar</param>
+             <returns>Retorna true si el registro fue eliminado exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.MovimientosdeActivo_db_base.Update(System.DateTime,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.String,System.String,System.String)">
+             <summary>
+            Actualiza el registro en la base de datos
+             </summary>
+             <param name="pidusuario"></param>
+             <param name="pidUnidaddestino"></param>
+             <param name="pidActivo"></param>
+             <param name="prowid"></param>
+             <param name="pidtipomovimiento"></param>
+             <param name="pnumerodocumento"></param>
+             <param name="pdocumento"></param>
+             <param name="pobservaciones"></param>
+             <returns>Retorna un valor de true si la base de datos se actualizó exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.MovimientosdeActivo_db_base.QueryRows(System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.String,System.String,System.String)">
+             <summary>
+            Realiza una consulta a la base de datos según los valores de parámetros que se hayan indicado. Los campos tipo fecha no se toman en cuenta
+             </summary>
+             <param name="pidusuario"></param>
+             <param name="pidUnidaddestino"></param>
+             <param name="pidActivo"></param>
+             <param name="prowid"></param>
+             <param name="pidtipomovimiento"></param>
+             <param name="pnumerodocumento"></param>
+             <param name="pdocumento"></param>
+             <param name="pobservaciones"></param>
+             <returns>Retorna un DataTable con los registros que coinciden con la búsqueda indicada.</returns>
+        </member>
+        <member name="M:IntranetFM.DB.pantallamedio_db_base.GetAllRows">
+             <summary>
+            Realiza una consulta de todos los registros de la base de datos
+             </summary>
+             <returns>Retorna un DataTable con los campos: rowid;idpantalla;idmedio</returns>
+        </member>
+        <member name="M:IntranetFM.DB.pantallamedio_db_base.DeletebyId(System.String)">
+             <summary>
+            Elimina un registro de la base de datos según el id recibido
+             </summary>
+             <param name="pid">Valor del id que se desea eliminar</param>
+             <returns>Retorna true si el registro fue eliminado exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.pantallamedio_db_base.Update(System.Int32,System.Int32,System.Int32)">
+             <summary>
+            Actualiza el registro en la base de datos
+             </summary>
+             <param name="prowid"></param>
+             <param name="pidpantalla"></param>
+             <param name="pidmedio"></param>
+             <returns>Retorna un valor de true si la base de datos se actualizó exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.pantallamedio_db_base.QueryRows(System.Int32,System.Int32,System.Int32)">
+             <summary>
+            Realiza una consulta a la base de datos según los valores de parámetros que se hayan indicado. Los campos tipo fecha no se toman en cuenta
+             </summary>
+             <param name="prowid"></param>
+             <param name="pidpantalla"></param>
+             <param name="pidmedio"></param>
+             <returns>Retorna un DataTable con los registros que coinciden con la búsqueda indicada.</returns>
+        </member>
+        <member name="M:IntranetFM.DB.pantallas_db_base.GetAllRows">
+             <summary>
+            Realiza una consulta de todos los registros de la base de datos
+             </summary>
+             <returns>Retorna un DataTable con los campos: rowid;idusuario;totalp;currentindex;idequipo;activarefecto;estado;enabledip;nombre</returns>
+        </member>
+        <member name="M:IntranetFM.DB.pantallas_db_base.DeletebyId(System.String)">
+             <summary>
+            Elimina un registro de la base de datos según el id recibido
+             </summary>
+             <param name="pid">Valor del id que se desea eliminar</param>
+             <returns>Retorna true si el registro fue eliminado exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.pantallas_db_base.Update(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.String,System.String)">
+             <summary>
+            Actualiza el registro en la base de datos
+             </summary>
+             <param name="prowid"></param>
+             <param name="pidusuario"></param>
+             <param name="ptotalp"></param>
+             <param name="pcurrentindex"></param>
+             <param name="pidequipo"></param>
+             <param name="pactivarefecto"></param>
+             <param name="pestado"></param>
+             <param name="penabledip"></param>
+             <param name="pnombre"></param>
+             <returns>Retorna un valor de true si la base de datos se actualizó exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.pantallas_db_base.QueryRows(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.String,System.String)">
+             <summary>
+            Realiza una consulta a la base de datos según los valores de parámetros que se hayan indicado. Los campos tipo fecha no se toman en cuenta
+             </summary>
+             <param name="prowid"></param>
+             <param name="pidusuario"></param>
+             <param name="ptotalp"></param>
+             <param name="pcurrentindex"></param>
+             <param name="pidequipo"></param>
+             <param name="pactivarefecto"></param>
+             <param name="pestado"></param>
+             <param name="penabledip"></param>
+             <param name="pnombre"></param>
+             <returns>Retorna un DataTable con los registros que coinciden con la búsqueda indicada.</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Personas_db_base.GetAllRows">
+             <summary>
+            Realiza una consulta de todos los registros de la base de datos
+             </summary>
+             <returns>Retorna un DataTable con los campos: rowid;identificacion;nombre;apellido1;apellido2;email</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Personas_db_base.DeletebyId(System.String)">
+             <summary>
+            Elimina un registro de la base de datos según el id recibido
+             </summary>
+             <param name="pid">Valor del id que se desea eliminar</param>
+             <returns>Retorna true si el registro fue eliminado exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Personas_db_base.Update(System.Int32,System.String,System.String,System.String,System.String,System.String)">
+             <summary>
+            Actualiza el registro en la base de datos
+             </summary>
+             <param name="prowid"></param>
+             <param name="pidentificacion"></param>
+             <param name="pnombre"></param>
+             <param name="papellido1"></param>
+             <param name="papellido2"></param>
+             <param name="pemail"></param>
+             <returns>Retorna un valor de true si la base de datos se actualizó exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Personas_db_base.QueryRows(System.Int32,System.String,System.String,System.String,System.String,System.String)">
+             <summary>
+            Realiza una consulta a la base de datos según los valores de parámetros que se hayan indicado. Los campos tipo fecha no se toman en cuenta
+             </summary>
+             <param name="prowid"></param>
+             <param name="pidentificacion"></param>
+             <param name="pnombre"></param>
+             <param name="papellido1"></param>
+             <param name="papellido2"></param>
+             <param name="pemail"></param>
+             <returns>Retorna un DataTable con los registros que coinciden con la búsqueda indicada.</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Productos_db_base.GetAllRows">
+             <summary>
+            Realiza una consulta de todos los registros de la base de datos
+             </summary>
+             <returns>Retorna un DataTable con los campos: rowid;idmarca;idunidadalmacena;idtipo;idubicacion;puntoreorden;maximo;existencia;codsuministro;descripcion</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Productos_db_base.DeletebyId(System.String)">
+             <summary>
+            Elimina un registro de la base de datos según el id recibido
+             </summary>
+             <param name="pid">Valor del id que se desea eliminar</param>
+             <returns>Retorna true si el registro fue eliminado exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Productos_db_base.Update(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Single,System.String,System.String,System.Int32)">
+             <summary>
+            Actualiza el registro en la base de datos
+             </summary>
+             <param name="prowid"></param>
+             <param name="pidmarca"></param>
+             <param name="pidunidadalmacena"></param>
+             <param name="pidtipo"></param>
+             <param name="pidubicacion"></param>
+             <param name="ppuntoreorden"></param>
+             <param name="pmaximo"></param>
+             <param name="pexistencia"></param>
+             <param name="pcodsuministro"></param>
+             <param name="pdescripcion"></param>
+             <param name="pactivo"></param>
+             <returns>Retorna un valor de true si la base de datos se actualizó exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Productos_db_base.QueryRows(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Single,System.String,System.String,System.Int32)">
+             <summary>
+            Realiza una consulta a la base de datos según los valores de parámetros que se hayan indicado. Los campos tipo fecha no se toman en cuenta
+             </summary>
+             <param name="prowid"></param>
+             <param name="pidmarca"></param>
+             <param name="pidunidadalmacena"></param>
+             <param name="pidtipo"></param>
+             <param name="pidubicacion"></param>
+             <param name="ppuntoreorden"></param>
+             <param name="pmaximo"></param>
+             <param name="pexistencia"></param>
+             <param name="pcodsuministro"></param>
+             <param name="pdescripcion"></param>
+             <param name="pactivo"></param>
+             <returns>Retorna un DataTable con los registros que coinciden con la búsqueda indicada.</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Proveedores_db_base.GetAllRows">
+             <summary>
+            Realiza una consulta de todos los registros de la base de datos
+             </summary>
+             <returns>Retorna un DataTable con los campos: rowid;nombre;direccion;telefono;email;contacto</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Proveedores_db_base.DeletebyId(System.String)">
+             <summary>
+            Elimina un registro de la base de datos según el id recibido
+             </summary>
+             <param name="pid">Valor del id que se desea eliminar</param>
+             <returns>Retorna true si el registro fue eliminado exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Proveedores_db_base.Update(System.Int32,System.String,System.String,System.String,System.String,System.String)">
+             <summary>
+            Actualiza el registro en la base de datos
+             </summary>
+             <param name="prowid"></param>
+             <param name="pnombre"></param>
+             <param name="pdireccion"></param>
+             <param name="ptelefono"></param>
+             <param name="pemail"></param>
+             <param name="pcontacto"></param>
+             <returns>Retorna un valor de true si la base de datos se actualizó exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Proveedores_db_base.QueryRows(System.Int32,System.String,System.String,System.String,System.String,System.String)">
+             <summary>
+            Realiza una consulta a la base de datos según los valores de parámetros que se hayan indicado. Los campos tipo fecha no se toman en cuenta
+             </summary>
+             <param name="prowid"></param>
+             <param name="pnombre"></param>
+             <param name="pdireccion"></param>
+             <param name="ptelefono"></param>
+             <param name="pemail"></param>
+             <param name="pcontacto"></param>
+             <returns>Retorna un DataTable con los registros que coinciden con la búsqueda indicada.</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Salidas_db_base.GetAllRows">
+             <summary>
+            Realiza una consulta de todos los registros de la base de datos
+             </summary>
+             <returns>Retorna un DataTable con los campos: fechaboleta;rowid;idpersonasolicita;idunidad;idpersonarecibe;idpersonaalista;fecha;codboleta</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Salidas_db_base.DeletebyId(System.String)">
+             <summary>
+            Elimina un registro de la base de datos según el id recibido
+             </summary>
+             <param name="pid">Valor del id que se desea eliminar</param>
+             <returns>Retorna true si el registro fue eliminado exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Salidas_db_base.Update(System.DateTime,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.DateTime,System.String)">
+             <summary>
+            Actualiza el registro en la base de datos
+             </summary>
+             <param name="pfechaboleta"></param>
+             <param name="prowid"></param>
+             <param name="pidpersonasolicita"></param>
+             <param name="pidunidad"></param>
+             <param name="pidpersonarecibe"></param>
+             <param name="pidpersonaalista"></param>
+             <param name="pfecha"></param>
+             <param name="pcodboleta"></param>
+             <returns>Retorna un valor de true si la base de datos se actualizó exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Salidas_db_base.QueryRows(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.String)">
+             <summary>
+            Realiza una consulta a la base de datos según los valores de parámetros que se hayan indicado. Los campos tipo fecha no se toman en cuenta
+             </summary>
+             <param name="prowid"></param>
+             <param name="pidpersonasolicita"></param>
+             <param name="pidunidad"></param>
+             <param name="pidpersonarecibe"></param>
+             <param name="pidpersonaalista"></param>
+             <param name="pcodboleta"></param>
+             <returns>Retorna un DataTable con los registros que coinciden con la búsqueda indicada.</returns>
+        </member>
+        <member name="M:IntranetFM.DB.TipoDocumento_db_base.GetAllRows">
+             <summary>
+            Realiza una consulta de todos los registros de la base de datos
+             </summary>
+             <returns>Retorna un DataTable con los campos: rowid;descripcion</returns>
+        </member>
+        <member name="M:IntranetFM.DB.TipoDocumento_db_base.DeletebyId(System.String)">
+             <summary>
+            Elimina un registro de la base de datos según el id recibido
+             </summary>
+             <param name="pid">Valor del id que se desea eliminar</param>
+             <returns>Retorna true si el registro fue eliminado exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.TipoDocumento_db_base.Update(System.Int32,System.String)">
+             <summary>
+            Actualiza el registro en la base de datos
+             </summary>
+             <param name="prowid"></param>
+             <param name="pdescripcion"></param>
+             <returns>Retorna un valor de true si la base de datos se actualizó exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.TipoDocumento_db_base.QueryRows(System.Int32,System.String)">
+             <summary>
+            Realiza una consulta a la base de datos según los valores de parámetros que se hayan indicado. Los campos tipo fecha no se toman en cuenta
+             </summary>
+             <param name="prowid"></param>
+             <param name="pdescripcion"></param>
+             <returns>Retorna un DataTable con los registros que coinciden con la búsqueda indicada.</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Tiposdeproducto_db_base.GetAllRows">
+             <summary>
+            Realiza una consulta de todos los registros de la base de datos
+             </summary>
+             <returns>Retorna un DataTable con los campos: id;descripcion</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Tiposdeproducto_db_base.DeletebyId(System.String)">
+             <summary>
+            Elimina un registro de la base de datos según el id recibido
+             </summary>
+             <param name="pid">Valor del id que se desea eliminar</param>
+             <returns>Retorna true si el registro fue eliminado exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Tiposdeproducto_db_base.Update(System.Int32,System.String)">
+             <summary>
+            Actualiza el registro en la base de datos
+             </summary>
+             <param name="pid"></param>
+             <param name="pdescripcion"></param>
+             <returns>Retorna un valor de true si la base de datos se actualizó exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Tiposdeproducto_db_base.QueryRows(System.Int32,System.String)">
+             <summary>
+            Realiza una consulta a la base de datos según los valores de parámetros que se hayan indicado. Los campos tipo fecha no se toman en cuenta
+             </summary>
+             <param name="pid"></param>
+             <param name="pdescripcion"></param>
+             <returns>Retorna un DataTable con los registros que coinciden con la búsqueda indicada.</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Ubicaciones_db_base.GetAllRows">
+             <summary>
+            Realiza una consulta de todos los registros de la base de datos
+             </summary>
+             <returns>Retorna un DataTable con los campos: rowid;ubicacion</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Ubicaciones_db_base.DeletebyId(System.String)">
+             <summary>
+            Elimina un registro de la base de datos según el id recibido
+             </summary>
+             <param name="pid">Valor del id que se desea eliminar</param>
+             <returns>Retorna true si el registro fue eliminado exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Ubicaciones_db_base.Update(System.Int32,System.String)">
+             <summary>
+            Actualiza el registro en la base de datos
+             </summary>
+             <param name="prowid"></param>
+             <param name="pubicacion"></param>
+             <returns>Retorna un valor de true si la base de datos se actualizó exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Ubicaciones_db_base.QueryRows(System.Int32,System.String)">
+             <summary>
+            Realiza una consulta a la base de datos según los valores de parámetros que se hayan indicado. Los campos tipo fecha no se toman en cuenta
+             </summary>
+             <param name="prowid"></param>
+             <param name="pubicacion"></param>
+             <returns>Retorna un DataTable con los registros que coinciden con la búsqueda indicada.</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Unidadalmacenamiento_db_base.GetAllRows">
+             <summary>
+            Realiza una consulta de todos los registros de la base de datos
+             </summary>
+             <returns>Retorna un DataTable con los campos: rowid;unidad</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Unidadalmacenamiento_db_base.DeletebyId(System.String)">
+             <summary>
+            Elimina un registro de la base de datos según el id recibido
+             </summary>
+             <param name="pid">Valor del id que se desea eliminar</param>
+             <returns>Retorna true si el registro fue eliminado exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Unidadalmacenamiento_db_base.Update(System.Int32,System.String)">
+             <summary>
+            Actualiza el registro en la base de datos
+             </summary>
+             <param name="prowid"></param>
+             <param name="punidad"></param>
+             <returns>Retorna un valor de true si la base de datos se actualizó exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Unidadalmacenamiento_db_base.QueryRows(System.Int32,System.String)">
+             <summary>
+            Realiza una consulta a la base de datos según los valores de parámetros que se hayan indicado. Los campos tipo fecha no se toman en cuenta
+             </summary>
+             <param name="prowid"></param>
+             <param name="punidad"></param>
+             <returns>Retorna un DataTable con los registros que coinciden con la búsqueda indicada.</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Usuarioacceso_db_base.GetAllRows">
+             <summary>
+            Realiza una consulta de todos los registros de la base de datos
+             </summary>
+             <returns>Retorna un DataTable con los campos: rowid;idusuario;idseccion</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Usuarioacceso_db_base.DeletebyId(System.String)">
+             <summary>
+            Elimina un registro de la base de datos según el id recibido
+             </summary>
+             <param name="pid">Valor del id que se desea eliminar</param>
+             <returns>Retorna true si el registro fue eliminado exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Usuarioacceso_db_base.Update(System.Int32,System.Int32,System.Int32)">
+             <summary>
+            Actualiza el registro en la base de datos
+             </summary>
+             <param name="prowid"></param>
+             <param name="pidusuario"></param>
+             <param name="pidseccion"></param>
+             <returns>Retorna un valor de true si la base de datos se actualizó exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Usuarioacceso_db_base.QueryRows(System.Int32,System.Int32,System.Int32)">
+             <summary>
+            Realiza una consulta a la base de datos según los valores de parámetros que se hayan indicado. Los campos tipo fecha no se toman en cuenta
+             </summary>
+             <param name="prowid"></param>
+             <param name="pidusuario"></param>
+             <param name="pidseccion"></param>
+             <returns>Retorna un DataTable con los registros que coinciden con la búsqueda indicada.</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Usuarios_db_base.GetAllRows">
+             <summary>
+            Realiza una consulta de todos los registros de la base de datos
+             </summary>
+             <returns>Retorna un DataTable con los campos: rowid;idpersona;login;clave;token</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Usuarios_db_base.DeletebyId(System.String)">
+             <summary>
+            Elimina un registro de la base de datos según el id recibido
+             </summary>
+             <param name="pid">Valor del id que se desea eliminar</param>
+             <returns>Retorna true si el registro fue eliminado exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Usuarios_db_base.Update(System.Int32,System.Int32,System.String,System.String,System.String,System.String)">
+             <summary>
+            Actualiza el registro en la base de datos
+             </summary>
+             <param name="prowid"></param>
+             <param name="pidpersona"></param>
+             <param name="plogin"></param>
+             <param name="pclave"></param>
+             <param name="ptoken"></param>
+             <returns>Retorna un valor de true si la base de datos se actualizó exitosamente</returns>
+        </member>
+        <member name="M:IntranetFM.DB.Usuarios_db_base.QueryRows(System.Int32,System.Int32,System.String,System.String,System.String,System.String)">
+             <summary>
+            Realiza una consulta a la base de datos según los valores de parámetros que se hayan indicado. Los campos tipo fecha no se toman en cuenta
+             </summary>
+             <param name="prowid"></param>
+             <param name="pidpersona"></param>
+             <param name="plogin"></param>
+             <param name="pclave"></param>
+             <param name="ptoken"></param>
+             <returns>Retorna un DataTable con los registros que coinciden con la búsqueda indicada.</returns>
+        </member>
+    </members>
+</doc>

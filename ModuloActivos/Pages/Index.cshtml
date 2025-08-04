@@ -1,0 +1,30 @@
+﻿@page
+<div class="container mt-5">
+    <div class="text-center mb-5">
+        <h1 class="display-4">Sistema de Gestión de Activos</h1>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-5 mb-4 me-md-5">
+            <div class="card shadow-sm h-100">
+                <div class="card-body text-center p-4">
+                    <h3 class="card-title mb-4">Ver activos</h3>
+                    <a asp-controller="Activos" asp-action="Index" class="btn btn-primary btn-lg px-4">Acceder</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-5 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body text-center p-4">
+                    <h3 class="card-title mb-4">Registrar activo</h3>
+                    <a asp-controller="Activos" asp-action="Create" class="btn btn-primary btn-lg px-4">Acceder</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-5 text-center text-muted">
+        <p class="lead">Este módulo permite gestionar de manera eficiente todos los activos de la organización, desde equipos tecnológicos hasta mobiliario, facilitando su registro, consulta, actualización y seguimiento.</p>
+    </div>
+</div>

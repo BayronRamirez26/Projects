@@ -1,0 +1,172 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+.navbar-brand strong {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.navbar-brand small {
+    font-size: 1rem;
+    margin-left: 0.5rem;
+}
+
+/* Estilo para la barra de navegación */
+.navbar-brand {
+    letter-spacing: 0.5px;
+}
+
+/* Estilo para las tarjetas */
+.card {
+    border: none;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+/* Botones */
+.btn-primary {
+    padding: 0.5rem 2rem;
+    border-radius: 50px;
+}
+
+/* Texto descriptivo */
+.lead {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+/* Estilo para la barra de navegación superior */
+.header-logo {
+    padding: 10px 0;
+}
+
+/* Estilo para la barra de navegación azul */
+
+
+.navbar-custom .navbar-nav .nav-link {
+    color: white;
+    font-weight: 700;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+}
+
+    .navbar-custom .navbar-nav .nav-link:hover {
+        color: #fff;
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 4px;
+    }
+
+.navbar-custom .nav-item.active .nav-link {
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+
+
+.logo-text span {
+    font-weight: normal;
+}
+
+
+/* Estilos para la barra superior con logo */
+.header-top {
+    border-bottom: 1px solid #eaeaea;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    margin-left: 0.8rem;
+}
+
+    .logo-text strong {
+        font-weight: 700;
+    }
+
+/* Estilos para la barra de navegación azul */
+.navbar-custom {
+    background-color: #00C0F3;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+    .navbar-custom .navbar-nav {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .navbar-custom .nav-item {
+        text-align: center;
+    }
+
+    .navbar-custom .nav-link {
+        color: white;
+        font-weight: 500;
+        font-size: 1.1rem;
+        padding: 0.5rem 1rem;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+        .navbar-custom .nav-link:hover {
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .navbar-custom .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+
+        .navbar-custom .nav-link:hover::after {
+            width: 100%;
+        }
+
+}
+/* Estilos para dispositivos móviles */
+@media (max-width: 767.98px) {
+    .navbar-custom .navbar-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-item {
+        margin: 0.5rem 0;
+    }
+}

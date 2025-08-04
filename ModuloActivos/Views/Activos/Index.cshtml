@@ -1,0 +1,457 @@
+﻿
+<!-- using IntranetFM.Modelos -->
+@model List<IntranetFM.Modelos.Activo>
+@{
+    //Layout = "/Pages/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Gestión de Activos";
+    var ubicaciones = ViewBag.Ubicaciones as List<SelectListItem> ?? new List<SelectListItem>();
+    var responsables = ViewBag.Responsables as List<SelectListItem> ?? new List<SelectListItem>();
+}
+
+<div class="container mt-4">
+    <h2>Listado de Activos</h2>
+
+    <!-- Barra de búsqueda y controles -->
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="input-group">
+                <input type="text" id="searchInput" class="form-control" placeholder="Buscar por placa, modelo, marca..." />
+                <button class="btn btn-outline-secondary" type="button" id="searchButton">
+                    <i class="bi bi-search"></i> Buscar
+                </button>
+                <button class="btn btn-outline-danger" type="button" id="clearSearch" style="display: none;">
+                    <i class="bi bi-x-circle"></i> Limpiar
+                </button>
+            </div>
+        </div>
+       
+        <div class="col-md-6 text-end">
+            <div class="btn-group">
+                <button class="btn btn-outline-secondary" id="prevPage" disabled>
+                    <i class="bi bi-chevron-left"></i> Anterior
+                </button>
+                <button class="btn btn-outline-secondary" id="nextPage">
+                    Siguiente <i class="bi bi-chevron-right"></i>
+                </button>
+            </div>
+            <a href="@Url.Content("~/")Activos/Create" class="btn btn-primary ms-2">
+                <i class="bi bi-plus-circle"></i> Agregar
+			</a>
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exportModal">
+                    <i class="bi bi-download"></i> Exportar
+                </button>
+				
+			</div>
+        </div>
+        <!-- Modal de Exportación -->
+        <div class="modal fade" id="exportModal" tabindex="-1" aria-labelledby="exportModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exportModalLabel">Exportar Activos</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="exportForm">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Responsable</label>
+                                    <select name="_responsable._rowid" class="form-select" id="filtroResponsable">
+                                        <option value="0">-- Sin asignar --</option>
+                                        @foreach (var responsable in responsables)
+                                        {
+                                            <option value=@responsable.Value>@responsable.Text</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Ubicación*</label>
+                                    <select name="_ubicacion._rowid" class="form-select" id="filtroUbicacion" required>
+                                        <option value="">Seleccione una ubicación</option>
+                                        @foreach (var ubicacion in ubicaciones)
+                                        {
+                                            <option value=@ubicacion.Value>@ubicacion.Text</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="filtroFechaInicio" class="form-label">Fecha desde</label>
+                                    <input type="date" class="form-control" id="filtroFechaInicio">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="filtroFechaFin" class="form-label">Fecha hasta</label>
+                                    <input type="date" class="form-control" id="filtroFechaFin">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="filtroEstado" class="form-label">Estado</label>
+                                    <select class="form-select" id="filtroEstado">
+                                        <option value="">Todos</option>
+                                        <option value="1">Activo</option>
+                                        <option value="2">Reparación</option>
+                                        <option value="3">Préstamo</option>
+                                        <option value="4">Desecho</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="ordenarPor" class="form-label">Ordenar por</label>
+                                    <select class="form-select" id="ordenarPor">
+                                        <option value="descripcion">Descripción</option>
+                                        <option value="placa">Placa</option>
+                                        <option value="ubicacion">Ubicación</option>
+                                        <option value="responsable">Responsable</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Orden</label><br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="orden" id="asc" value="true" checked>
+                                        <label class="form-check-label" for="asc">Ascendente</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="orden" id="desc" value="false">
+                                        <label class="form-check-label" for="desc">Descendente</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Formato</label><br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="formato" id="formatoPdf" value="pdf" checked>
+                                        <label class="form-check-label" for="formatoPdf">PDF</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="formato" id="formatoExcel" value="excel">
+                                        <label class="form-check-label" for="formatoExcel">Excel</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary" onclick="exportarConFiltros()">Exportar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tabla de activos -->
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead style=" background-color: #00C0F3; color: white;">
+                <tr>
+                    <th onclick="ordenarPor('descripcion')" style="cursor:pointer;">Descripción</th>
+                    <th onclick="ordenarPor('placa')" style="cursor:pointer;">Placa</th>
+                    <th onclick="ordenarPor('marca')" style="cursor:pointer;">Marca</th>
+                    <th onclick="ordenarPor('ubicacion')" style="cursor:pointer;">Ubicación</th>
+                    <th onclick="ordenarPor('responsable')" style="cursor:pointer;">Responsable</th>
+                    <th>Documento</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="activosTableBody">
+                @if (ViewBag.ListaActivos != null)
+                {
+                    foreach (var activo in ViewBag.ListaActivos)
+                    {
+                        <tr>
+                            <td>@activo._descripcion</td>
+                            <td>@activo._placa</td>
+							<td>@activo._marca._marca</td>
+                            <td>@activo._ubicacion._ubicacion</td>
+                            <td>
+                                @if (activo._responsable._rowid == 0)
+                                {
+                                    <span>No asignado</span>
+                                }
+                                else
+                                {
+                                    @activo._responsable._nombre
+                                }
+                            </td>
+                            <td>
+                                @if (!string.IsNullOrEmpty(activo._documento))
+                                {
+                                    <a href="@activo._documento" target="_blank">Ver documento</a>
+                                }
+                                else
+                                {
+                                    <span>N/A</span>
+                                }
+                            </td>
+                            <td>
+                                <a href="/Activos/Details/@activo._id" class="btn btn-link btn-sm text-info p-0" title="Detalles">
+                                    <i class="bi bi-eye-fill" style="font-size: 2rem; color: black;"></i>
+                                </a>
+                                <a href="/Activos/Edit/@activo._id" class="btn btn-link btn-sm text-warning ms-3 p-0" title="Editar">
+                                    <i class="bi bi-pencil-fill" style="font-size: 2rem; color: black;"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Controles de paginación inferiores -->
+    <div class="row mt-3">
+        <div class="col-md-6">
+            <span id="pageInfo" class="text-muted">
+                @{
+                    var listaActivos = ViewBag.ListaActivos as List<IntranetFM.Modelos.Activo>;
+                    var totalActivos = listaActivos?.Count ?? 0;
+                }
+                Mostrando @totalActivos de @totalActivos activos
+            </span>
+        </div>
+        <div class="col-md-6 text-end">
+            <div class="btn-group">
+                <span class="btn btn-light" id="currentPage">1</span>
+            </div>
+        </div>
+      
+    </div>
+   
+    <!-- Mensaje cuando no hay resultados -->
+    <div id="noResults" class="alert alert-warning mt-3" style="display: @(totalActivos == 0 ? "block" : "none");">
+        No se encontraron activos registrados.
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Configuración de paginación
+        let currentPage = 1;
+        const rowsPerPage = 10;
+        let allActivos = [];
+        let filteredData = [];
+        let ordenarPorActual = '';
+        let ascendente = true;
+
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', function () {
+            // Convertimos los datos de Razor a JavaScript
+            allActivos = @Html.Raw(Json.Serialize(Model)) || [];
+
+            // Mapeamos los datos para un acceso más fácil
+            allActivos = allActivos.map(activo => ({
+                id: activo._id,
+                placa: activo._placa || '',
+                marca: activo._marca ? activo._marca._marca || '' : '',
+                modelo: activo._modelo || '',
+                tipo: activo._idtipoactivo || '',
+                ubicacion: activo._ubicacion ? activo._ubicacion._ubicacion || '' : '',
+                fechaCompra: activo._fechacompra,
+                responsable: activo._responsable ? activo._responsable._nombre || '' : null,
+                estado: activo._estado || '',
+                serie: activo._serie || '',
+                descripcion: activo._descripcion || '',
+                archivoDocumentoPath: activo._documento || '',
+                numeroDocumentoEntrada: activo._numerodocumento
+            }));
+
+            filteredData = [...allActivos];
+            updateTable();
+            setupEventListeners();
+        });
+
+        function setupEventListeners() {
+            document.getElementById('searchButton').addEventListener('click', filterData);
+            document.getElementById('searchInput').addEventListener('keyup', function (e) {
+                if (e.key === 'Enter') filterData();
+            });
+            document.getElementById('clearSearch').addEventListener('click', clearSearch);
+            document.getElementById('prevPage').addEventListener('click', () => changePage(-1));
+            document.getElementById('nextPage').addEventListener('click', () => changePage(1));
+        }
+
+        function filterData() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+
+            filteredData = allActivos.filter(activo => {
+                return (
+                    (activo.placa && activo.placa.toLowerCase().includes(searchTerm)) ||
+                    (activo.marca && activo.marca.toLowerCase().includes(searchTerm)) ||
+                    (activo.tipo && activo.tipo.toString().toLowerCase().includes(searchTerm)) ||
+                    (activo.ubicacion && activo.ubicacion.toLowerCase().includes(searchTerm)) ||
+                    (activo.responsable &&
+                        (activo.responsable._nombre || activo.responsable).toLowerCase().includes(searchTerm)) ||
+                    (activo.descripcion && activo.descripcion.toLowerCase().includes(searchTerm)) ||
+                    (activo.numeroDocumentoEntrada && activo.numeroDocumentoEntrada.toLowerCase().includes(searchTerm))
+                );
+            });
+
+            currentPage = 1;
+            updateTable();
+            document.getElementById('clearSearch').style.display = searchTerm ? 'block' : 'none';
+        }
+
+        function getEstadoDescriptivo(estado) {
+            // Convertir el estado string a número para la comparación
+            const estadoNum = parseInt(estado);
+
+            switch (estadoNum) {
+                case 1: return "Activo";
+                case 2: return "Reparación"; 
+                case 3: return "Prestamos"; 
+                case 4: return "Desecho";
+                default: return estado; // Si no coincide, devolver el valor original
+            }
+        }
+
+        function clearSearch() {
+            document.getElementById('searchInput').value = '';
+            filteredData = [...allActivos];
+            currentPage = 1;
+            updateTable();
+            document.getElementById('clearSearch').style.display = 'none';
+        }
+
+        function changePage(direction) {
+            const totalPages = Math.ceil(filteredData.length / rowsPerPage);
+            const newPage = currentPage + direction;
+
+            if (newPage > 0 && newPage <= totalPages) {
+                currentPage = newPage;
+                updateTable();
+            }
+        }
+
+        function updateTable() {
+            const startIndex = (currentPage - 1) * rowsPerPage;
+            const endIndex = startIndex + rowsPerPage;
+            const paginatedData = filteredData.slice(startIndex, endIndex);
+            const totalPages = Math.ceil(filteredData.length / rowsPerPage);
+            const tbody = document.getElementById('activosTableBody');
+
+            tbody.innerHTML = '';
+
+            const getResponsableText = (responsable) => {
+                if (responsable && typeof responsable === 'object') {
+                    return responsable._rowid === 0 ? 'No asignado' :
+                        (responsable._nombre || 'Responsable desconocido');
+                }
+                return responsable && responsable.trim() !== '' ? responsable : 'No asignado';
+            };
+
+            const getDocumentoLink = (path, numero) => {
+                if (!path) return 'N/A';
+                var mpath=mbaseUrl+path.substring(1);
+                return `<a href="${mpath}" target="_blank" title="Ver documento">${numero || 'Documento'}</a>`;
+            };
+
+            if (paginatedData.length === 0) {
+                document.getElementById('noResults').style.display = 'block';
+            } else {
+                document.getElementById('noResults').style.display = 'none';
+
+                paginatedData.forEach(activo => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${activo.descripcion || 'N/A'}</td>
+                        <td>${activo.placa || 'N/A'}</td>
+                        <td>${activo.marca || 'N/A'}</td>
+                        <td>${activo.ubicacion || 'N/A'}</td>
+                        <td>${getResponsableText(activo.responsable)}</td>
+                        <td>${getDocumentoLink(activo.archivoDocumentoPath, activo.numeroDocumentoEntrada)}</td>
+                        <td>
+                            <a href="${mbaseUrl}Activos/Details/${activo.id}" class="btn btn-link btn-sm text-info p-0" title="Detalles">
+                                <i class="bi bi-eye-fill" style="font-size: 2rem; color: black;"></i>
+                            </a>
+                            <a href="${mbaseUrl}Activos/Edit/${activo.id}" class="btn btn-link btn-sm text-warning ms-3 p-0" title="Editar">
+                                <i class="bi bi-pencil-fill" style="font-size: 2rem; color: black;"></i>
+                            </a>
+                        </td>
+                    `;
+                    tbody.appendChild(row);
+                });
+            }
+
+            // Actualizar controles de paginación (mantener existente)
+            document.getElementById('prevPage').disabled = currentPage <= 1;
+            document.getElementById('nextPage').disabled = currentPage >= totalPages || totalPages === 0;
+            document.getElementById('currentPage').textContent = currentPage;
+
+            // Actualizar información de página (mantener existente)
+            const startItem = filteredData.length > 0 ? startIndex + 1 : 0;
+            const endItem = Math.min(endIndex, filteredData.length);
+            document.getElementById('pageInfo').textContent =
+                `Mostrando ${startItem}-${endItem} de ${filteredData.length} activos`;
+        }
+        function descargar(tipo) {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+
+            fetch(`/Activos/Exportar?tipo=${tipo}&filtro=${encodeURIComponent(searchTerm)}&asc=${ ascendente }&ordenarPor=${ordenarPorActual}`)
+                .then(response => {
+                    if (!response.ok) throw new Error("Error al descargar el archivo");
+                    return response.blob();
+                })
+                .then(blob => {
+                    const url = window.URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.download = tipo === 'pdf' ? 'activos.pdf' : 'activos.xlsx';
+                    document.body.appendChild(link);
+                    link.click();
+                    link.remove();
+                })
+                .catch(error => {
+                    console.error('Error exportando:', error);
+                    alert("Hubo un error al exportar los activos.");
+                });
+        }
+      
+        function ordenarPor(campo) {
+            if (ordenarPorActual === campo) {
+                ascendente = !ascendente;
+            } else {
+                ordenarPorActual = campo;
+                ascendente = true;
+            }
+            console.log(`Ordenando por: ${ordenarPorActual}, ascendente: ${ascendente}`);
+            filteredData.sort((a, b) => {
+                let valorA = (a[campo] || '').toString().toLowerCase();
+                let valorB = (b[campo] || '').toString().toLowerCase();
+
+                if (valorA < valorB) return ascendente ? -1 : 1;
+                if (valorA > valorB) return ascendente ? 1 : -1;
+                return 0;
+            });
+
+            currentPage = 1;
+            updateTable();
+        }
+
+        function exportarConFiltros() {
+            // Obtener valores del formulario
+            const responsable = document.getElementById('filtroResponsable').value;
+            const ubicacion = document.getElementById('filtroUbicacion').value;
+            const fechaInicio = document.getElementById('filtroFechaInicio').value;
+            const fechaFin = document.getElementById('filtroFechaFin').value;
+            const estado = document.getElementById('filtroEstado').value;
+            const ordenarPor = document.getElementById('ordenarPor').value;
+            const orden = document.querySelector('input[name="orden"]:checked').value;
+            const formato = document.querySelector('input[name="formato"]:checked').value;
+
+            // Si tienes un input de búsqueda global en tu página (ajusta el ID si es diferente)
+            const searchTerm = document.getElementById('searchInput')?.value ?? '';
+
+            // Construir la URL con parámetros
+            const url = `/Activos/Exportar?` +
+                `tipo=${formato}` +
+                `&filtro=${encodeURIComponent(searchTerm)}` +
+                `&responsable=${responsable}` +
+                `&ubicacion=${ubicacion}` +
+                `&fechaInicio=${fechaInicio}` +
+                `&fechaFin=${fechaFin}` +
+                `&estado=${estado}` +
+                `&ordenarPor=${ordenarPor}` +
+                `&ascendente=${orden}`;
+
+            // Redireccionar para descargar el archivo
+            window.location.href = url;
+        }
+    </script>
+}

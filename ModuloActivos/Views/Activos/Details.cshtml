@@ -1,0 +1,131 @@
+﻿@model IntranetFM.Modelos.Activo
+@{
+    //Layout = "/Pages/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Detalle de Activo";
+}
+
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header bg-info text-white">
+            <h3 class="card-title">Detalle del Activo: @Model._placa</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Información Técnica</h5>
+                    <dl class="row">
+                        <dt class="col-sm-4">Placa:</dt>
+                        <dd class="col-sm-8">@Model._placa</dd>
+
+                        <dt class="col-sm-4">Marca/Modelo:</dt>
+                        <dd class="col-sm-8">@Model._marca._marca / @Model._modelo</dd>
+
+                        <dt class="col-sm-4">Número de documento:</dt>
+                        <dd class="col-sm-8">@Model._numerodocumento</dd>
+
+                        <dt class="col-sm-4">Número de Serie:</dt>
+                        <dd class="col-sm-8">@Model._serie</dd>
+
+                        <dt class="col-sm-4">Tipo de Activo:</dt>
+                        <dd class="col-sm-8">
+                            @switch (Model._idtipoactivo)
+                            {
+                                case 1:
+                                    <text>Equipo de cómputo</text>
+                                    break;
+                                case 2:
+                                    <text>Doméstico</text>
+                                    break;
+                                case 3:
+                                    <text>Multimedia</text>
+                                    break;
+                                default:
+                                    <text>Desconocido</text>
+                                    break;
+                            }
+                        </dd>
+
+                        <dt class="col-sm-4">Responsable:</dt>
+                        <dd class="col-sm-8">@Model._responsable?._nombre @Model._responsable?._apellido1</dd>
+
+                        <dt class="col-sm-4">Estado:</dt>
+                        <dd class="col-sm-8">
+                            @switch (Model._estado)
+                            {
+                                case "1":
+                                    <text>Activo</text>
+                                    break;
+                                case "2":
+                                    <text>Reparación</text>
+                                    break;
+                                case "3":
+                                    <text>Préstamos</text>
+                                    break;
+                                case "4":
+                                    <text>Desecho</text>
+                                    break;
+                                default:
+                                    <text>Desconocido</text>
+                                    break;
+                            }
+                        </dd>
+                    </dl>
+                </div>
+
+                <div class="col-md-6">
+                    <h5>Información de Ubicación</h5>
+                    <dl class="row">
+                        <dt class="col-sm-4">Ubicación:</dt>
+                        <dd class="col-sm-8">@Model._ubicacion._ubicacion</dd>
+
+                        <dt class="col-sm-4">Fecha de Compra:</dt>
+                        <dd class="col-sm-8">@Model._fechacompra.ToString("dd/MM/yyyy")</dd>
+
+                        <dt class="col-sm-4">Fecha de Registro:</dt>
+                        <dd class="col-sm-8">@Model._fecharegistro.ToString("dd/MM/yyyy")</dd>
+                        <dt class="col-sm-4">Meses de Garantía:</dt>
+                        <dd class="col-sm-8">@Model._garantia</dd>
+                    </dl>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Documento Actual</label>
+                @if (!string.IsNullOrEmpty(Model._documento))
+                {
+                    <div class="mt-2">
+                        <a href="@(Url.Content("~/")+Model._documento.Substring(1))" target="_blank" class="btn btn-outline-primary">
+                            <i class="bi bi-file-earmark-pdf"></i> Ver Documento Actual
+                        </a>
+                    </div>
+                }
+                else
+                {
+                    <p class="text-muted">No hay documento cargado</p>
+                }
+            </div>
+            <div class="row mt-3">
+                <div class="col-12">
+                    <h5>Descripción</h5>
+                    <p>@Model._descripcion</p>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-12">
+                    <h5>Observaciones</h5>
+                    <p>@(string.IsNullOrEmpty(Model._observaciones) ? "Ninguna" : Model._observaciones)</p>
+                </div>
+            </div>
+
+			<div class="text-center mt-4">
+                <a href="@Url.Content("~/")Activos/Listar" class="btn btn-outline-secondary">
+					<i class="bi bi-arrow-left"></i> Volver al listado
+				</a>
+                <a href="@Url.Content("~/")Activos/Edit/@Model._id" class="btn btn-primary">Editar</a>
+                <a href="@Url.Content("~/")Activos/ListarMovimientos/@Model._id" class="btn btn-outline-info">
+                    <i class="bi bi-clock-history"></i> Ver Historial de Movimientos
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
